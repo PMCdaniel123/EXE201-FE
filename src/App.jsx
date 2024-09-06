@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import About from "./pages/About";
@@ -8,11 +8,15 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import PlaceOrder from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
+import Design from "./pages/Design";
+import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
+import AddProduct from "./components/AddProduct";
+import ListProduct from "./components/ListProduct";
+import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -30,6 +34,11 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/design" element={<Design />}>
+          <Route index path="" element={<ListProduct />} />
+          <Route path="addProduct" element={<AddProduct />} />
+        </Route>
       </Routes>
       <Footer />
     </div>

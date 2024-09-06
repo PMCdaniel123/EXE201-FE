@@ -31,6 +31,10 @@ const Navbar = () => {
           <p>CONTACT</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
+        <NavLink to="/design" className="flex flex-col items-center gap-1">
+          <p>DESIGN</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        </NavLink>
       </ul>
 
       <div className="flex items-center gap-6">
@@ -40,22 +44,7 @@ const Navbar = () => {
           className="w-5 cursor-pointer"
           onClick={() => setShowSearch(true)}
         />
-        <div className="group relative">
-          <Link to="/login">
-            <img
-              src={assets.profile_icon}
-              alt=""
-              className="w-5 cursor-pointer"
-            />
-          </Link>
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <p className="cursor-pointer hover:text-black">My Profile</p>
-              <p className="cursor-pointer hover:text-black">Orders</p>
-              <p className="cursor-pointer hover:text-black">Logout</p>
-            </div>
-          </div>
-        </div>
+
         <Link to="/cart" className="relative">
           <img
             src={assets.cart_icon}
@@ -66,6 +55,26 @@ const Navbar = () => {
             {getCartCount()}
           </p>
         </Link>
+        <div className="group relative">
+          <Link to="/login">
+            <img
+              src={assets.profile_icon}
+              alt=""
+              className="w-5 cursor-pointer"
+            />
+          </Link>
+          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+              <Link to="/profile">
+                <p className="cursor-pointer hover:text-black">My Profile</p>
+              </Link>
+              <Link to="/orders">
+                <p className="cursor-pointer hover:text-black">Orders</p>
+              </Link>
+              <p className="cursor-pointer hover:text-black">Logout</p>
+            </div>
+          </div>
+        </div>
         <img
           src={assets.menu_icon}
           alt=""
@@ -74,7 +83,6 @@ const Navbar = () => {
         />
       </div>
 
-      {/* Sidebar menu for small screen */}
       <div
         className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
           visible ? "w-full" : "w-0"
@@ -115,6 +123,13 @@ const Navbar = () => {
             to="/contact"
           >
             CONTACT
+          </NavLink>
+          <NavLink
+            onClick={() => setVisible(false)}
+            className="py-2 pl-6 border"
+            to="/design"
+          >
+            DESIGN
           </NavLink>
         </div>
       </div>
