@@ -5,8 +5,8 @@ import { ShopContext } from "../context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const { setShowSearch, getCartCount, navigate, user, setUser } =
+    useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -31,10 +31,12 @@ const Navbar = () => {
           <p>CONTACT</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        <NavLink to="/design" className="flex flex-col items-center gap-1">
-          <p>DESIGN</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
+        {user === "Designer" ? (
+          <NavLink to="/design" className="flex flex-col items-center gap-1">
+            <p>DESIGN</p>
+            <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          </NavLink>
+        ) : null}
       </ul>
 
       <div className="flex items-center gap-6">
@@ -55,26 +57,40 @@ const Navbar = () => {
             {getCartCount()}
           </p>
         </Link>
-        <div className="group relative">
-          <Link to="/login">
-            <img
-              src={assets.profile_icon}
-              alt=""
-              className="w-5 cursor-pointer"
-            />
-          </Link>
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <Link to="/profile">
-                <p className="cursor-pointer hover:text-black">My Profile</p>
-              </Link>
-              <Link to="/orders">
-                <p className="cursor-pointer hover:text-black">Orders</p>
-              </Link>
-              <p className="cursor-pointer hover:text-black">Logout</p>
+        {user.length > 0 ? (
+          <div className="group relative">
+            <Link to="/login">
+              <img
+                src={assets.profile_icon}
+                alt=""
+                className="w-5 cursor-pointer"
+              />
+            </Link>
+            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+              <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+                <Link to="/profile">
+                  <p className="cursor-pointer hover:text-black">My Profile</p>
+                </Link>
+                <Link to="/orders">
+                  <p className="cursor-pointer hover:text-black">Orders</p>
+                </Link>
+                <p
+                  className="cursor-pointer hover:text-black"
+                  onClick={() => setUser("")}
+                >
+                  Logout
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <button
+            onClick={() => navigate("/login")}
+            className="bg-black text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
+          >
+            Login
+          </button>
+        )}
         <img
           src={assets.menu_icon}
           alt=""
@@ -124,13 +140,15 @@ const Navbar = () => {
           >
             CONTACT
           </NavLink>
-          <NavLink
-            onClick={() => setVisible(false)}
-            className="py-2 pl-6 border"
-            to="/design"
-          >
-            DESIGN
-          </NavLink>
+          {user === "Designer" ? (
+            <NavLink
+              onClick={() => setVisible(false)}
+              className="py-2 pl-6 border"
+              to="/design"
+            >
+              DESIGN
+            </NavLink>
+          ) : null}
         </div>
       </div>
     </div>

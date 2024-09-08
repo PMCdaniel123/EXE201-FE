@@ -1,6 +1,6 @@
 const NewsletterBox = () => {
-  const onSubmitHandle = () => {
-    event.preventDefault();
+  const onSubmitHandle = (e) => {
+    e.preventDefault();
   };
 
   return (
