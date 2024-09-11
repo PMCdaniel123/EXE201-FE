@@ -26,7 +26,7 @@ const NewsletterBox = () => {
         />
         <button
           type="submit"
-          className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs px-10 py-4"
+          className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm px-10 py-4"
         >
           SUBSCRIBE
         </button>

@@ -5,12 +5,14 @@ import LatestCollection from "../components/LatestCollection";
 import NewsletterBox from "../components/NewsletterBox";
 import OurPolicy from "../components/OurPolicy";
 import OurStore from "../components/OurStore";
+import PicksSlider from "../components/PicksSlider";
 import Trending from "../components/Trending";
 
 const Home = () => {
   return (
     <div>
       <Hero />
+      <PicksSlider />
       <Trending />
       <FeatureCollections />
       <LatestCollection />

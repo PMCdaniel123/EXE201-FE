@@ -1,5 +1,6 @@
 import { InstagramOutlined } from "@ant-design/icons";
 import { Input } from "antd";
+import { assets } from "../assets/frontend_assets/assets";
 
 const Footer = () => {
   return (
@@ -8,8 +9,15 @@ const Footer = () => {
         <div className="flex justify-between p-8 border border-gray-400">
           <div className="flex flex-col w-1/3 gap-6 p-4">
             <div className="flex items-center gap-3">
+              <div className="rounded-full bg-gradient-to-br from-[#4A5942] to-[#9d905a]">
+                <img
+                  src={assets.favicon_white}
+                  alt=""
+                  className="h-16 w-16 object-cover p-1"
+                />
+              </div>
               <span className="font-medium text-2xl text-[#1c1c26]">
-                SUNSETSOIREE'
+                SUNSETSOIRÉE
               </span>
             </div>
             <div className="flex flex-col gap-6">
@@ -22,7 +30,7 @@ const Footer = () => {
                   className="w-full px-2 py-2 bg-transparent text-[#1c1c26] text-base focus:outline-none"
                 />
                 <div className="w-1/2">
-                  <button className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-6 py-3">
+                  <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-6 py-3">
                     SUBSCRIBE
                   </button>
                 </div>
@@ -74,7 +82,7 @@ const Footer = () => {
         </div>
 
         <div className="flex justify-between items-center px-8 py-4 border border-gray-400">
-          <span className="text-sm text-[#1c1c26]">© SUNSETSOIREE'2024</span>
+          <span className="text-sm text-[#1c1c26]">© SUNSETSOIRÉE 2024</span>
           <span className="text-sm text-[#1c1c26]">
             <InstagramOutlined /> INSTAGRAM
           </span>

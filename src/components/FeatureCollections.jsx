@@ -32,7 +32,7 @@ const FeatureCollections = () => {
                 COLLECTION
               </h2>
               <div className="absolute left-0 bottom-0 p-8">
-                <button className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+                <button className="border border-white text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
                   VIEW PRODUCT
                 </button>
               </div>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "./Title";
 import ProductItem from "./ProductItem";
+import { Link } from "react-router-dom";
 
 const BestSeller = () => {
   const { products } = useContext(ShopContext);
@@ -37,9 +38,11 @@ const BestSeller = () => {
       </div>
 
       <div className="text-center mt-8">
-        <button className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
-          SEE MORE
-        </button>
+        <Link to="/collection">
+          <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+            SEE MORE
+          </button>
+        </Link>
       </div>
     </div>
   );

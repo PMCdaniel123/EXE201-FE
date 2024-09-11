@@ -91,7 +91,7 @@ const Cart = () => {
           <CartTotal />
           <div className="w-full text-end">
             <button
-              className="bg-black text-white text-sm my-8 px-8 py-3"
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm my-8 px-8 py-3"
               onClick={() => navigate("/place-order")}
             >
               PROCEED TO CHECKOUT

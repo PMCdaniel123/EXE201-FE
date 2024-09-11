@@ -74,6 +74,7 @@ import stripe_logo from "./stripe_logo.png";
 import cross_icon from "./cross_icon.png";
 import breadcrum_icon from "./breadcrum_arrow.png";
 import payment_icon from "./payment_icon.png";
+import favicon_white from "./favicon_white1.png";
 
 export const assets = {
   logo,
@@ -96,6 +97,7 @@ export const assets = {
   cross_icon,
   breadcrum_icon,
   payment_icon,
+  favicon_white,
 };
 
 export const products = [

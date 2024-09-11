@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import Premium from "../components/Premium";
 import Title from "../components/Title";
+import { ShopContext } from "../context/ShopContext";
 
 const Profile = () => {
+  const { user } = useContext(ShopContext);
+
   const onSubmitHandle = (e) => {
     e.preventDefault();
   };
@@ -30,19 +34,19 @@ const Profile = () => {
           <p className="text-gray-500">Gender: Male</p>
           <div className="flex items-center justify-between mt-6 gap-4 w-full">
             <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white font-medium px-6 py-3">
+              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 Weight
               </p>
               <p className="text-gray-500">67kg</p>
             </div>
             <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white font-medium px-6 py-3">
+              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 Height
               </p>
               <p className="text-gray-500">1.7m</p>
             </div>
             <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white font-medium px-6 py-3">
+              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 IDK
               </p>
               <p className="text-gray-500">...</p>
@@ -82,7 +86,7 @@ const Profile = () => {
           />
           <button
             type="submit"
-            className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs px-10 py-4"
+            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm px-10 py-4"
           >
             SUBSCRIBE
           </button>
@@ -93,40 +97,44 @@ const Profile = () => {
         <div className="pt-10 text-3xl">
           <Title text1={"FEATURES"} text2={"UPDATE"} />
         </div>
-        <div className="mb-20">
-          <p className="text-2xl font-medium text-gray-800 mt-6">
-            Basic Features
-          </p>
-          <p className="text-gray-400 mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-            dolorem sint quas accusantium eveniet atque repellat placeat
-            assumenda dignissimos voluptas, vero facilis eos in pariatur
-            excepturi unde optio velit. Delectus!
-          </p>
-          <div className="mt-6 flex justify-center gap-4">
-            <Premium type={"Basic"} price={"270,000"} time={"3"} />
-            <Premium type={"Basic"} price={"500,000"} time={"6"} />
-            <Premium type={"Basic"} price={"750,000"} time={"9"} />
-            <Premium type={"Basic"} price={"1,000,000"} time={"12"} />
+        {user === "Designer" && (
+          <div>
+            <div className="mb-20">
+              <p className="text-2xl font-medium text-gray-800 mt-6">
+                Basic Features
+              </p>
+              <p className="text-gray-400 mt-3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+                dolorem sint quas accusantium eveniet atque repellat placeat
+                assumenda dignissimos voluptas, vero facilis eos in pariatur
+                excepturi unde optio velit. Delectus!
+              </p>
+              <div className="mt-6 flex justify-center gap-4">
+                <Premium type={"Basic"} price={"270,000"} time={"3"} />
+                <Premium type={"Basic"} price={"500,000"} time={"6"} />
+                <Premium type={"Basic"} price={"750,000"} time={"9"} />
+                <Premium type={"Basic"} price={"1,000,000"} time={"12"} />
+              </div>
+            </div>
+            <div className="mb-20">
+              <p className="text-2xl font-medium text-gray-800 mt-6">
+                Premium Features
+              </p>
+              <p className="text-gray-400 mt-3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+                dolorem sint quas accusantium eveniet atque repellat placeat
+                assumenda dignissimos voluptas, vero facilis eos in pariatur
+                excepturi unde optio velit. Delectus!
+              </p>
+              <div className="mt-6 flex justify-center gap-4">
+                <Premium type={"Premium"} price={"500,000"} time={"3"} />
+                <Premium type={"Premium"} price={"900,000"} time={"6"} />
+                <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
+                <Premium type={"Premium"} price={"1,800,000"} time={"12"} />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="mb-20">
-          <p className="text-2xl font-medium text-gray-800 mt-6">
-            Premium Features
-          </p>
-          <p className="text-gray-400 mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-            dolorem sint quas accusantium eveniet atque repellat placeat
-            assumenda dignissimos voluptas, vero facilis eos in pariatur
-            excepturi unde optio velit. Delectus!
-          </p>
-          <div className="mt-6 flex justify-center gap-4">
-            <Premium type={"Premium"} price={"500,000"} time={"3"} />
-            <Premium type={"Premium"} price={"900,000"} time={"6"} />
-            <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
-            <Premium type={"Premium"} price={"1,800,000"} time={"12"} />
-          </div>
-        </div>
+        )}
         <div className="mb-20">
           <p className="text-2xl font-medium text-gray-800 mt-6">
             Customer Features

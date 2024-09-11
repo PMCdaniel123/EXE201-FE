@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ShopContext } from "../context/ShopContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
@@ -9,17 +10,21 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmitHandler = (data) => {
-    console.log(data);
-    if (currentState === "Login") {
+    if (data.email === "cuong@gmail.com") {
       setUser("Customer");
-    } else {
+      navigate("/");
+    } else if (data.email === "admin@gmail.com") {
       setUser("Designer");
+      navigate("/");
+    } else {
+      reset();
+      toast.error("Invalid email");
     }
-    navigate("/");
   };
 
   return (
@@ -77,7 +82,7 @@ const Login = () => {
       </div>
       <button
         type="submit"
-        className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white font-light px-8 py-2 mt-4 w-full hover:bg-gray-800"
+        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-light px-8 py-2 mt-4 w-full hover:bg-gray-800"
       >
         {currentState === "Login" ? "Sign In" : "Sign Up"}
       </button>

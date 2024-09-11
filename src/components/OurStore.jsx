@@ -27,7 +27,7 @@ const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText }) => {
             </div>
             <p className="mb-6 text-[#656565]">{subTitle2}</p>
             <div className="w-3/4">
-              <button className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-2 py-1 sm:px-4 sm:py-3">
+              <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-2 py-1 sm:px-4 sm:py-3">
                 {btnText}
               </button>
             </div>

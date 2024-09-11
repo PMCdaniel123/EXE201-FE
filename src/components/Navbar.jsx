@@ -9,7 +9,7 @@ const Navbar = () => {
     useContext(ShopContext);
 
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center justify-between py-4 font-medium">
       <Link to="/">
         <img src={assets.logo} alt="" className="w-36" />
       </Link>
@@ -40,12 +40,14 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <img
-          src={assets.search_icon}
-          alt=""
-          className="w-5 cursor-pointer"
-          onClick={() => setShowSearch(true)}
-        />
+        <Link to="/collection">
+          <img
+            src={assets.search_icon}
+            alt=""
+            className="w-5 cursor-pointer"
+            onClick={() => setShowSearch(true)}
+          />
+        </Link>
 
         <Link to="/cart" className="relative">
           <img
@@ -53,19 +55,17 @@ const Navbar = () => {
             alt=""
             className="w-5 min-w-5 cursor-pointer"
           />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white aspect-square rounded-full text-[8px]">
+          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white aspect-square rounded-full text-[8px]">
             {getCartCount()}
           </p>
         </Link>
         {user.length > 0 ? (
           <div className="group relative">
-            <Link to="/login">
-              <img
-                src={assets.profile_icon}
-                alt=""
-                className="w-5 cursor-pointer"
-              />
-            </Link>
+            <img
+              src={assets.profile_icon}
+              alt=""
+              className="w-5 cursor-pointer"
+            />
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                 <Link to="/profile">
@@ -86,7 +86,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => navigate("/login")}
-            className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
+            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
           >
             Login
           </button>

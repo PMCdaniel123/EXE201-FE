@@ -114,7 +114,7 @@ const PlaceOrder = () => {
 
           <div className="w-full text-end mt-8">
             <button
-              className="bg-black text-white px-16 py-3 text-sm"
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-16 py-3 text-sm"
               onClick={() => navigate("/orders")}
             >
               PLACE ORDER

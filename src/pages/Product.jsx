@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
-import Breadcrum from "../components/Breadcrum";
+import { CommentOutlined } from "@ant-design/icons";
+import { Form, Rate } from "antd";
+import TextArea from "antd/es/input/TextArea";
 
 const Product = () => {
   const { productId } = useParams();
@@ -11,6 +13,15 @@ const Product = () => {
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
+  const [rating, setRating] = useState(0);
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ rating, content });
+    setRating(0);
+    setContent("");
+  };
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -28,7 +39,6 @@ const Product = () => {
 
   return productData ? (
     <div className="border-t-2 pt-10">
-      <Breadcrum product={productData} />
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
           <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
@@ -82,7 +92,7 @@ const Product = () => {
               </div>
             </div>
             <button
-              className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white px-8 py-3 text-sm active:bg-gray-700"
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-8 py-3 text-sm active:bg-gray-700"
               onClick={() => addToCart(productData._id, size)}
             >
               ADD TO CART
@@ -117,6 +127,34 @@ const Product = () => {
               quod! Est.
             </p>
           </div>
+        </div>
+
+        <div className="p-6 border mt-10">
+          <p className="text-base font-bold mb-6 flex gap-2">
+            Comment <CommentOutlined />
+          </p>
+          <form onSubmit={handleSubmit}>
+            <div className="flex items-center mt-6 gap-8">
+              <p className="text-sm text-gray-500 w-16">Rating:</p>
+              <Rate count={5} onChange={setRating} value={rating} />
+            </div>
+            <div className="flex items-center my-6 gap-8">
+              <p className="text-sm text-gray-500 w-16">Review:</p>
+              <textarea
+                rows={1}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder="Write your review here"
+                className="p-2 border border-gray-300 focus:outline-none w-full text-sm"
+              />
+            </div>
+            <button
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-16 py-3 text-sm"
+              type="submit"
+            >
+              POST
+            </button>
+          </form>
         </div>
 
         <RelatedProducts

@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [user, setUser] = useState("");
   const navigate = useNavigate();
+  const itemsPerPage = 12;
 
   const addToCart = async (itemId, size) => {
     if (!size) {
@@ -90,6 +91,7 @@ const ShopContextProvider = (props) => {
     navigate,
     user,
     setUser,
+    itemsPerPage,
   };
 
   return (

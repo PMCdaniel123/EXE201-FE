@@ -141,9 +141,9 @@ const AddProduct = () => {
 
       <button
         type="submit"
-        className="bg-black text-white font-medium px-8 py-2 w-full hover:bg-gray-700"
+        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-10 py-2 text-base font-medium w-full hover:bg-gray-700"
       >
-        Add
+        ADD
       </button>
     </form>
   );
