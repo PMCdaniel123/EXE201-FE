@@ -82,7 +82,7 @@ const Product = () => {
               </div>
             </div>
             <button
-              className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+              className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white px-8 py-3 text-sm active:bg-gray-700"
               onClick={() => addToCart(productData._id, size)}
             >
               ADD TO CART

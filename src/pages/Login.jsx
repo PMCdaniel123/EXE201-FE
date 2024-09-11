@@ -77,7 +77,7 @@ const Login = () => {
       </div>
       <button
         type="submit"
-        className="bg-black text-white font-light px-8 py-2 mt-4 w-full hover:bg-gray-800"
+        className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white font-light px-8 py-2 mt-4 w-full hover:bg-gray-800"
       >
         {currentState === "Login" ? "Sign In" : "Sign Up"}
       </button>

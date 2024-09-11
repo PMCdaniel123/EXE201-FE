@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  const currency = "$";
+  const currency = "₫";
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
@@ -89,7 +89,7 @@ const ShopContextProvider = (props) => {
     getCartAmount,
     navigate,
     user,
-    setUser
+    setUser,
   };
 
   return (

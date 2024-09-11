@@ -17,6 +17,7 @@ import AddProduct from "./components/AddProduct";
 import ListProduct from "./components/ListProduct";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { FloatButton } from "antd";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         </Route>
       </Routes>
       <Footer />
+      <FloatButton.BackTop />
     </div>
   );
 };

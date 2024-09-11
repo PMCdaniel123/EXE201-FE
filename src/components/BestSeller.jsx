@@ -35,6 +35,12 @@ const BestSeller = () => {
           />
         ))}
       </div>
+
+      <div className="text-center mt-8">
+        <button className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+          SEE MORE
+        </button>
+      </div>
     </div>
   );
 };

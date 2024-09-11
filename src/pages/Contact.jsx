@@ -22,7 +22,7 @@ const Contact = () => {
             Tel: +1-212-456-7890 <br /> Email: sunsetsoiree@gmail.com
           </p>
           <p className="font-semibold text-xl text-gray-600">
-            Careers at Forever
+            Careers at Sunset Soiree
           </p>
           <p className="text-gray-500">
             Learn more about our teams and job openings.

@@ -16,25 +16,25 @@ const Navbar = () => {
 
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1">
-          <p>HOME</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          <p className="sm:text-base">HOME</p>
+          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/collection" className="flex flex-col items-center gap-1">
-          <p>COLLECTION</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          <p className="sm:text-base">COLLECTION</p>
+          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/about" className="flex flex-col items-center gap-1">
-          <p>ABOUT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          <p className="sm:text-base">ABOUT</p>
+          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/contact" className="flex flex-col items-center gap-1">
-          <p>CONTACT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          <p className="sm:text-base">CONTACT</p>
+          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
         {user === "Designer" ? (
           <NavLink to="/design" className="flex flex-col items-center gap-1">
-            <p>DESIGN</p>
-            <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+            <p className="sm:text-base">DESIGN</p>
+            <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
           </NavLink>
         ) : null}
       </ul>
@@ -53,7 +53,7 @@ const Navbar = () => {
             alt=""
             className="w-5 min-w-5 cursor-pointer"
           />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white aspect-square rounded-full text-[8px]">
             {getCartCount()}
           </p>
         </Link>
@@ -86,7 +86,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => navigate("/login")}
-            className="bg-black text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
+            className="bg-gradient-to-br from-[#1c1c26] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
           >
             Login
           </button>
