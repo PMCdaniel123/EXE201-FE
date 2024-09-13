@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 
 const BlogItem = ({ title, image, description, category, id }) => {
   return (
-    <div className="max-w-[330px] sm:max-w-[300px] bg-white border border-black hover:shadow-[-7px_7px_0px_#000000]">
+    <div className=" bg-white border hover:scale-105 hover:shadow-xl">
       <Link to={`/sunblog/${id}`}>
         <img
           src={image}
           alt=""
-          className="w-full h-[96] border-b border-black cursor-pointer"
+          className="w-full h-[96] border-b cursor-pointer"
         />
       </Link>
-      <p className="ml-5 mt-5 px-1 inline-block bg-black text-white text-sm">
+      <p className="ml-5 mt-5 p-1 inline-block bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm">
         {category}
       </p>
       <div className="p-5">
-        <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900">
+        <h5 className="mb-2 text-lg font-medium tracking-tight text-black">
           {title}
         </h5>
         <p className="mb-3 text-sm tracking-tight text-gray-700">

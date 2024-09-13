@@ -1,8 +1,10 @@
 import { InstagramOutlined } from "@ant-design/icons";
-import { Input } from "antd";
 import { assets } from "../assets/frontend_assets/assets";
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
 
 const Footer = () => {
+  const { navigate } = useContext(ShopContext);
   return (
     <div>
       <div className="flex flex-col gap-4 mt-20 mb-10">
@@ -75,7 +77,12 @@ const Footer = () => {
                 <li>My Account</li>
                 <li>Shipping Info</li>
                 <li>Size Guide</li>
-                <li>Contact</li>
+                <li
+                  className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white p-1 inline-block cursor-pointer"
+                  onClick={() => navigate("contact")}
+                >
+                  Contact
+                </li>
               </ul>
             </div>
           </div>

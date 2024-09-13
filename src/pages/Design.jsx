@@ -1,33 +1,34 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 const Design = () => {
-  const [isSelected, setIsSelected] = useState("");
+  const { isAddProduct, setIsAddProduct } = useContext(ShopContext);
 
   return (
-    <div className="mt-10">
+    <div className="pt-10 border-t">
       <div className="flex">
         <Link
           to={""}
           className={`border px-5 py-3 text-sm ${
-            isSelected === "" ? "font-semibold" : ""
+            isAddProduct === "" ? "font-semibold" : ""
           }`}
-          onClick={() => setIsSelected("")}
+          onClick={() => setIsAddProduct("")}
         >
           Your Product List
         </Link>
         <Link
           to={"addProduct"}
           className={`border px-5 py-3 text-sm ${
-            isSelected === "add" ? "font-semibold" : ""
+            isAddProduct === "add" ? "font-semibold" : ""
           }`}
-          onClick={() => setIsSelected("add")}
+          onClick={() => setIsAddProduct("add")}
         >
           Add New Product
         </Link>
       </div>
 
-      <div className="flex flex-col gap-4 text-sm mt-10">
+      <div className="flex flex-col gap-4 text-sm mt-10 items-center">
         <Outlet />
       </div>
     </div>

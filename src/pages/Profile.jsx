@@ -109,7 +109,7 @@ const Profile = () => {
                 assumenda dignissimos voluptas, vero facilis eos in pariatur
                 excepturi unde optio velit. Delectus!
               </p>
-              <div className="mt-6 flex justify-center gap-4">
+              <div className="mt-6 flex justify-center gap-8">
                 <Premium type={"Basic"} price={"270,000"} time={"3"} />
                 <Premium type={"Basic"} price={"500,000"} time={"6"} />
                 <Premium type={"Basic"} price={"750,000"} time={"9"} />
@@ -126,7 +126,7 @@ const Profile = () => {
                 assumenda dignissimos voluptas, vero facilis eos in pariatur
                 excepturi unde optio velit. Delectus!
               </p>
-              <div className="mt-6 flex justify-center gap-4">
+              <div className="mt-6 flex justify-center gap-8">
                 <Premium type={"Premium"} price={"500,000"} time={"3"} />
                 <Premium type={"Premium"} price={"900,000"} time={"6"} />
                 <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
@@ -145,7 +145,7 @@ const Profile = () => {
             assumenda dignissimos voluptas, vero facilis eos in pariatur
             excepturi unde optio velit. Delectus!
           </p>
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-6 flex justify-center gap-8">
             <Premium type={"Customer"} price={"588,000"} time={"12"} />
           </div>
         </div>

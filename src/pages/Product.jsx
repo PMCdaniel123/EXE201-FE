@@ -81,7 +81,7 @@ const Product = () => {
                   <button
                     key={index}
                     className={`border py-2 px-4 bg-gray-100 ${
-                      item === size ? "border-orange-500" : ""
+                      item === size ? "border-[#9d905a]" : ""
                     }`}
                     onClick={() => setSize(item)}
                   >

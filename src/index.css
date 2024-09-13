@@ -10,6 +10,7 @@ a.active hr {
 
 a.active {
     font-weight: 600;
+    scale: 1.2;
 }
 
 * {

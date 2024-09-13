@@ -7,7 +7,7 @@ const ListProduct = () => {
   const { instock, setInstock } = useState(true);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="text-base sm:text-2xl mb-4">
         <Title text1={"MY PRODUCT"} text2={"LIST"} />
       </div>

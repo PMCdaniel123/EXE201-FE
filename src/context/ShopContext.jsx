@@ -12,6 +12,7 @@ const ShopContextProvider = (props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [user, setUser] = useState("");
+  const [isAddProduct, setIsAddProduct] = useState("");
   const navigate = useNavigate();
   const itemsPerPage = 12;
 
@@ -93,6 +94,8 @@ const ShopContextProvider = (props) => {
     user,
     setUser,
     itemsPerPage,
+    isAddProduct,
+    setIsAddProduct,
   };
 
   return (

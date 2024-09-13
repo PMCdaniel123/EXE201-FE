@@ -92,6 +92,7 @@ import cross_icon from "./cross_icon.png";
 import breadcrum_icon from "./breadcrum_arrow.png";
 import payment_icon from "./payment_icon.png";
 import favicon_white from "./favicon_white1.png";
+import upload_area from "./upload_area.png";
 
 export const assets = {
   logo,
@@ -115,6 +116,7 @@ export const assets = {
   breadcrum_icon,
   payment_icon,
   favicon_white,
+  upload_area,
 };
 
 export const products = [

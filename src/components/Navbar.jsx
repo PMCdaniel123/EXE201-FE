@@ -14,7 +14,7 @@ const Navbar = () => {
         <img src={assets.logo} alt="" className="w-36" />
       </Link>
 
-      <ul className="hidden sm:flex gap-4 lg:gap-20 text-xs lg:text-sm text-gray-700">
+      <ul className="hidden sm:flex gap-4 lg:gap-16 text-xs lg:text-sm text-black">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">HOME</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
@@ -86,7 +86,7 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => navigate("/login")}
-            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
+            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-base px-5 py-3 sm:px-10 sm:py-3"
           >
             Login
           </button>

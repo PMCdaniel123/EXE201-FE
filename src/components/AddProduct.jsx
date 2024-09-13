@@ -32,7 +32,7 @@ const AddProduct = () => {
 
   return (
     <form
-      className="flex flex-col items-center w-full gap-6 text-gray-800"
+      className="flex flex-col items-center w-[80%] gap-6 text-gray-800"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
       <div className="w-full flex flex-col sm:flex-row items-center">
@@ -141,7 +141,7 @@ const AddProduct = () => {
 
       <button
         type="submit"
-        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-10 py-2 text-base font-medium w-full hover:bg-gray-700"
+        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-10 py-[10px] text-base font-medium w-full hover:bg-gray-700"
       >
         ADD
       </button>
