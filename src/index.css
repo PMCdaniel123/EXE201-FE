@@ -8,6 +8,10 @@ a.active hr {
     display: block;
 }
 
+a.active {
+    font-weight: 600;
+}
+
 * {
     font-family: Outfit;
 }

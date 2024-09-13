@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+
 const NewsletterBox = () => {
+  const { navigate } = useContext(ShopContext);
+
   const onSubmitHandle = (e) => {
     e.preventDefault();
+    navigate("/contact");
   };
 
   return (

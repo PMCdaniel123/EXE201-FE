@@ -4,8 +4,7 @@ import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 import { CommentOutlined } from "@ant-design/icons";
-import { Form, Rate } from "antd";
-import TextArea from "antd/es/input/TextArea";
+import { Rate } from "antd";
 
 const Product = () => {
   const { productId } = useParams();

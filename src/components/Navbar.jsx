@@ -14,7 +14,7 @@ const Navbar = () => {
         <img src={assets.logo} alt="" className="w-36" />
       </Link>
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+      <ul className="hidden sm:flex gap-4 lg:gap-20 text-xs lg:text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">HOME</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
@@ -27,8 +27,8 @@ const Navbar = () => {
           <p className="sm:text-base">ABOUT</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
-        <NavLink to="/contact" className="flex flex-col items-center gap-1">
-          <p className="sm:text-base">CONTACT</p>
+        <NavLink to="/sunblog" className="flex flex-col items-center gap-1">
+          <p className="sm:text-base">SUNBLOG</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
         {user === "Designer" ? (

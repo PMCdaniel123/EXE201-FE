@@ -1,5 +1,6 @@
 import React from "react";
 import { assets } from "../assets/frontend_assets/assets";
+import { Link } from "react-router-dom";
 
 const FeatureCollections = () => {
   return (
@@ -32,9 +33,11 @@ const FeatureCollections = () => {
                 COLLECTION
               </h2>
               <div className="absolute left-0 bottom-0 p-8">
-                <button className="border border-white text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
-                  VIEW PRODUCT
-                </button>
+                <Link to="/collection">
+                  <button className="border border-white text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+                    VIEW PRODUCTS
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -56,7 +56,7 @@ const Profile = () => {
       </div>
 
       <div className="my-20">
-        <div className="text-center text-2xl pt-10">
+        <div className="text-center text-3xl p-10">
           <Title text1={"DIGITAL"} text2={"YOU"} />
         </div>
         <img

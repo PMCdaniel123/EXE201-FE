@@ -5,7 +5,7 @@ import Title from "./Title";
 const Trending = () => {
   return (
     <div className="my-10 mb-20">
-      <div className="text-center py-8 text-3xl">
+      <div className="text-center py-10 text-6xl">
         <Title text1={"SUNSET'S"} text2={"TRENDINGS"} />
       </div>
       <div className="mx-auto grid border border-gray-400">

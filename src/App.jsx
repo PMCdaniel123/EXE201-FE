@@ -10,6 +10,8 @@ import PlaceOrder from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
 import Design from "./pages/Design";
 import Profile from "./pages/Profile";
+import SunBlog from "./pages/SunBlog";
+import Blog from "./pages/Blog";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
@@ -21,7 +23,7 @@ import { FloatButton } from "antd";
 
 const App = () => {
   return (
-    <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+    <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] bg-[#FBFFF8]">
       <ToastContainer />
       <Navbar />
       <SearchBar />
@@ -36,6 +38,8 @@ const App = () => {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/sunblog" element={<SunBlog />} />
+        <Route path="/sunblog/:blogId" element={<Blog />} />
         <Route path="/design" element={<Design />}>
           <Route index path="" element={<ListProduct />} />
           <Route path="addProduct" element={<AddProduct />} />

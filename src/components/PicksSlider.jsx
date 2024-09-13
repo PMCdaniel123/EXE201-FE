@@ -44,14 +44,14 @@ const PicksSlider = () => {
 
   return (
     <div className="flex flex-col items-center p-8 my-10">
-      <div className="text-center py-8 text-3xl">
-        <Title text1={"SUNSET'S"} text2={"TRENDINGS"} />
+      <div className="text-center py-8 text-6xl">
+        <Title text1={"SUNSET'S"} text2={"PICKS"} />
       </div>
 
       <div className="flex items-center justify-between w-full">
         <div
           onClick={handlePrevClick}
-          className="inline-flex h-full p-4 rounded-full border cursor-pointer shadow-lg hover:bg-gray-100"
+          className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
         >
           <LeftOutlined />
         </div>
@@ -68,13 +68,13 @@ const PicksSlider = () => {
 
         <div
           onClick={handleNextClick}
-          className="inline-flex h-full p-4 rounded-full border cursor-pointer shadow-lg hover:bg-gray-100"
+          className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
         >
           <RightOutlined />
         </div>
       </div>
 
-      <p className="mt-12 text-2xl font-extralight">
+      <p className="mt-12 text-3xl font-extralight">
         {slides[currentIndex].title}
       </p>
     </div>

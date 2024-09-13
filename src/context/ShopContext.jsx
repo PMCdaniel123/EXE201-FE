@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { products } from "../assets/frontend_assets/assets";
+import { products, blog_data } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -77,6 +77,7 @@ const ShopContextProvider = (props) => {
 
   const value = {
     products,
+    blog_data,
     currency,
     delivery_fee,
     search,

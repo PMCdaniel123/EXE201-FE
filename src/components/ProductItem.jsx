@@ -7,12 +7,15 @@ const ProductItem = ({ id, image, name, price }) => {
 
   return (
     <Link to={`/product/${id}`} className="text-gray-700 cursor-pointer">
-      <div className="overflow-hidden">
+      <div className="overflow-hidden relative">
         <img
           src={image[0]}
           alt=""
           className="hover:scale-110 transition ease-in-out "
         />
+        <div className="absolute text-white top-2 left-2 p-2 text-[8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-2xl">
+          20% OFF
+        </div>
       </div>
       <p className="pt-3 pb-1 text-sm">{name}</p>
       <div className="flex items-center gap-2">
