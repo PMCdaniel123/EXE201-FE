@@ -6,7 +6,8 @@ import ProductItem from "../components/ProductItem";
 import Pagination from "../components/Pagination";
 
 const Collection = () => {
-  const { products, search, showSearch, itemsPerPage } = useContext(ShopContext);
+  const { products, search, showSearch, itemsPerPage } =
+    useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -71,7 +72,7 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory, search, showSearch]);
+  }, [category, subCategory, search, showSearch, products]);
 
   useEffect(() => {
     sortProducts();

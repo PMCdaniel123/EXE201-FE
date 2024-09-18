@@ -1,9 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import { ShopContext } from "../context/ShopContext";
+import { toast } from "react-toastify";
+import { Modal } from "antd";
+import { useForm } from "react-hook-form";
+import useBecomeToDesigner from "../hooks/useBecomeToDesigner";
 
 const Premium = ({ type, price, time }) => {
-  const { currency } = useContext(ShopContext);
+  const { currency, openModal, setOpenModal, user } = useContext(ShopContext);
+  const becomeToDesigner = useBecomeToDesigner();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const showModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleOk = (data) => {
+    try {
+      becomeToDesigner.mutate({
+        user_id: user.id,
+        full_name: data.full_name,
+        contact_info: data.contact_info,
+        bio: data.bio,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
 
   return (
     <div className="group w-72 h-96 hover:scale-110 hover:bg-[#2D320D] bg-[#D9D9D9] py-6 px-4 flex flex-col justify-between">
@@ -29,9 +62,60 @@ const Premium = ({ type, price, time }) => {
         </div>
         <hr className="w-full border-none h-[1px] bg-black group-hover:bg-white" />
       </div>
-      <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4">
-        PURCHASE
-      </button>
+      {type === "Basic" || type === "Premium" ? (
+        <>
+          <button
+            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4"
+            onClick={showModal}
+          >
+            PURCHASE
+          </button>
+          <Modal
+            open={openModal}
+            title="Become to Designer"
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={null}
+          >
+            <form
+              className="flex flex-col items-center w-[90%] sm:max-w-[400px] m-auto mt-10 gap-4 text-gray-800"
+              onSubmit={handleSubmit(handleOk)}
+            >
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full px-3 py-2 border border-gray-800"
+                required
+                {...register("full_name")}
+              />
+              <input
+                type="text"
+                placeholder="Contact Info"
+                className="w-full px-3 py-2 border border-gray-800"
+                required
+                {...register("contact_info")}
+              />
+              <input
+                type="text"
+                placeholder="Bio"
+                className="w-full px-3 py-2 border border-gray-800"
+                required
+                {...register("bio")}
+              />
+              <button
+                type="submit"
+                className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-8 py-[10px] mt-2 w-full"
+              >
+                Submit
+              </button>
+            </form>
+          </Modal>
+        </>
+      ) : (
+        <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4">
+          PURCHASE
+        </button>
+      )}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Title from "../components/Title";
 import { ShopContext } from "../context/ShopContext";
 
 const Profile = () => {
-  const { user } = useContext(ShopContext);
+  const { user, role } = useContext(ShopContext);
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
@@ -26,12 +26,16 @@ const Profile = () => {
           />
         </div>
         <div className="flex flex-col justify-center items-start gap-6 w-1/2 p-8 border">
-          <p className="font-semibold text-xl text-gray-600">Username: cuong</p>
-          <p className="text-gray-500">Name: Pham Manh Cuong</p>
-          <p className="text-gray-500">Address: Thu Duc, TP Ho Chi Minh</p>
-          <p className="text-gray-500">Tel: 0123456789</p>
-          <p className="text-gray-500">Email: cuong@gmail.com</p>
-          <p className="text-gray-500">Gender: Male</p>
+          {role === "Designer" && (
+            <p className="font-semibold text-xl text-gray-600">
+              {user.designer.full_name}
+            </p>
+          )}
+          <p className="text-gray-500">Name: {user.name}</p>
+          <p className="text-gray-500">Address: {user.address}</p>
+          <p className="text-gray-500">Tel: {user.phone}</p>
+          <p className="text-gray-500">Email: {user.email}</p>
+          <p className="text-gray-500">Gender: {user.gender}</p>
           <div className="flex items-center justify-between mt-6 gap-4 w-full">
             <div className="flex items-center justify-center gap-4">
               <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
@@ -97,44 +101,42 @@ const Profile = () => {
         <div className="pt-10 text-3xl">
           <Title text1={"FEATURES"} text2={"UPDATE"} />
         </div>
-        {user === "Designer" && (
-          <div>
-            <div className="mb-20">
-              <p className="text-2xl font-medium text-gray-800 mt-6">
-                Basic Features
-              </p>
-              <p className="text-gray-400 mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                dolorem sint quas accusantium eveniet atque repellat placeat
-                assumenda dignissimos voluptas, vero facilis eos in pariatur
-                excepturi unde optio velit. Delectus!
-              </p>
-              <div className="mt-6 flex justify-center gap-8">
-                <Premium type={"Basic"} price={"270,000"} time={"3"} />
-                <Premium type={"Basic"} price={"500,000"} time={"6"} />
-                <Premium type={"Basic"} price={"750,000"} time={"9"} />
-                <Premium type={"Basic"} price={"1,000,000"} time={"12"} />
-              </div>
-            </div>
-            <div className="mb-20">
-              <p className="text-2xl font-medium text-gray-800 mt-6">
-                Premium Features
-              </p>
-              <p className="text-gray-400 mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                dolorem sint quas accusantium eveniet atque repellat placeat
-                assumenda dignissimos voluptas, vero facilis eos in pariatur
-                excepturi unde optio velit. Delectus!
-              </p>
-              <div className="mt-6 flex justify-center gap-8">
-                <Premium type={"Premium"} price={"500,000"} time={"3"} />
-                <Premium type={"Premium"} price={"900,000"} time={"6"} />
-                <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
-                <Premium type={"Premium"} price={"1,800,000"} time={"12"} />
-              </div>
+        <div>
+          <div className="mb-20">
+            <p className="text-2xl font-medium text-gray-800 mt-6">
+              Basic Features
+            </p>
+            <p className="text-gray-400 mt-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+              dolorem sint quas accusantium eveniet atque repellat placeat
+              assumenda dignissimos voluptas, vero facilis eos in pariatur
+              excepturi unde optio velit. Delectus!
+            </p>
+            <div className="mt-6 flex justify-center gap-8">
+              <Premium type={"Basic"} price={"270,000"} time={"3"} />
+              <Premium type={"Basic"} price={"500,000"} time={"6"} />
+              <Premium type={"Basic"} price={"750,000"} time={"9"} />
+              <Premium type={"Basic"} price={"1,000,000"} time={"12"} />
             </div>
           </div>
-        )}
+          <div className="mb-20">
+            <p className="text-2xl font-medium text-gray-800 mt-6">
+              Premium Features
+            </p>
+            <p className="text-gray-400 mt-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+              dolorem sint quas accusantium eveniet atque repellat placeat
+              assumenda dignissimos voluptas, vero facilis eos in pariatur
+              excepturi unde optio velit. Delectus!
+            </p>
+            <div className="mt-6 flex justify-center gap-8">
+              <Premium type={"Premium"} price={"500,000"} time={"3"} />
+              <Premium type={"Premium"} price={"900,000"} time={"6"} />
+              <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
+              <Premium type={"Premium"} price={"1,800,000"} time={"12"} />
+            </div>
+          </div>
+        </div>
         <div className="mb-20">
           <p className="text-2xl font-medium text-gray-800 mt-6">
             Customer Features

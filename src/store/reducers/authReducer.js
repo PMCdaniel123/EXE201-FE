@@ -1,7 +1,7 @@
 import tokenMethod from "../../utils/token";
 import { toast } from "react-toastify";
-import { authService } from "../../services/authService";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import AuthManagementAPI from "../../services/authService";
 
 const initialState = {
   profile: null,
@@ -47,46 +47,42 @@ export const authSlice = createSlice({
 });
 
 const { actions, reducer: authReducer } = authSlice;
-export const { handleLogout, handleShowModal, handleCloseModal } = actions;
+export const { handleLogout } = actions;
 export default authReducer;
 
 export const handleLogin = createAsyncThunk(
-  "auth/signin",
+  "/login",
   async (payload, thunkApi) => {
     try {
-      const loginRes = await authService.login(payload);
-      const {
-        token: accessToken,
-        refreshToken: refreshToken,
-        user,
-      } = loginRes.data || {};
+      const response = await AuthManagementAPI.Login(payload);
+      const { access_token: token, user } = response || {};
+
       tokenMethod.set({
-        accessToken,
-        refreshToken,
+        token,
         user,
       });
+
       toast.success("Login Successfully");
-      return true;
+      return user;
     } catch (error) {
-      const errorInfo = error?.response?.data;
-      if (errorInfo.message === "FAIL") {
-        toast.error("Username or password incorrect");
-      }
+      console.log(error);
+      toast.error(error.message);
       return thunkApi.rejectWithValue(errorInfo);
     }
   }
 );
 
 export const handleGetProfile = createAsyncThunk(
-  "auth/getProfile",
-  async (_, thunkApi) => {
-    if (tokenMethod.get()) {
-      try {
-        const profileRes = await authService.getProfile();
-        return profileRes;
-      } catch (error) {
-        return thunkApi.rejectWithValue(error?.response?.data);
-      }
+  "login",
+  async (payload, thunkApi) => {
+    try {
+      const response = await AuthManagementAPI.Login(payload);
+      const { user } = response || {};
+      return user;
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(errorInfo);
     }
   }
 );

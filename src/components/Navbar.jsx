@@ -1,12 +1,38 @@
 import { Link, NavLink } from "react-router-dom";
 import { assets } from "../assets/frontend_assets/assets";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
+import { handleLogout } from "../store/reducers/authReducer";
+import { useDispatch } from "react-redux";
+import tokenMethod from "../utils/token";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount, navigate, user, setUser } =
-    useContext(ShopContext);
+  const dispatch = useDispatch();
+  const {
+    setShowSearch,
+    getCartCount,
+    navigate,
+    role,
+    setRole,
+    user,
+    setUser,
+    setProfile,
+  } = useContext(ShopContext);
+
+  console.log(role);
+  console.log(user);
+
+  const logout = (e) => {
+    e?.preventDefault();
+    dispatch(handleLogout());
+    setRole("");
+    setUser({});
+  };
+
+  useEffect(() => {
+    setProfile();
+  }, []);
 
   return (
     <div className="flex items-center justify-between py-4 font-medium">
@@ -31,7 +57,7 @@ const Navbar = () => {
           <p className="sm:text-base">SUNBLOG</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
         </NavLink>
-        {user === "Designer" ? (
+        {role === "Designer" ? (
           <NavLink to="/design" className="flex flex-col items-center gap-1">
             <p className="sm:text-base">DESIGN</p>
             <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
@@ -59,7 +85,7 @@ const Navbar = () => {
             {getCartCount()}
           </p>
         </Link>
-        {user.length > 0 ? (
+        {role.length > 0 ? (
           <div className="group relative">
             <img
               src={assets.profile_icon}
@@ -74,10 +100,7 @@ const Navbar = () => {
                 <Link to="/orders">
                   <p className="cursor-pointer hover:text-black">Orders</p>
                 </Link>
-                <p
-                  className="cursor-pointer hover:text-black"
-                  onClick={() => setUser("")}
-                >
+                <p className="cursor-pointer hover:text-black" onClick={logout}>
                   Logout
                 </p>
               </div>
@@ -140,7 +163,7 @@ const Navbar = () => {
           >
             CONTACT
           </NavLink>
-          {user === "Designer" ? (
+          {role === "Designer" ? (
             <NavLink
               onClick={() => setVisible(false)}
               className="py-2 pl-6 border"

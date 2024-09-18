@@ -2,53 +2,68 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
-import Title from "../components/Title";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLogin } from "../store/reducers/authReducer";
+import useRegister from "../hooks/useRegister";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
-  const [currentGuest, setCurrentGuest] = useState(false);
-  const { setUser, navigate } = useContext(ShopContext);
+  const { navigate, setUser, setRole } = useContext(ShopContext);
+
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.auth);
+  const registerUser = useRegister();
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmitHandler = (data) => {
-    if (data.email === "cuong@gmail.com") {
-      setUser("Customer");
-      navigate("/");
-    } else if (data.email === "admin@gmail.com") {
-      setUser("Designer");
-      navigate("/");
-    } else {
-      reset();
-      toast.error("Invalid email");
+  const loginHandler = async (data) => {
+    if (data && !loading.login) {
+      try {
+        const response = await dispatch(handleLogin(data)).unwrap();
+        setUser(response);
+        setRole(response.role);
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    }
+  };
+
+  const registerHandler = (data) => {
+    try {
+      registerUser.mutate({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        phone: data.phone,
+        address: data.address,
+        gender: data.gender,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
     }
   };
 
   return (
     <form
       className="flex flex-col items-center w-[90%] sm:max-w-[400px] m-auto mt-10 gap-4 text-gray-800"
-      onSubmit={handleSubmit(onSubmitHandler)}
+      onSubmit={
+        currentState === "Login"
+          ? handleSubmit(loginHandler)
+          : handleSubmit(registerHandler)
+      }
     >
       <div className="inline-flex items-center gap-2 mb-2 mt-10">
-        {currentState !== "Login" && currentGuest ? (
-          <div className="inline-flex items-center justify-center gap-2">
-            <p className="prata-regular text-3xl">Sign Up </p>
-            <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
-            <span className="prata-regular p-2 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm rounded-lg">
-              Designer
-            </span>
-          </div>
-        ) : (
-          <div className="inline-flex items-center gap-2">
-            <p className="prata-regular text-3xl">{currentState}</p>
-            <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
-          </div>
-        )}
+        <div className="inline-flex items-center gap-2">
+          <p className="prata-regular text-3xl">{currentState}</p>
+          <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
+        </div>
       </div>
 
       <input
@@ -72,7 +87,7 @@ const Login = () => {
         <div className="gap-4 flex flex-col w-full">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Fullname"
             className="w-full px-3 py-2 border border-gray-800"
             required
             {...register("name")}
@@ -100,23 +115,14 @@ const Login = () => {
             <option value="" disabled>
               Gender
             </option>
-            <option value="Man">Man</option>
+            <option value="Men">Men</option>
             <option value="Women">Women</option>
             <option value="Others">Others</option>
           </select>
         </div>
       )}
       <div className="w-full flex justify-between text-sm mt-[2px]">
-        {currentState === "Login" ? (
-          <p className="cursor-pointer">Forgot your password?</p>
-        ) : (
-          <p
-            className="cursor-pointer"
-            onClick={() => setCurrentGuest(!currentGuest)}
-          >
-            Wanna be a designer?
-          </p>
-        )}
+        <p className="cursor-pointer">Forgot your password?</p>
         {currentState === "Login" ? (
           <p
             className="cursor-pointer"
@@ -127,7 +133,7 @@ const Login = () => {
         ) : (
           <p
             className="cursor-pointer"
-            onClick={() => (setCurrentState("Login"), setCurrentGuest(false))}
+            onClick={() => setCurrentState("Login")}
           >
             Login Here
           </p>

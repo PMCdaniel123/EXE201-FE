@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { products, blog_data } from "../assets/frontend_assets/assets";
+import { blog_data, products } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import tokenMethod from "../utils/token";
 
 export const ShopContext = createContext();
 
@@ -11,10 +12,19 @@ const ShopContextProvider = (props) => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
-  const [user, setUser] = useState("");
   const [isAddProduct, setIsAddProduct] = useState("");
   const navigate = useNavigate();
   const itemsPerPage = 12;
+  const [user, setUser] = useState({});
+  const [role, setRole] = useState("");
+  const tokenData = tokenMethod.get();
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    if (tokenData !== null) {
+      setRole(tokenData.user.role);
+    }
+  }, [tokenData, tokenMethod]);
 
   const addToCart = async (itemId, size) => {
     if (!size) {
@@ -76,6 +86,12 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const setProfile = () => {
+    if (tokenData !== null) {
+      setUser(tokenData.user);
+    }
+  };
+
   const value = {
     products,
     blog_data,
@@ -91,11 +107,16 @@ const ShopContextProvider = (props) => {
     updateQuantity,
     getCartAmount,
     navigate,
-    user,
-    setUser,
+    role,
+    setRole,
     itemsPerPage,
     isAddProduct,
     setIsAddProduct,
+    user,
+    setUser,
+    openModal,
+    setOpenModal,
+    setProfile,
   };
 
   return (
