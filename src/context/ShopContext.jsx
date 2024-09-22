@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { blog_data, products } from "../assets/frontend_assets/assets";
+import { blog_data } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import tokenMethod from "../utils/token";
+import useGetProductsList from "../hooks/useGetProducts";
+import { Spin } from "antd";
 
 export const ShopContext = createContext();
 
@@ -19,6 +21,9 @@ const ShopContextProvider = (props) => {
   const [role, setRole] = useState("");
   const tokenData = tokenMethod.get();
   const [openModal, setOpenModal] = useState(false);
+  const { data: products } = useGetProductsList();
+
+  console.log(products);
 
   useEffect(() => {
     if (tokenData !== null) {

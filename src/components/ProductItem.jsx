@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const ProductItem = ({ id, image, name, price }) => {
   const { currency } = useContext(ShopContext);
 
+  console.log({ id, image, name, price });
+
   return (
     <Link
       to={`/product/${id}`}
@@ -12,7 +14,7 @@ const ProductItem = ({ id, image, name, price }) => {
     >
       <div className="overflow-hidden relative">
         <img
-          src={image[0]}
+          src={`src/assets/frontend_assets/${image[0].image_url}.png`}
           alt=""
           className="group-hover:scale-110 transition ease-in-out "
         />
