@@ -47,7 +47,7 @@ const Collection = () => {
 
     if (subCategory.length > 0) {
       productsCopy = productsCopy.filter((item) =>
-        subCategory.includes(item.subCategory)
+        subCategory.includes(item.sub_category)
       );
     }
 
@@ -76,7 +76,7 @@ const Collection = () => {
 
   useEffect(() => {
     sortProducts();
-  }, [sortType]);
+  }, [sortType, products]);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -94,7 +94,7 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-gray-400">
       <div className="min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -109,7 +109,7 @@ const Collection = () => {
         </p>
 
         <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 sm:block ${
+          className={`border border-gray-400 pl-5 py-3 mt-6 sm:block ${
             showFilter ? "" : "hidden"
           }`}
         >
@@ -146,7 +146,7 @@ const Collection = () => {
         </div>
 
         <div
-          className={`border border-gray-300 pl-5 py-3 my-5 sm:block ${
+          className={`border border-gray-400 pl-5 py-3 my-5 sm:block ${
             showFilter ? "" : "hidden"
           }`}
         >
@@ -188,7 +188,7 @@ const Collection = () => {
           <Title text1={"ALL"} text2={"COLLECTIONS"} />
           <select
             onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 text-sm px-2"
+            className="border border-gray-400 text-sm px-2"
           >
             <option value="relavent">Sort by: Relavent</option>
             <option value="low-high">Sort by: Low to High</option>
@@ -200,9 +200,9 @@ const Collection = () => {
           {currentProducts.map((item, index) => (
             <ProductItem
               key={index}
-              id={item._id}
-              image={item.image}
-              name={item.name}
+              id={item.id}
+              image={item.images}
+              name={item.product_name}
               price={item.price}
             />
           ))}

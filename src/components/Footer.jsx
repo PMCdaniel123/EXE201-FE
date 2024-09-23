@@ -26,13 +26,13 @@ const Footer = () => {
               <span className="font-medium text-base text-[#1c1c26]">
                 EXCLUSIVE BENEFITS
               </span>
-              <div className="flex items-center gap-4 p-2 bg-white border border-solid border-[#e2e3e4]">
+              <div className="flex items-center gap-4 bg-white border border-solid border-[#e2e3e4]">
                 <input
-                  placeholder="EMAIL ADDRESS"
-                  className="w-full px-2 py-2 bg-transparent text-[#1c1c26] text-base focus:outline-none"
+                  placeholder="Email address"
+                  className="w-full px-6 py-3 bg-transparent text-[#1c1c26] text-base focus:outline-none"
                 />
                 <div className="w-1/2">
-                  <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-6 py-3">
+                  <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-6 py-4">
                     SUBSCRIBE
                   </button>
                 </div>

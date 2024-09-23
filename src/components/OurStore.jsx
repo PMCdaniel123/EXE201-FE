@@ -1,16 +1,18 @@
 import React from "react";
 
-const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText }) => {
+const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText, image }) => {
+  const url = "url('src/assets/frontend_assets/" + image + "')";
+
   return (
     <div className="py-10">
       <div className="relative w-full h-[400px] flex items-center justify-center">
         <div
           className="absolute inset-0 bg-[#1c1c26] bg-cover bg-center"
           style={{
-            backgroundImage: "url('src/assets/frontend_assets/hero_img.png')",
+            backgroundImage: url,
           }}
         >
-          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="absolute inset-0 bg-black opacity-30"></div>
         </div>
 
         <div className="relative flex w-full mx-auto">

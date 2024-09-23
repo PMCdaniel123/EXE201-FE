@@ -12,7 +12,7 @@ const RelatedProducts = ({ category, subcategory }) => {
       let productsCopy = products.slice();
       productsCopy = productsCopy.filter((item) => category === item.category);
       productsCopy = productsCopy.filter(
-        (item) => subcategory === item.subcategory
+        (item) => subcategory === item.sub_category
       );
 
       setRelated(productsCopy.slice(0, 5));
@@ -34,9 +34,9 @@ const RelatedProducts = ({ category, subcategory }) => {
         {related.map((item, index) => (
           <ProductItem
             key={index}
-            id={item._id}
-            image={item.image}
-            name={item.name}
+            id={item.id}
+            image={item.images}
+            name={item.product_name}
             price={item.price}
           />
         ))}

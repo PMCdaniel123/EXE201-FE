@@ -94,6 +94,14 @@ import payment_icon from "./payment_icon.png";
 import favicon_white from "./favicon_white1.png";
 import upload_area from "./upload_area.png";
 
+import bg_1 from "./bg_1.jpg";
+import bg_2 from "./bg_2.png";
+import bg_3 from "./group.png";
+import bg_4 from "./group2.png";
+import bg_5 from "./group3.png";
+import bg_6 from "./group6.png";
+import vertical_bg from "./vertical_bg.jpg";
+
 export const assets = {
   logo,
   hero_img,
@@ -117,6 +125,13 @@ export const assets = {
   payment_icon,
   favicon_white,
   upload_area,
+  bg_1,
+  bg_2,
+  bg_3,
+  bg_4,
+  bg_5,
+  bg_6,
+  vertical_bg,
 };
 
 export const products = [

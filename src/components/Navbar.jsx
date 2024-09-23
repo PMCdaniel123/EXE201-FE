@@ -43,24 +43,24 @@ const Navbar = () => {
       <ul className="hidden sm:flex gap-4 lg:gap-16 text-xs lg:text-sm text-black">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">HOME</p>
-          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
+          <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/collection" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">COLLECTION</p>
-          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
+          <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/about" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">ABOUT</p>
-          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
+          <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
         </NavLink>
         <NavLink to="/sunblog" className="flex flex-col items-center gap-1">
           <p className="sm:text-base">SUNBLOG</p>
-          <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
+          <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
         </NavLink>
         {role === "Designer" ? (
           <NavLink to="/design" className="flex flex-col items-center gap-1">
             <p className="sm:text-base">DESIGN</p>
-            <hr className="w-3/4 border-none h-[1.8px] bg-[#9d905a] hidden" />
+            <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
           </NavLink>
         ) : null}
       </ul>

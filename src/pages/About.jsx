@@ -5,7 +5,7 @@ import NewsletterBox from "../components/NewsletterBox";
 const About = () => {
   return (
     <div>
-      <div className="text-2xl text-center pt-8 border-t">
+      <div className="text-2xl text-center pt-8 border-t border-gray-400">
         <Title text1={"ABOUT"} text2={"US"} />
       </div>
 
@@ -46,7 +46,7 @@ const About = () => {
       </div>
 
       <div className="flex flex-col md:flex-row text-sm mb-20">
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
           <b>Quality Assurance:</b>
           <p className="text-gray-600">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -55,7 +55,7 @@ const About = () => {
             aliquam eos, enim suscipit doloribus eaque.
           </p>
         </div>
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
           <b>Convenience:</b>
           <p className="text-gray-600">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -64,7 +64,7 @@ const About = () => {
             aliquam eos, enim suscipit doloribus eaque.
           </p>
         </div>
-        <div className="border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5">
           <b>Exceptional Customer Service:</b>
           <p className="text-gray-600">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.

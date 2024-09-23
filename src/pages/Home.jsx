@@ -26,6 +26,7 @@ const Home = () => {
         title2={"OUR TEAM"}
         subTitle2={"Get ready to discover our finest fashion operators"}
         btnText={"CHECK OUT NOW"}
+        image={"bg_1.jpg"}
       />
       <OurStore
         title1={"BEGIN YOUR JOURNEY NOW!"}
@@ -35,6 +36,7 @@ const Home = () => {
           "Get ready to discover your favorite wear at its finest – visit our store today."
         }
         btnText={"EMBARK"}
+        image={"bg_2.png"}
       />
     </div>
   );

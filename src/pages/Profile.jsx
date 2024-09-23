@@ -13,7 +13,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="text-center text-2xl pt-10 border-t">
+      <div className="text-center text-2xl pt-10 border-t border-gray-400">
         <Title text1={"MY"} text2={"PROFILE"} />
       </div>
 

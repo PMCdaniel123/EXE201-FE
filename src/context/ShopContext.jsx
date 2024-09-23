@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import tokenMethod from "../utils/token";
 import useGetProductsList from "../hooks/useGetProducts";
-import { Spin } from "antd";
 
 export const ShopContext = createContext();
 
@@ -23,15 +22,13 @@ const ShopContextProvider = (props) => {
   const [openModal, setOpenModal] = useState(false);
   const { data: products } = useGetProductsList();
 
-  console.log(products);
-
   useEffect(() => {
     if (tokenData !== null) {
       setRole(tokenData.user.role);
     }
   }, [tokenData, tokenMethod]);
 
-  const addToCart = async (itemId, size) => {
+  const addToCart = (itemId, size) => {
     if (!size) {
       toast.error("Select Product Size");
       return;

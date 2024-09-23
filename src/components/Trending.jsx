@@ -23,7 +23,7 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.hero_img}
+              src={assets.bg_3}
               alt="Trendsetting Styles"
               className="w-full h-60 object-none"
             />
@@ -39,7 +39,7 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.hero_img}
+              src={assets.bg_4}
               alt="Unbeatable Savings"
               className="w-full h-36 object-none"
             />
@@ -55,7 +55,7 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.hero_img}
+              src={assets.bg_5}
               alt="Simplified Shopping"
               className="w-full h-36 object-none"
             />

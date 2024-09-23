@@ -1,30 +1,28 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "./Title";
 
 const slides = [
   {
     id: 1,
-    imageUrl: "src/assets/frontend_assets/hero_img.png",
+    imageUrl: "src/assets/frontend_assets/group.png",
     title: "BBSUNSET",
   },
   {
     id: 2,
-    imageUrl: "src/assets/frontend_assets/hero_img.png",
+    imageUrl: "src/assets/frontend_assets/group2.png",
     title: "ITOLUSOO",
   },
   {
     id: 3,
-    imageUrl: "src/assets/frontend_assets/hero_img.png",
+    imageUrl: "src/assets/frontend_assets/group3.png",
     title: "CLAMC",
   },
   {
     id: 4,
-    imageUrl: "src/assets/frontend_assets/hero_img.png",
+    imageUrl: "src/assets/frontend_assets/group6.png",
     title: "BANGGER",
   },
-  { id: 5, imageUrl: "src/assets/frontend_assets/hero_img.png", title: "WLEM" },
 ];
 
 const PicksSlider = () => {
@@ -41,6 +39,18 @@ const PicksSlider = () => {
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col items-center p-8 my-10">
@@ -74,7 +84,7 @@ const PicksSlider = () => {
         </div>
       </div>
 
-      <p className="mt-12 text-3xl font-extralight">
+      <p className="mt-8 text-3xl font-extralight">
         {slides[currentIndex].title}
       </p>
     </div>

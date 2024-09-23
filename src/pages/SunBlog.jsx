@@ -6,7 +6,7 @@ const SunBlog = () => {
   const [menu, setMenu] = useState("All");
 
   return (
-    <div className="border-t">
+    <div className="border-t border-gray-400">
       <div className="flex justify-center items-center mt-10 w-full relative overflow-hidden">
         <img
           src={assets.hero_img}
