@@ -12,11 +12,11 @@ const ProductItem = ({ id, image, name, price }) => {
     >
       <div className="overflow-hidden relative">
         <img
-          src={`src/assets/frontend_assets/${image[0].image_url}.png`}
+          src={`/src/assets/frontend_assets/${image[0].image_url}.png`}
           alt=""
           className="group-hover:scale-110 transition ease-in-out "
         />
-        <div className="absolute text-white top-2 left-2 p-2 text-[8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-2xl">
+        <div className="absolute text-white top-2 left-2 py-2 px-3 text-[8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-2xl">
           20% OFF
         </div>
       </div>

@@ -35,7 +35,7 @@ const Collection = () => {
 
     if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+        item.product_name.toLowerCase().includes(search.toLowerCase())
       );
     }
 
@@ -109,35 +109,50 @@ const Collection = () => {
         </p>
 
         <div
-          className={`border border-gray-400 pl-5 py-3 mt-6 sm:block ${
+          className={`border border-gray-400 pl-5 py-3 mt-6 sm:block bg-white bg-opacity-40 ${
             showFilter ? "" : "hidden"
           }`}
         >
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
+          <div className="flex flex-col gap-4 text-sm font-light text-gray-800">
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Men"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    category.includes("Men")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleCategory}
               />{" "}
               Men
             </p>
-            <p className="flex gap-2">
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Women"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    category.includes("Women")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleCategory}
               />{" "}
               Women
             </p>
-            <p className="flex gap-2">
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Kids"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    category.includes("Kids")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleCategory}
               />{" "}
               Kids
@@ -146,38 +161,95 @@ const Collection = () => {
         </div>
 
         <div
-          className={`border border-gray-400 pl-5 py-3 my-5 sm:block ${
+          className={`border border-gray-400 pl-5 py-3 my-5 sm:block bg-white bg-opacity-40 ${
             showFilter ? "" : "hidden"
           }`}
         >
           <p className="mb-3 text-sm font-medium">TYPE</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
+          <div className="flex flex-col gap-4 text-sm font-light text-gray-800">
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Topwear"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Topwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Topwear
+              Top Wear
             </p>
-            <p className="flex gap-2">
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Bottomwear"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Bottomwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Bottomwear
+              Bottom Wear
             </p>
-            <p className="flex gap-2">
+            <p className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                value={"Springwear"}
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Springwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
+                onClick={toggleSubCategory}
+              />{" "}
+              Spring Collection
+            </p>
+            <p className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                value={"Summerwear"}
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Summerwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
+                onClick={toggleSubCategory}
+              />{" "}
+              Summer Collection
+            </p>
+            <p className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                value={"Autumnwear"}
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Autumnwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
+                onClick={toggleSubCategory}
+              />{" "}
+              Autumn Collection
+            </p>
+            <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 value={"Winterwear"}
-                className="w-3"
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    subCategory.includes("Winterwear")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Winterwear
+              Winter Collection
             </p>
           </div>
         </div>
@@ -188,7 +260,7 @@ const Collection = () => {
           <Title text1={"ALL"} text2={"COLLECTIONS"} />
           <select
             onChange={(e) => setSortType(e.target.value)}
-            className="border border-gray-400 text-sm px-2"
+            className="border border-gray-400 text-sm px-2 bg-white bg-opacity-40 outline-none"
           >
             <option value="relavent">Sort by: Relavent</option>
             <option value="low-high">Sort by: Low to High</option>
@@ -197,15 +269,19 @@ const Collection = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10">
-          {currentProducts.map((item, index) => (
-            <ProductItem
-              key={index}
-              id={item.id}
-              image={item.images}
-              name={item.product_name}
-              price={item.price}
-            />
-          ))}
+          {currentProducts.length > 0 ? (
+            currentProducts.map((item, index) => (
+              <ProductItem
+                key={index}
+                id={item.id}
+                image={item.images}
+                name={item.product_name}
+                price={item.price}
+              />
+            ))
+          ) : (
+            <p>No clothes were found.</p>
+          )}
         </div>
         <Pagination
           currentPage={currentPage}

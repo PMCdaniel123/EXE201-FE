@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
@@ -9,41 +9,57 @@ import useGetProductByID from "../hooks/useGetProductByID";
 
 const Product = () => {
   const { productId } = useParams();
+  const { data: product } = useGetProductByID(productId);
   const { currency, addToCart } = useContext(ShopContext);
   const [size, setSize] = useState("");
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
-  const { data: product } = useGetProductByID(productId);
+  const [image, setImage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ rating, content });
     setRating(0);
     setContent("");
   };
 
-  console.log(product);
+  useEffect(() => {
+    if (product && product.images && product.images.length > 0) {
+      setImage(product.images[0].image_url);
+    }
+  }, [product]);
+
+  if (!product || Object.keys(product).length === 0) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className="border-t border-gray-400 pt-10">
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
-          {/* <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
+          <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
             <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
-              {product.images.map((item, index) => (
+              {product?.images.map((item, index) => (
                 <img
-                  src={item}
+                  src={`/src/assets/frontend_assets/${item.image_url}.png`}
                   key={index}
-                  alt=""
+                  alt={product.product_name}
                   className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
-                  onClick={() => setImage(item)}
+                  onClick={() => setImage(item.image_url)}
                 />
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img src={image} alt="" className="w-full h-auto" />
+              <img
+                src={`/src/assets/frontend_assets/${image}.png`}
+                alt={product.product_name}
+                className="w-full h-auto"
+              />
             </div>
-          </div> */}
+          </div>
 
           <div className="flex-1">
             <h1 className="font-medium text-2xl mt-2">
@@ -67,15 +83,15 @@ const Product = () => {
             <div className="flex flex-col gap-4 my-8">
               <p>Select Size</p>
               <div className="flex gap-2">
-                {["S", "M", "L"].map((item, index) => (
+                {product.sizes.map((item, index) => (
                   <button
                     key={index}
                     className={`border py-2 px-4 bg-gray-100 ${
-                      item === size ? "border-[#9d905a]" : ""
+                      item.size === size ? "border-[#9d905a]" : ""
                     }`}
-                    onClick={() => setSize(item)}
+                    onClick={() => setSize(item.size === size ? "" : item.size)}
                   >
-                    {item}
+                    {item.size}
                   </button>
                 ))}
               </div>
@@ -99,10 +115,14 @@ const Product = () => {
 
         <div className="mt-20">
           <div className="flex">
-            <b className="border px-5 py-3 text-sm">Description</b>
-            <p className="border px-5 py-3 text-sm">Reviews (122)</p>
+            <b className="border border-gray-400 px-5 py-3 text-sm">
+              Description
+            </b>
+            <p className="border border-gray-400 px-5 py-3 text-sm">
+              Reviews (122)
+            </p>
           </div>
-          <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
+          <div className="flex flex-col gap-4 border border-gray-400 px-6 py-6 text-sm text-gray-500">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
               inventore esse nisi aliquam, quis, dicta aut consectetur velit
@@ -118,7 +138,7 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="p-6 border mt-10">
+        <div className="p-6 border border-gray-400 mt-10">
           <p className="text-base font-bold mb-6 flex gap-2">
             Comment <CommentOutlined />
           </p>
@@ -134,7 +154,7 @@ const Product = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Write your review here"
-                className="p-2 border border-gray-300 focus:outline-none w-full text-sm"
+                className="p-2 border border-gray-400 focus:outline-none w-full text-sm"
               />
             </div>
             <button
@@ -146,10 +166,10 @@ const Product = () => {
           </form>
         </div>
 
-        {/* <RelatedProducts
-          category={product.category}
-          subcategory={product.sub_category}
-        /> */}
+        <RelatedProducts
+          category={product?.category}
+          subcategory={product?.sub_category}
+        />
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ const Premium = ({ type, price, time }) => {
   };
 
   return (
-    <div className="group w-72 h-96 hover:scale-110 hover:bg-[#2D320D] bg-[#D9D9D9] py-6 px-4 flex flex-col justify-between">
+    <div className="group w-72 h-96 hover:scale-110 hover:bg-[#2D320D] bg-[#D9D9D9] py-6 px-4 flex flex-col justify-between shadow-md">
       <div className="flex flex-col justify-start">
         <div className="items-center gap-2 flex">
           <div className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-full">

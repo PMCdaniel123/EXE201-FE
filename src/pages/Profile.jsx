@@ -31,29 +31,29 @@ const Profile = () => {
               {user.designer.full_name}
             </p>
           )}
-          <p className="text-gray-500">Name: {user.name}</p>
-          <p className="text-gray-500">Address: {user.address}</p>
-          <p className="text-gray-500">Tel: {user.phone}</p>
-          <p className="text-gray-500">Email: {user.email}</p>
-          <p className="text-gray-500">Gender: {user.gender}</p>
+          <p className="text-gray-800">Name: {user.name}</p>
+          <p className="text-gray-800">Address: {user.address}</p>
+          <p className="text-gray-800">Tel: {user.phone}</p>
+          <p className="text-gray-800">Email: {user.email}</p>
+          <p className="text-gray-800">Gender: {user.gender}</p>
           <div className="flex items-center justify-between mt-6 gap-4 w-full">
             <div className="flex items-center justify-center gap-4">
               <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 Weight
               </p>
-              <p className="text-gray-500">67kg</p>
+              <p className="text-gray-800">67kg</p>
             </div>
             <div className="flex items-center justify-center gap-4">
               <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 Height
               </p>
-              <p className="text-gray-500">1.7m</p>
+              <p className="text-gray-800">1.7m</p>
             </div>
             <div className="flex items-center justify-center gap-4">
               <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
                 IDK
               </p>
-              <p className="text-gray-500">...</p>
+              <p className="text-gray-800">...</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ const Profile = () => {
 
       <div className="text-center mb-10">
         <p className="text-2xl font-medium text-gray-800">Join with us</p>
-        <p className="text-gray-400 mt-3">
+        <p className="text-gray-500 mt-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam dolorem
           sint quas accusantium eveniet atque repellat placeat assumenda
           dignissimos voluptas, vero facilis eos in pariatur excepturi unde
@@ -80,12 +80,12 @@ const Profile = () => {
         </p>
         <form
           onSubmit={onSubmitHandle}
-          className="w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border pl-3"
+          className="w-full sm:w-1/2 flex items-center mx-auto my-6 border"
         >
           <input
             type="email"
             placeholder="Enter your email"
-            className="w-full sm:flex-1 outline-none"
+            className="w-full h-full sm:flex-1 outline-none py-4 px-6"
             required
           />
           <button
@@ -106,7 +106,7 @@ const Profile = () => {
             <p className="text-2xl font-medium text-gray-800 mt-6">
               Basic Features
             </p>
-            <p className="text-gray-400 mt-3">
+            <p className="text-gray-500 mt-3">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
               dolorem sint quas accusantium eveniet atque repellat placeat
               assumenda dignissimos voluptas, vero facilis eos in pariatur
@@ -123,7 +123,7 @@ const Profile = () => {
             <p className="text-2xl font-medium text-gray-800 mt-6">
               Premium Features
             </p>
-            <p className="text-gray-400 mt-3">
+            <p className="text-gray-500 mt-3">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
               dolorem sint quas accusantium eveniet atque repellat placeat
               assumenda dignissimos voluptas, vero facilis eos in pariatur
@@ -141,7 +141,7 @@ const Profile = () => {
           <p className="text-2xl font-medium text-gray-800 mt-6">
             Customer Features
           </p>
-          <p className="text-gray-400 mt-3">
+          <p className="text-gray-500 mt-3">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
             dolorem sint quas accusantium eveniet atque repellat placeat
             assumenda dignissimos voluptas, vero facilis eos in pariatur

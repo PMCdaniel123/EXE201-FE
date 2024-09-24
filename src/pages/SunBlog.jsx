@@ -8,14 +8,10 @@ const SunBlog = () => {
   return (
     <div className="border-t border-gray-400">
       <div className="flex justify-center items-center mt-10 w-full relative overflow-hidden">
-        <img
-          src={assets.hero_img}
-          alt=""
-          className="w-full h-96 object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <img src={assets.bg_2} alt="" className="w-full h-96 object-cover" />
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
-      <div className="inline-flex justify-center gap-6 my-10 border">
+      <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
         <button
           onClick={() => setMenu("All")}
           className={

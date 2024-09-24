@@ -12,8 +12,6 @@ const BestSeller = () => {
     setBestSeller(products.slice(0, 10));
   }, [products]);
 
-  console.log(bestSeller);
-
   return (
     <div className="my-10">
       <div className="text-center text-6xl py-10">

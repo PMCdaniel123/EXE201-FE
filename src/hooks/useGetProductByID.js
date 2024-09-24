@@ -3,8 +3,8 @@ import ProductsManagementAPI from "../services/productService";
 
 const useGetProductByID = (id) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["productInfo"],
-    queryFn: ProductsManagementAPI.GetProductById(id),
+    queryKey: ["productInfo", id],
+    queryFn: () => ProductsManagementAPI.GetProductById(id),
   });
 
   if (isLoading) {

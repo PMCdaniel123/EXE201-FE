@@ -15,7 +15,7 @@ const Cart = () => {
       for (const item in cartItems[items]) {
         if (cartItems[items][item] > 0) {
           tempData.push({
-            _id: items,
+            id: items,
             size: item,
             quantity: cartItems[items][item],
           });
@@ -34,21 +34,23 @@ const Cart = () => {
       <div>
         {cartData.map((item, index) => {
           const productData = products.find(
-            (product) => product._id === item._id
+            (product) => product.id + "" === item.id
           );
           return (
             <div
               key={index}
-              className="py-4 border-t border-gray-400 border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
+              className="py-4 border-t border-gray-400 text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
             >
               <div className="flex items-start gap-6">
                 <img
-                  src={productData.image[0]}
+                  src={`/src/assets/frontend_assets/${productData.images[0].image_url}.png`}
                   alt=""
                   className="w-16 sm:w-20"
                 />
                 <div>
-                  <p className="text-xs sm:text-lg">{productData.name}</p>
+                  <p className="text-xs sm:text-lg">
+                    {productData.product_name}
+                  </p>
                   <div className="flex items-center gap-5 mt-2">
                     <p>
                       {currency}
@@ -68,18 +70,14 @@ const Cart = () => {
                 onChange={(e) =>
                   e.target.value === "" || e.target.value === "0"
                     ? null
-                    : updateQuantity(
-                        item._id,
-                        item.size,
-                        Number(e.target.value)
-                      )
+                    : updateQuantity(item.id, item.size, Number(e.target.value))
                 }
               />
               <img
                 src={assets.bin_icon}
                 alt=""
                 className="w-4 mr-4 sm:w-5 cursor-pointer"
-                onClick={() => updateQuantity(item._id, item.size, 0)}
+                onClick={() => updateQuantity(item.id, item.size, 0)}
               />
             </div>
           );

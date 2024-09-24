@@ -37,7 +37,7 @@ const Blog = () => {
             alt=""
             className="w-16 h-16 mx-auto mt-10 border border-white rounded-full"
           />
-          <p className="mt-6 pb-6 text-lg max-w-[740px] mx-auto text-white">
+          <p className="mt-2 pb-6 text-lg max-w-[740px] mx-auto text-white">
             {data.author}
           </p>
         </div>

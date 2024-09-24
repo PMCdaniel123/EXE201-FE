@@ -1,6 +1,7 @@
 import React from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import Title from "./Title";
+import { Link } from "react-router-dom";
 
 const Trending = () => {
   return (
@@ -64,9 +65,12 @@ const Trending = () => {
       </div>
 
       <div className="text-center mt-8">
-        <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
-          EXPLORE THE SUNLOG
-        </button>
+        <Link
+          to="/sunblog"
+          className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4"
+        >
+          EXPLORE THE SUNBLOG
+        </Link>
       </div>
     </div>
   );

@@ -8,14 +8,15 @@ import useGetProductsList from "../hooks/useGetProducts";
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  const currency = "₫";
+  // const currency = "₫";
+  const currency = "$";
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [isAddProduct, setIsAddProduct] = useState("");
   const navigate = useNavigate();
-  const itemsPerPage = 12;
+  const itemsPerPage = 20;
   const [user, setUser] = useState({});
   const [role, setRole] = useState("");
   const tokenData = tokenMethod.get();
@@ -75,7 +76,7 @@ const ShopContextProvider = (props) => {
   const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
-      let itemInfo = products.find((product) => product._id === items);
+      let itemInfo = products.find((product) => product.id + "" === items);
       for (const item in cartItems[items]) {
         try {
           if (cartItems[items][item] > 0) {

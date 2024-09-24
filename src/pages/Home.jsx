@@ -7,7 +7,6 @@ import OurPolicy from "../components/OurPolicy";
 import OurStore from "../components/OurStore";
 import PicksSlider from "../components/PicksSlider";
 import Trending from "../components/Trending";
-import useGetProductsList from "../hooks/useGetProducts";
 
 const Home = () => {
   return (
