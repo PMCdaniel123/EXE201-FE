@@ -7,7 +7,7 @@ const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText, image }) => {
     <div className="py-10">
       <div className="relative w-full h-[400px] flex items-center justify-center">
         <div
-          className="absolute inset-0 bg-[#1c1c26] bg-cover bg-center"
+          className="absolute inset-0 bg-[#1c1c26] bg-fixed bg-center"
           style={{
             backgroundImage: url,
           }}

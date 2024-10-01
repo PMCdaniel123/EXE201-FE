@@ -10,13 +10,13 @@ export const localToken = {
 
 // Cookies
 export const cookieToken = {
-  get: () =>
-    JSON.parse(
-      Cookies.get(STORAGE.token) !== undefined
-        ? Cookies.get(STORAGE.token)
-        : null
-    ),
-  set: (token) => Cookies.set(STORAGE.token, JSON.stringify(token)),
+  get: () => {
+    const cookieValue = Cookies.get(STORAGE.token);
+    return cookieValue !== undefined ? JSON.parse(cookieValue) : null;
+  },
+  set: (token) => {
+    Cookies.set(STORAGE.token, JSON.stringify(token), { path: "/" });
+  },
   remove: () => Cookies.remove(STORAGE.token),
 };
 

@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { blog_data } from "../assets/frontend_assets/assets";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import tokenMethod from "../utils/token";
 import useGetProductsList from "../hooks/useGetProducts";
@@ -19,51 +18,62 @@ const ShopContextProvider = (props) => {
   const itemsPerPage = 20;
   const [user, setUser] = useState({});
   const [role, setRole] = useState("");
+  const [cart, setCart] = useState([]);
   const tokenData = tokenMethod.get();
   const [openModal, setOpenModal] = useState(false);
   const { data: products } = useGetProductsList();
 
   useEffect(() => {
-    if (tokenData !== null) {
-      setRole(tokenData.user.role);
+    if (tokenData && tokenData.user) {
+      setUser((prevUser) =>
+        prevUser?.id !== tokenData.user.id ? tokenData.user : prevUser
+      );
+      setRole((prevRole) =>
+        prevRole !== tokenData.user.role ? tokenData.user.role : prevRole
+      );
     }
-  }, [tokenData, tokenMethod]);
+  }, [tokenData]);
 
-  const addToCart = (itemId, size) => {
-    if (!size) {
-      toast.error("Select Product Size");
-      return;
-    }
+  // const addToCart = (itemId, size, color) => {
+  //   if (!size) {
+  //     toast.error("Select Product Size");
+  //     return;
+  //   }
 
-    let cartData = structuredClone(cartItems);
+  //   if (!color) {
+  //     toast.error("Select Product Color");
+  //     return;
+  //   }
 
-    if (cartData[itemId]) {
-      if (cartData[itemId][size]) {
-        cartData[itemId][size] += 1;
-      } else {
-        cartData[itemId][size] = 1;
-      }
-    } else {
-      cartData[itemId] = {};
-      cartData[itemId][size] = 1;
-    }
+  //   let cartData = structuredClone(cartItems);
 
-    setCartItems(cartData);
-  };
+  //   if (cartData[itemId]) {
+  //     if (cartData[itemId][size]) {
+  //       cartData[itemId][size] += 1;
+  //     } else {
+  //       cartData[itemId][size] = 1;
+  //     }
+  //   } else {
+  //     cartData[itemId] = {};
+  //     cartData[itemId][size] = 1;
+  //   }
 
-  const getCartCount = () => {
-    let totalCount = 0;
-    for (const items in cartItems) {
-      for (const item in cartItems[items]) {
-        try {
-          if (cartItems[items][item] > 0) {
-            totalCount += cartItems[items][item];
-          }
-        } catch (error) {}
-      }
-    }
-    return totalCount;
-  };
+  //   setCartItems(cartData);
+  // };
+
+  // const getCartCount = () => {
+  //   let totalCount = 0;
+  //   for (const items in cartItems) {
+  //     for (const item in cartItems[items]) {
+  //       try {
+  //         if (cartItems[items][item] > 0) {
+  //           totalCount += cartItems[items][item];
+  //         }
+  //       } catch (error) {}
+  //     }
+  //   }
+  //   return totalCount;
+  // };
 
   const updateQuantity = async (itemId, size, quantity) => {
     let cartData = structuredClone(cartItems);
@@ -89,12 +99,6 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
-  const setProfile = () => {
-    if (tokenData !== null) {
-      setUser(tokenData.user);
-    }
-  };
-
   const value = {
     products,
     blog_data,
@@ -105,8 +109,8 @@ const ShopContextProvider = (props) => {
     showSearch,
     setShowSearch,
     cartItems,
-    addToCart,
-    getCartCount,
+    // addToCart,
+    // getCartCount,
     updateQuantity,
     getCartAmount,
     navigate,
@@ -119,7 +123,8 @@ const ShopContextProvider = (props) => {
     setUser,
     openModal,
     setOpenModal,
-    setProfile,
+    cart,
+    setCart,
   };
 
   return (

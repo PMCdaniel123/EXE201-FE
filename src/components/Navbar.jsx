@@ -2,37 +2,22 @@ import { Link, NavLink } from "react-router-dom";
 import { assets } from "../assets/frontend_assets/assets";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { handleLogout } from "../store/reducers/authReducer";
+import AuthManagementAPI from "../services/authService";
 import { useDispatch } from "react-redux";
-import tokenMethod from "../utils/token";
+import { handleLogout } from "../store/reducers/authReducer";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
-  const {
-    setShowSearch,
-    getCartCount,
-    navigate,
-    role,
-    setRole,
-    user,
-    setUser,
-    setProfile,
-  } = useContext(ShopContext);
+  const { setShowSearch, navigate, user, role, setRole, setUser } =
+    useContext(ShopContext);
 
-  console.log(role);
-  console.log(user);
-
-  const logout = (e) => {
-    e?.preventDefault();
+  const logout = () => {
     dispatch(handleLogout());
     setRole("");
     setUser({});
+    navigate("/");
   };
-
-  useEffect(() => {
-    setProfile();
-  }, []);
 
   return (
     <div className="flex items-center justify-between py-4 font-medium">
@@ -75,17 +60,19 @@ const Navbar = () => {
           />
         </Link>
 
-        <Link to="/cart" className="relative">
-          <img
-            src={assets.cart_icon}
-            alt=""
-            className="w-5 min-w-5 cursor-pointer"
-          />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white aspect-square rounded-full text-[8px]">
-            {getCartCount()}
-          </p>
-        </Link>
-        {role.length > 0 ? (
+        {role && (
+          <Link to="/cart" className="relative">
+            <img
+              src={assets.cart_icon}
+              alt=""
+              className="w-5 min-w-5 cursor-pointer"
+            />
+            <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white aspect-square rounded-full text-[8px] disabled:bg-gray-400">
+              {user?.cart?.length ? user.cart.length : 0}
+            </p>
+          </Link>
+        )}
+        {role ? (
           <div className="group relative">
             <img
               src={assets.profile_icon}

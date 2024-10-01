@@ -1,14 +1,23 @@
 import axiosInstance from "../utils/axiosInstance";
-import { BECOME_TO_DESIGNER, LOGIN, REGISTER } from "../constants/environments";
+import {
+  BECOME_TO_DESIGNER,
+  GET_PROFILE,
+  LOGIN,
+  REGISTER,
+} from "../constants/environments";
 
 const Login = async (payload) => {
   return axiosInstance.post(LOGIN, payload);
 };
 
-const GetProfile = () => {
-  return axiosInstance.get(`/users/profile`, {
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  });
+const GetProfile = async (id) => {
+  try {
+    const data = await axiosInstance.get(GET_PROFILE + "/" + id);
+    return data.data;
+  } catch (error) {
+    const errorResponse = error;
+    throw new Error(errorResponse.response?.data.message);
+  }
 };
 
 const Register = async ({ name, email, password, phone, address, gender }) => {

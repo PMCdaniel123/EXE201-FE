@@ -24,9 +24,9 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.bg_3}
+              src={assets.trend_1}
               alt="Trendsetting Styles"
-              className="w-full h-60 object-none"
+              className="w-full h-60 object-cover"
             />
           </div>
         </div>
@@ -40,9 +40,9 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.bg_4}
+              src={assets.trend_2}
               alt="Unbeatable Savings"
-              className="w-full h-36 object-none"
+              className="w-full h-36 object-cover"
             />
           </div>
         </div>
@@ -56,9 +56,9 @@ const Trending = () => {
           </div>
           <div className="col-span-1">
             <img
-              src={assets.bg_5}
+              src={assets.trend_3}
               alt="Simplified Shopping"
-              className="w-full h-36 object-none"
+              className="w-full h-36 object-cover"
             />
           </div>
         </div>

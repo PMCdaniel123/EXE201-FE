@@ -6,15 +6,19 @@ import RelatedProducts from "../components/RelatedProducts";
 import { CommentOutlined } from "@ant-design/icons";
 import { Rate, Spin } from "antd";
 import useGetProductByID from "../hooks/useGetProductByID";
+import useAddToCart from "../hooks/useAddToCart";
+import { toast } from "react-toastify";
 
 const Product = () => {
   const { productId } = useParams();
   const { data: product } = useGetProductByID(productId);
-  const { currency, addToCart } = useContext(ShopContext);
+  const { currency, role, user, setUser } = useContext(ShopContext);
   const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const addToCart = useAddToCart();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +39,34 @@ const Product = () => {
       </div>
     );
   }
+
+  const handleAddToCart = () => {
+    try {
+      addToCart.mutate({
+        user_id: user.id,
+        product_id: productId,
+        size: size,
+        color: color,
+        quantity: "1",
+      });
+      setUser((prevUser) => ({
+        ...prevUser,
+        cart: [
+          ...prevUser.cart,
+          {
+            user_id: user.id,
+            product_id: productId,
+            size: size,
+            color: color,
+            quantity: "1",
+          },
+        ],
+      }));
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="border-t border-gray-400 pt-10">
@@ -86,7 +118,7 @@ const Product = () => {
                 {product.sizes.map((item, index) => (
                   <button
                     key={index}
-                    className={`border py-2 px-4 bg-gray-100 ${
+                    className={`border-2 py-2 px-4 bg-gray-100 ${
                       item.size === size ? "border-[#9d905a]" : ""
                     }`}
                     onClick={() => setSize(item.size === size ? "" : item.size)}
@@ -96,14 +128,38 @@ const Product = () => {
                 ))}
               </div>
             </div>
+            <div className="flex flex-col gap-4 my-8">
+              <p>Select Color</p>
+              <div className="flex gap-2">
+                {product.colors.map((item, index) => (
+                  <button
+                    key={index}
+                    className={`border-2 w-10 h-10 py-2 px-4 ${
+                      item.color_template === color ? "border-[#9d905a]" : ""
+                    }`}
+                    onClick={() =>
+                      setColor(
+                        item.color_template === color ? "" : item.color_template
+                      )
+                    }
+                    style={{ backgroundColor: item.color_template }}
+                  ></button>
+                ))}
+              </div>
+            </div>
             <button
-              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-8 py-3 text-sm active:bg-gray-700"
-              onClick={() => addToCart(product?.id, size)}
+              className={`${
+                role.length <= 0
+                  ? "bg-gray-400"
+                  : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+              } text-white px-8 py-3 text-sm `}
+              onClick={handleAddToCart}
+              disabled={role.length <= 0}
             >
               ADD TO CART
             </button>
 
-            <hr className="mt-8 sm:w-4/5" />
+            <hr className="mt-14 sm:w-4/5 bg-gray-400 h-[2px]" />
 
             <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
               <p>100% Original Product.</p>

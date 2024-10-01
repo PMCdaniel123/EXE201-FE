@@ -17,7 +17,7 @@ axiosInstance.interceptors.response.use(
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    config.headers.Authorization = `Bearer ${tokenMethod.get()?.accessToken}`;
+    config.headers.Authorization = `Bearer ${tokenMethod.get()?.token}`;
     config.headers["Content-Type"] = "application/json";
     return config;
   },

@@ -38,3 +38,7 @@ a.active {
         color: white;
     }
 }
+
+canvas {
+    height: 500px;
+}

@@ -7,10 +7,31 @@ import OurPolicy from "../components/OurPolicy";
 import OurStore from "../components/OurStore";
 import PicksSlider from "../components/PicksSlider";
 import Trending from "../components/Trending";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { CupModel } from "../components/CupModel";
 
 const Home = () => {
   return (
     <div>
+      {/* <Canvas>
+        <ambientLight />
+        <OrbitControls />
+        <Suspense fallback={null}>
+          <CupModel />
+        </Suspense>
+        <Environment preset="sunset" />
+        <ContactShadows
+          position={[0, -0.5, 0]}
+          opacity={0.5}
+          scale={50}
+          blur={1}
+          far={10}
+          resolution={256}
+          color="#000000"
+        />
+      </Canvas> */}
       <Hero />
       <PicksSlider />
       <Trending />

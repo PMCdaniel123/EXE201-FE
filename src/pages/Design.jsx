@@ -6,25 +6,34 @@ const Design = () => {
   const { isAddProduct, setIsAddProduct } = useContext(ShopContext);
 
   return (
-    <div className="pt-10 border-t">
+    <div className="pt-10 border-t border-gray-400">
       <div className="flex">
         <Link
           to={""}
-          className={`border px-5 py-3 text-sm ${
-            isAddProduct === "" ? "font-semibold" : ""
+          className={`border border-gray-400 px-5 py-3 text-sm ${
+            isAddProduct === "" ? "font-semibold text-base" : ""
           }`}
           onClick={() => setIsAddProduct("")}
         >
-          Your Product List
+          My Products List
         </Link>
         <Link
           to={"addProduct"}
-          className={`border px-5 py-3 text-sm ${
-            isAddProduct === "add" ? "font-semibold" : ""
+          className={`border border-gray-400 px-5 py-3 text-sm ${
+            isAddProduct === "add" ? "font-semibold text-base" : ""
           }`}
           onClick={() => setIsAddProduct("add")}
         >
           Add New Product
+        </Link>
+        <Link
+          to={"designer-orders"}
+          className={`border border-gray-400 px-5 py-3 text-sm ${
+            isAddProduct === "orders" ? "font-semibold text-base" : ""
+          }`}
+          onClick={() => setIsAddProduct("orders")}
+        >
+          View Designer Orders
         </Link>
       </div>
 

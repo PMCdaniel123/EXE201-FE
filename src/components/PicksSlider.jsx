@@ -5,22 +5,22 @@ import Title from "./Title";
 const slides = [
   {
     id: 1,
-    imageUrl: "src/assets/frontend_assets/group.png",
+    imageUrl: "src/assets/frontend_assets/bg_9.png",
     title: "BBSUNSET",
   },
   {
     id: 2,
-    imageUrl: "src/assets/frontend_assets/group2.png",
+    imageUrl: "src/assets/frontend_assets/bg_10.png",
     title: "ITOLUSOO",
   },
   {
     id: 3,
-    imageUrl: "src/assets/frontend_assets/group3.png",
+    imageUrl: "src/assets/frontend_assets/bg_7.png",
     title: "CLAMC",
   },
   {
     id: 4,
-    imageUrl: "src/assets/frontend_assets/group6.png",
+    imageUrl: "src/assets/frontend_assets/bg_8.avif",
     title: "BANGGER",
   },
 ];
@@ -40,17 +40,17 @@ const PicksSlider = () => {
     );
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex((prevIndex) =>
+  //       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+  //     );
+  //   }, 3000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   return (
     <div className="flex flex-col items-center p-8 my-10">
@@ -71,7 +71,7 @@ const PicksSlider = () => {
             <img
               src={slides[currentIndex].imageUrl}
               alt={`Slide ${slides[currentIndex].id}`}
-              className="object-cover w-full h-full"
+              className="object-fill w-full h-full"
             />
           </div>
         </div>

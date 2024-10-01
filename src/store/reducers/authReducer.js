@@ -55,18 +55,21 @@ export const handleLogin = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const response = await AuthManagementAPI.Login(payload);
+
       const { access_token: token, user } = response || {};
+
+      const userId = user.id;
 
       tokenMethod.set({
         token,
-        user,
+        userId,
       });
 
       toast.success("Login Successfully");
       return user;
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error("Login Failed");
       return thunkApi.rejectWithValue(errorInfo);
     }
   }
@@ -81,7 +84,7 @@ export const handleGetProfile = createAsyncThunk(
       return user;
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkApi.rejectWithValue(errorInfo);
     }
   }

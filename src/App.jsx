@@ -21,6 +21,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { FloatButton } from "antd";
 import ScrollToTop from "./components/ScrollToTop";
+import DesignerOrders from "./components/DesignerOrders";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
           backgroundImage: "url('src/assets/frontend_assets/vertical_bg.jpg')",
         }}
       >
-        <div className="absolute inset-0 mix-blend-plus-darker bg-white opacity-80"></div>
+        <div className="absolute inset-0 mix-blend-plus-darker bg-white opacity-[0.85]"></div>
         <div className="relative w-full px-10 z-10">
           <ToastContainer />
           <ScrollToTop />
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/design" element={<Design />}>
               <Route index path="" element={<ListProduct />} />
               <Route path="addProduct" element={<AddProduct />} />
+              <Route path="designer-orders" element={<DesignerOrders />} />
             </Route>
           </Routes>
           <Footer />

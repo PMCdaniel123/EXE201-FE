@@ -25,14 +25,14 @@ const AddProduct = () => {
   };
 
   const onSubmitHandler = (data) => {
-    data.image = images;
+    data.images = images;
     console.log(data);
     toast.success("Add new product successfully!");
   };
 
   return (
     <form
-      className="flex flex-col items-center w-[80%] gap-6 text-gray-800"
+      className="flex flex-col items-center w-[50%] gap-4 text-gray-800"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
       <div className="w-full flex flex-col sm:flex-row items-center">
@@ -40,16 +40,16 @@ const AddProduct = () => {
         <input
           type="text"
           placeholder="Product Name..."
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           required
-          {...register("productName")}
+          {...register("product_name")}
         />
       </div>
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Description</label>
         <textarea
           placeholder="Description..."
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           {...register("description")}
         />
       </div>
@@ -58,7 +58,7 @@ const AddProduct = () => {
         <input
           type="text"
           placeholder="Price..."
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           required
           {...register("price")}
         />
@@ -66,7 +66,7 @@ const AddProduct = () => {
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Category</label>
         <select
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           required
           {...register("category")}
         >
@@ -81,7 +81,7 @@ const AddProduct = () => {
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Sub Category</label>
         <select
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           required
           {...register("subCategory")}
         >
@@ -90,18 +90,27 @@ const AddProduct = () => {
           </option>
           <option value="Topwear">Top wear</option>
           <option value="Bottomwear">Bottom wear</option>
-          <option value="Winterwear">Winter wear</option>
+          <option value="Springwear">Spring Collection</option>
+          <option value="Summerwear">Summer Collection</option>
+          <option value="Autumnwear">Autumn Collection</option>
+          <option value="Winterwear">Winter Collection</option>
         </select>
       </div>
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Size</label>
-        <div className="w-full px-3 py-2 flex items-center justify-between">
+        <div className="w-full py-2 flex items-center justify-between">
           {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
             <div
               key={size}
               className="flex items-center justify-center gap-1 sm:gap-2"
             >
-              <input type="checkbox" {...register("size")} value={size} />
+              <input
+                type="checkbox"
+                {...register("size")}
+                value={size}
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border transition-colors 
+          checked:bg-gradient-to-br checked:from-[#4A5942] checked:to-[#9d905a] bg-white bg-opacity-40 border-gray-400`}
+              />
               <label>{size}</label>
             </div>
           ))}
@@ -114,7 +123,7 @@ const AddProduct = () => {
             type="file"
             multiple
             accept="image/*"
-            className="w-full px-3 py-2 border border-gray-800"
+            className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
             {...register("image")}
             onChange={handleImageChange}
           />

@@ -1,7 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 
 export const STORAGE = {
-  token: "token-exe201",
+  token: "exe201",
 };
 
 export const queryClient = new QueryClient({

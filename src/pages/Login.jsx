@@ -8,7 +8,8 @@ import useRegister from "../hooks/useRegister";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
-  const { navigate, setUser, setRole } = useContext(ShopContext);
+  const { navigate, setUser, setRole, setCart } = useContext(ShopContext);
+  const [checked, setChecked] = useState(false);
 
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
@@ -24,8 +25,10 @@ const Login = () => {
     if (data && !loading.login) {
       try {
         const response = await dispatch(handleLogin(data)).unwrap();
+
         setUser(response);
         setRole(response.role);
+        setCart(response.cart);
         navigate("/");
       } catch (error) {
         console.log(error);
@@ -141,7 +144,16 @@ const Login = () => {
       </div>
       {currentState !== "Login" && (
         <p className="flex gap-2 justify-center items-start w-full">
-          <input type="checkbox" value={"agree"} className="w-6 mt-[6px]" />{" "}
+          <input
+            type="checkbox"
+            value={"agree"}
+            onChange={() => setChecked(!checked)}
+            className={`mt-[6px] w-10 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors ${
+              checked
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                : "bg-white"
+            }`}
+          />{" "}
           <span className="text-gray-400">
             By providing my phone number and checking this box, I agree to
             receive recurring automated promotional messages. Message and data

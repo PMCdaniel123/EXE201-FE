@@ -1,9 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "./Title";
 
-const CartTotal = () => {
+const CartTotal = ({ items }) => {
   const { currency, delivery_fee, getCartAmount } = useContext(ShopContext);
+
+  const getTotalAmount = () => {
+    return items?.reduce((acc, item) => {
+      return acc + Number(item.quantity) * Number(item.product.price);
+    }, 0);
+  };
 
   return (
     <div className="w-full">
@@ -16,7 +22,7 @@ const CartTotal = () => {
           <p>Subtotal</p>
           <p>
             {currency}
-            {getCartAmount()}.00
+            {getTotalAmount()}.00
           </p>
         </div>
         <hr className="bg-gray-400" />
@@ -32,7 +38,7 @@ const CartTotal = () => {
           <b>Total</b>
           <b>
             {currency}
-            {getCartAmount() === 0 ? 0 : getCartAmount() + delivery_fee}.00
+            {getTotalAmount() === 0 ? 0 : getTotalAmount() + delivery_fee}.00
           </b>
         </div>
       </div>

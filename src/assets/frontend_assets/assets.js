@@ -101,6 +101,11 @@ import bg_4 from "./group2.png";
 import bg_5 from "./group3.png";
 import bg_6 from "./group6.png";
 import vertical_bg from "./vertical_bg.jpg";
+import bg_7 from "./bg_7.png";
+import bg_8 from "./bg_8.avif";
+import trend_1 from "./trend_1.avif";
+import trend_2 from "./trend_2.avif";
+import trend_3 from "./trend_3.avif";
 
 export const assets = {
   logo,
@@ -131,6 +136,11 @@ export const assets = {
   bg_4,
   bg_5,
   bg_6,
+  bg_7,
+  bg_8,
+  trend_1,
+  trend_2,
+  trend_3,
   vertical_bg,
 };
 
