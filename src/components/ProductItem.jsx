@@ -12,7 +12,7 @@ const ProductItem = ({ id, image, name, price }) => {
     >
       <div className="overflow-hidden relative">
         <img
-          src={`/src/assets/frontend_assets/${image[0].image_url}.png`}
+          src={`/frontend_assets/${image[0].image_url}.png`}
           alt=""
           className="group-hover:scale-110 transition ease-in-out "
         />

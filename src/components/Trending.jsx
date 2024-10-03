@@ -1,7 +1,7 @@
 import React from "react";
-import { assets } from "../assets/frontend_assets/assets";
 import Title from "./Title";
 import { Link } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 const Trending = () => {
   return (

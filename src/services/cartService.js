@@ -21,7 +21,9 @@ const AddToCart = async ({ user_id, product_id, size, color, quantity }) => {
   }
 };
 
-const DeleteCartItem = async (id) => {
+const DeleteCartItem = async ({ id }) => {
+  console.log(id);
+
   try {
     const data = await axiosInstance.delete(DELETE_FROM_CART + "/" + id);
     return data.data;

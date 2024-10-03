@@ -1,7 +1,7 @@
 import { InstagramOutlined } from "@ant-design/icons";
-import { assets } from "../assets/frontend_assets/assets";
 import { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
+import { assets } from "../assets/assets";
 
 const Footer = () => {
   const { navigate } = useContext(ShopContext);

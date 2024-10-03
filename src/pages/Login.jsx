@@ -2,18 +2,14 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import { handleLogin } from "../store/reducers/authReducer";
-import useRegister from "../hooks/useRegister";
+import axiosInstance from "../utils/axiosInstance";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
-  const { navigate, setUser, setRole, setCart } = useContext(ShopContext);
+  const { navigate, setUserInfo, setIsLoggedIn, setCart, setRole } =
+    useContext(ShopContext);
   const [checked, setChecked] = useState(false);
-
-  const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.auth);
-  const registerUser = useRegister();
 
   const {
     register,
@@ -22,34 +18,48 @@ const Login = () => {
   } = useForm();
 
   const loginHandler = async (data) => {
-    if (data && !loading.login) {
-      try {
-        const response = await dispatch(handleLogin(data)).unwrap();
+    try {
+      const response = await axiosInstance.post("/login", data);
+      const { access_token: token, user } = response;
 
-        setUser(response);
-        setRole(response.role);
-        setCart(response.cart);
-        navigate("/");
-      } catch (error) {
-        console.log(error);
-        toast.error(error.message);
-      }
+      Cookies.set("token", token, { expires: 1 });
+      Cookies.set("userID", user.id, { expires: 1 });
+
+      const userInfoResponse = await axiosInstance.get(`/users/${user.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setUserInfo(userInfoResponse.data);
+      setIsLoggedIn(true);
+      toast.success("Login successfully");
+      setCart(userInfoResponse.data.cart);
+      setRole(userInfoResponse.data.role);
+      navigate("/");
+    } catch (error) {
+      console.log("Login failed: ", error);
+      toast.error("Login failed! Please try again");
     }
   };
 
-  const registerHandler = (data) => {
+  const registerHandler = async (data) => {
     try {
-      registerUser.mutate({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        phone: data.phone,
-        address: data.address,
-        gender: data.gender,
+      const response = await axiosInstance.post("/register", data);
+      const { access_token: token, data: user } = response;
+
+      Cookies.set("token", token, { expires: 1 });
+      Cookies.set("userID", user.id, { expires: 1 });
+
+      const userInfoResponse = await axiosInstance.get(`/users/${user.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
       });
+
+      setUserInfo(userInfoResponse.data);
+      setIsLoggedIn(true);
+      toast.success("Login successfully");
+      navigate("/");
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.log("Register failed: ", error);
+      toast.error("Register failed! Please try again");
     }
   };
 
@@ -74,8 +84,12 @@ const Login = () => {
         placeholder="Email"
         className="w-full px-3 py-2 border border-gray-800"
         required
-        {...register("email")}
+        {...register("email", { required: "Email is required" })}
       />
+      {errors.username && (
+        <p style={{ color: "red" }}>{errors.username.message}</p>
+      )}
+
       <input
         type="password"
         placeholder="Password"

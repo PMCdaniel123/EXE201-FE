@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { assets } from "../assets/frontend_assets/assets";
 import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
-import { Modal } from "antd";
+import { Modal, Spin } from "antd";
 import { useForm } from "react-hook-form";
-import useBecomeToDesigner from "../hooks/useBecomeToDesigner";
+import axiosInstance from "../utils/axiosInstance";
+import { assets } from "../assets/assets";
 
 const Premium = ({ type, price, time }) => {
-  const { currency, openModal, setOpenModal, user } = useContext(ShopContext);
-  const becomeToDesigner = useBecomeToDesigner();
+  const { currency, openModal, setOpenModal, userInfo, loading, setRole } =
+    useContext(ShopContext);
 
   const {
     register,
@@ -20,14 +20,21 @@ const Premium = ({ type, price, time }) => {
     setOpenModal(true);
   };
 
-  const handleOk = (data) => {
+  if (loading) {
+    return <Spin />;
+  }
+
+  const handleOk = async (data) => {
     try {
-      becomeToDesigner.mutate({
-        user_id: user.id,
+      const response = await axiosInstance.post("/designers", {
+        user_id: userInfo.id,
         full_name: data.full_name,
         contact_info: data.contact_info,
         bio: data.bio,
       });
+      setRole("Designer");
+      toast.success(response.message);
+      setOpenModal(false);
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -78,12 +85,12 @@ const Premium = ({ type, price, time }) => {
             footer={null}
           >
             <form
-              className="flex flex-col items-center w-[90%] sm:max-w-[400px] m-auto mt-10 gap-4 text-gray-800"
+              className="flex flex-col items-center w-[90%] sm:max-w-[600px] m-auto mt-10 gap-4 text-gray-800"
               onSubmit={handleSubmit(handleOk)}
             >
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Author Name"
                 className="w-full px-3 py-2 border border-gray-800"
                 required
                 {...register("full_name")}

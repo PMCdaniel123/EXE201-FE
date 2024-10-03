@@ -1,23 +1,42 @@
 import { Link, NavLink } from "react-router-dom";
-import { assets } from "../assets/frontend_assets/assets";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
-import AuthManagementAPI from "../services/authService";
-import { useDispatch } from "react-redux";
-import { handleLogout } from "../store/reducers/authReducer";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { Spin } from "antd";
+import { assets } from "../assets/assets";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const dispatch = useDispatch();
-  const { setShowSearch, navigate, user, role, setRole, setUser } =
-    useContext(ShopContext);
+  const {
+    setShowSearch,
+    navigate,
+    userInfo,
+    role,
+    setRole,
+    loading,
+    isLoggedIn,
+    setIsLoggedIn,
+    cart,
+    setCart,
+  } = useContext(ShopContext);
 
-  const logout = () => {
-    dispatch(handleLogout());
+  console.log(userInfo);
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    Cookies.remove("userID");
+    setIsLoggedIn(false);
+    localStorage.removeItem("cart");
+    setCart([]);
     setRole("");
-    setUser({});
     navigate("/");
+    toast.success("Logout successfully");
   };
+
+  if (loading) {
+    return <Spin />;
+  }
 
   return (
     <div className="flex items-center justify-between py-4 font-medium">
@@ -60,7 +79,7 @@ const Navbar = () => {
           />
         </Link>
 
-        {role && (
+        {isLoggedIn && userInfo && (
           <Link to="/cart" className="relative">
             <img
               src={assets.cart_icon}
@@ -68,11 +87,11 @@ const Navbar = () => {
               className="w-5 min-w-5 cursor-pointer"
             />
             <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white aspect-square rounded-full text-[8px] disabled:bg-gray-400">
-              {user?.cart?.length ? user.cart.length : 0}
+              {cart ? cart.length : 0}
             </p>
           </Link>
         )}
-        {role ? (
+        {isLoggedIn && userInfo ? (
           <div className="group relative">
             <img
               src={assets.profile_icon}
@@ -87,7 +106,10 @@ const Navbar = () => {
                 <Link to="/orders">
                   <p className="cursor-pointer hover:text-black">Orders</p>
                 </Link>
-                <p className="cursor-pointer hover:text-black" onClick={logout}>
+                <p
+                  className="cursor-pointer hover:text-black"
+                  onClick={handleLogout}
+                >
                   Logout
                 </p>
               </div>

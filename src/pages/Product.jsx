@@ -1,30 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/frontend_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
-import { CommentOutlined } from "@ant-design/icons";
-import { Rate, Spin } from "antd";
+import { Spin } from "antd";
 import useGetProductByID from "../hooks/useGetProductByID";
-import useAddToCart from "../hooks/useAddToCart";
 import { toast } from "react-toastify";
+import axiosInstance from "../utils/axiosInstance";
+import { assets } from "../assets/assets";
 
 const Product = () => {
   const { productId } = useParams();
   const { data: product } = useGetProductByID(productId);
-  const { currency, role, user, setUser } = useContext(ShopContext);
+  const { currency, role, userInfo, setCart } = useContext(ShopContext);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState("");
   const [image, setImage] = useState("");
-  const addToCart = useAddToCart();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setRating(0);
-    setContent("");
-  };
 
   useEffect(() => {
     if (product && product.images && product.images.length > 0) {
@@ -40,28 +30,26 @@ const Product = () => {
     );
   }
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
     try {
-      addToCart.mutate({
-        user_id: user.id,
+      if (!size) {
+        toast.error("Please select a size");
+        return;
+      }
+      if (!color) {
+        toast.error("Please select a color");
+        return;
+      }
+      const response = await axiosInstance.post("/carts", {
+        user_id: userInfo.id,
         product_id: productId,
         size: size,
         color: color,
         quantity: "1",
       });
-      setUser((prevUser) => ({
-        ...prevUser,
-        cart: [
-          ...prevUser.cart,
-          {
-            user_id: user.id,
-            product_id: productId,
-            size: size,
-            color: color,
-            quantity: "1",
-          },
-        ],
-      }));
+
+      setCart((prevCart) => [...prevCart, response.data]);
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -76,7 +64,7 @@ const Product = () => {
             <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
               {product?.images.map((item, index) => (
                 <img
-                  src={`/src/assets/frontend_assets/${item.image_url}.png`}
+                  src={`/frontend_assets/${item.image_url}.png`}
                   key={index}
                   alt={product.product_name}
                   className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
@@ -86,7 +74,7 @@ const Product = () => {
             </div>
             <div className="w-full sm:w-[80%]">
               <img
-                src={`/src/assets/frontend_assets/${image}.png`}
+                src={`/frontend_assets/${image}.png`}
                 alt={product.product_name}
                 className="w-full h-auto"
               />
@@ -149,12 +137,12 @@ const Product = () => {
             </div>
             <button
               className={`${
-                role.length <= 0
+                !userInfo
                   ? "bg-gray-400"
                   : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
               } text-white px-8 py-3 text-sm `}
               onClick={handleAddToCart}
-              disabled={role.length <= 0}
+              disabled={!userInfo}
             >
               ADD TO CART
             </button>
@@ -192,34 +180,6 @@ const Product = () => {
               quod! Est.
             </p>
           </div>
-        </div>
-
-        <div className="p-6 border border-gray-400 mt-10">
-          <p className="text-base font-bold mb-6 flex gap-2">
-            Comment <CommentOutlined />
-          </p>
-          <form onSubmit={handleSubmit}>
-            <div className="flex items-center mt-6 gap-8">
-              <p className="text-sm text-gray-500 w-16">Rating:</p>
-              <Rate count={5} onChange={setRating} value={rating} />
-            </div>
-            <div className="flex items-center my-6 gap-8">
-              <p className="text-sm text-gray-500 w-16">Review:</p>
-              <textarea
-                rows={1}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Write your review here"
-                className="p-2 border border-gray-400 focus:outline-none w-full text-sm"
-              />
-            </div>
-            <button
-              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-16 py-3 text-sm"
-              type="submit"
-            >
-              POST
-            </button>
-          </form>
         </div>
 
         <RelatedProducts

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { assets, blog_data } from "../assets/frontend_assets/assets";
 import {
   FacebookOutlined,
   InstagramOutlined,
   LinkedinOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
+import { blog_data } from "../assets/assets";
 
 const Blog = () => {
   const { blogId } = useParams();

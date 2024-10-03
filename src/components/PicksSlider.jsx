@@ -1,26 +1,26 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Title from "./Title";
 
 const slides = [
   {
     id: 1,
-    imageUrl: "src/assets/frontend_assets/bg_9.png",
+    imageUrl: "/frontend_assets/bg_9.png",
     title: "BBSUNSET",
   },
   {
     id: 2,
-    imageUrl: "src/assets/frontend_assets/bg_10.png",
+    imageUrl: "/frontend_assets/bg_10.png",
     title: "ITOLUSOO",
   },
   {
     id: 3,
-    imageUrl: "src/assets/frontend_assets/bg_7.png",
+    imageUrl: "/frontend_assets/bg_7.png",
     title: "CLAMC",
   },
   {
     id: 4,
-    imageUrl: "src/assets/frontend_assets/bg_8.avif",
+    imageUrl: "/frontend_assets/bg_8.avif",
     title: "BANGGER",
   },
 ];

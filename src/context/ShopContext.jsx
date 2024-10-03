@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { blog_data } from "../assets/frontend_assets/assets";
 import { useNavigate } from "react-router-dom";
-import tokenMethod from "../utils/token";
-import useGetProductsList from "../hooks/useGetProducts";
+import axiosInstance from "../utils/axiosInstance";
+import Cookies from "js-cookie";
+import { blog_data } from "../assets/assets";
 
 export const ShopContext = createContext();
 
@@ -12,92 +12,64 @@ const ShopContextProvider = (props) => {
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [cartItems, setCartItems] = useState({});
   const [isAddProduct, setIsAddProduct] = useState("");
   const navigate = useNavigate();
-  const itemsPerPage = 20;
-  const [user, setUser] = useState({});
-  const [role, setRole] = useState("");
+  const itemsPerPage = 32;
   const [cart, setCart] = useState([]);
-  const tokenData = tokenMethod.get();
+  const [loading, setLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const [role, setRole] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const { data: products } = useGetProductsList();
+  const [products, setProducts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const getProducts = async () => {
+    const { data } = await axiosInstance.get("/products");
+    setProducts(data);
+  };
 
   useEffect(() => {
-    if (tokenData && tokenData.user) {
-      setUser((prevUser) =>
-        prevUser?.id !== tokenData.user.id ? tokenData.user : prevUser
-      );
-      setRole((prevRole) =>
-        prevRole !== tokenData.user.role ? tokenData.user.role : prevRole
-      );
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    const userID = Cookies.get("userID");
+    const token = Cookies.get("token");
+
+    if (userID && token) {
+      axiosInstance
+        .get(`/users/${userID}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setUserInfo(response.data);
+          setCart(response.data.cart || []);
+          setLoading(false);
+          setRole(response.data.role);
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch user info:", error);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
     }
-  }, [tokenData]);
+  }, []);
 
-  // const addToCart = (itemId, size, color) => {
-  //   if (!size) {
-  //     toast.error("Select Product Size");
-  //     return;
-  //   }
-
-  //   if (!color) {
-  //     toast.error("Select Product Color");
-  //     return;
-  //   }
-
-  //   let cartData = structuredClone(cartItems);
-
-  //   if (cartData[itemId]) {
-  //     if (cartData[itemId][size]) {
-  //       cartData[itemId][size] += 1;
-  //     } else {
-  //       cartData[itemId][size] = 1;
-  //     }
-  //   } else {
-  //     cartData[itemId] = {};
-  //     cartData[itemId][size] = 1;
-  //   }
-
-  //   setCartItems(cartData);
-  // };
-
-  // const getCartCount = () => {
-  //   let totalCount = 0;
-  //   for (const items in cartItems) {
-  //     for (const item in cartItems[items]) {
-  //       try {
-  //         if (cartItems[items][item] > 0) {
-  //           totalCount += cartItems[items][item];
-  //         }
-  //       } catch (error) {}
-  //     }
-  //   }
-  //   return totalCount;
-  // };
-
-  const updateQuantity = async (itemId, size, quantity) => {
-    let cartData = structuredClone(cartItems);
-
-    cartData[itemId][size] = quantity;
-
-    setCartItems(cartData);
-  };
-
-  const getCartAmount = () => {
-    let totalAmount = 0;
-    for (const items in cartItems) {
-      let itemInfo = products.find((product) => product.id + "" === items);
-      for (const item in cartItems[items]) {
-        try {
-          if (cartItems[items][item] > 0) {
-            totalAmount += itemInfo.price * cartItems[items][item];
-          }
-        } catch (error) {}
-      }
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
+  }, [cart]);
 
-    return totalAmount;
-  };
+  // Load cart from localStorage on page reload (if necessary)
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
 
   const value = {
     products,
@@ -108,23 +80,22 @@ const ShopContextProvider = (props) => {
     setSearch,
     showSearch,
     setShowSearch,
-    cartItems,
-    // addToCart,
-    // getCartCount,
-    updateQuantity,
-    getCartAmount,
     navigate,
     role,
     setRole,
     itemsPerPage,
     isAddProduct,
     setIsAddProduct,
-    user,
-    setUser,
     openModal,
     setOpenModal,
     cart,
     setCart,
+    loading,
+    setLoading,
+    userInfo,
+    setUserInfo,
+    isLoggedIn,
+    setIsLoggedIn,
   };
 
   return (

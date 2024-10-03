@@ -1,15 +1,28 @@
 import { useContext } from "react";
-import { assets } from "../assets/frontend_assets/assets";
 import Premium from "../components/Premium";
 import Title from "../components/Title";
 import { ShopContext } from "../context/ShopContext";
+import { Spin } from "antd";
+import { assets } from "../assets/assets";
 
 const Profile = () => {
-  const { user, role } = useContext(ShopContext);
+  const { userInfo, role, loading } = useContext(ShopContext);
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
   };
+
+  if (loading) {
+    return <Spin />;
+  }
+
+  if (!userInfo) {
+    return (
+      <div className="text-center text-2xl pt-10 border-t border-gray-400">
+        <Title text1={"MY"} text2={"PROFILE"} />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -28,14 +41,14 @@ const Profile = () => {
         <div className="flex flex-col justify-center items-start gap-6 w-1/2 p-8 border border-gray-400">
           {role === "Designer" && (
             <p className="font-semibold text-xl text-gray-600">
-              {user.designer.full_name}
+              {userInfo.designer?.full_name}
             </p>
           )}
-          <p className="text-gray-800">Name: {user.name}</p>
-          <p className="text-gray-800">Address: {user.address}</p>
-          <p className="text-gray-800">Tel: {user.phone}</p>
-          <p className="text-gray-800">Email: {user.email}</p>
-          <p className="text-gray-800">Gender: {user.gender}</p>
+          <p className="text-gray-800">Name: {userInfo.name}</p>
+          <p className="text-gray-800">Address: {userInfo.address}</p>
+          <p className="text-gray-800">Tel: {userInfo.phone}</p>
+          <p className="text-gray-800">Email: {userInfo.email}</p>
+          <p className="text-gray-800">Gender: {userInfo.gender}</p>
           <div className="flex items-center justify-between mt-6 gap-4 w-full">
             <div className="flex items-center justify-center gap-4">
               <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">

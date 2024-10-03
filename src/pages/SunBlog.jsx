@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { assets, blog_data } from "../assets/frontend_assets/assets";
 import BlogItem from "../components/BlogItem";
+import { assets, blog_data } from "../assets/assets";
 
 const SunBlog = () => {
   const [menu, setMenu] = useState("All");

@@ -1,7 +1,7 @@
 import React from "react";
 
 const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText, image }) => {
-  const url = "url('src/assets/frontend_assets/" + image + "')";
+  const url = "url('/frontend_assets/" + image + "')";
 
   return (
     <div className="py-10">

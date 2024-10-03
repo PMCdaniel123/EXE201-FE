@@ -40,7 +40,7 @@ const Orders = () => {
             >
               <div className="flex items-start text-sm gap-6">
                 <img
-                  src={`/src/assets/frontend_assets/${productData.images[0].image_url}.png`}
+                  src={`/frontend_assets/${productData.images[0].image_url}.png`}
                   alt=""
                   className="w-16 sm:w-20"
                 />

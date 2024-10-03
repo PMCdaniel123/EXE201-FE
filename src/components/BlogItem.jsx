@@ -1,6 +1,6 @@
 import React from "react";
-import { assets } from "../assets/frontend_assets/assets";
 import { Link } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 const BlogItem = ({ title, image, description, category, id }) => {
   return (

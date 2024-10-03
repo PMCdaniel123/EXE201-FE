@@ -3,9 +3,9 @@ import CartManagementAPI from "../services/cartService";
 import { queryClient } from "../constants/storage";
 import { toast } from "react-toastify";
 
-export const useDeleteFromCart = (id) => {
+export const useDeleteFromCart = () => {
   return useMutation({
-    mutationFn: () => CartManagementAPI.DeleteCartItem(id),
+    mutationFn: (id) => CartManagementAPI.DeleteCartItem({ id }),
     onSuccess: (response) => {
       queryClient.invalidateQueries({ queryKey: ["getCartList"] });
       toast.success(response.message);

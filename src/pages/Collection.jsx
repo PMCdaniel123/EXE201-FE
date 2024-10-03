@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/frontend_assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 import Pagination from "../components/Pagination";
+import { assets } from "../assets/assets";
 
 const Collection = () => {
   const { products, search, showSearch, itemsPerPage } =
