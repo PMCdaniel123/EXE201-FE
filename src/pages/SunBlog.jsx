@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import BlogItem from "../components/BlogItem";
 import { assets, blog_data } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const SunBlog = () => {
   const [menu, setMenu] = useState("All");
+  const navigate = useNavigate();
+  const userId = Cookies.get("userID");
 
   return (
     <div className="border-t border-gray-400">
@@ -11,47 +15,60 @@ const SunBlog = () => {
         <img src={assets.bg_2} alt="" className="w-full h-96 object-cover" />
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
-      <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
-        <button
-          onClick={() => setMenu("All")}
-          className={
-            menu === "All"
-              ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
-              : "px-4"
-          }
-        >
-          All
-        </button>
-        <button
-          onClick={() => setMenu("Technology")}
-          className={
-            menu === "Technology"
-              ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
-              : "px-4"
-          }
-        >
-          Technology
-        </button>
-        <button
-          onClick={() => setMenu("Startup")}
-          className={
-            menu === "Startup"
-              ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
-              : "px-4"
-          }
-        >
-          Startup
-        </button>
-        <button
-          onClick={() => setMenu("Lifestyle")}
-          className={
-            menu === "Lifestyle"
-              ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
-              : "px-4"
-          }
-        >
-          Lifestyle
-        </button>
+      <div className="flex justify-between items-center">
+        <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
+          <button
+            onClick={() => setMenu("All")}
+            className={
+              menu === "All"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                : "px-4"
+            }
+          >
+            All
+          </button>
+          <button
+            onClick={() => setMenu("Technology")}
+            className={
+              menu === "Technology"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                : "px-4"
+            }
+          >
+            Technology
+          </button>
+          <button
+            onClick={() => setMenu("Startup")}
+            className={
+              menu === "Startup"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                : "px-4"
+            }
+          >
+            Startup
+          </button>
+          <button
+            onClick={() => setMenu("Lifestyle")}
+            className={
+              menu === "Lifestyle"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                : "px-4"
+            }
+          >
+            Lifestyle
+          </button>
+        </div>
+
+        <div>
+          {userId ? (
+            <button
+              onClick={() => navigate("/sunblog/new")}
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-base py-2 px-6"
+            >
+              Create Posts
+            </button>
+          ) : null}
+        </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10">
         {blog_data

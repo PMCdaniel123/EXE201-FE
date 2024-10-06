@@ -25,6 +25,7 @@ import DesignerOrders from "./components/DesignerOrders";
 import PrivateRoute from "./layouts/PrivateRoute";
 import OrdersSuccessful from "./pages/OrdersSuccessful";
 import OrderDetails from "./pages/OrderDetails";
+import NewBlogs from "./pages/NewBlogs";
 
 const App = () => {
   return (
@@ -97,6 +98,14 @@ const App = () => {
               }
             />
             <Route path="/sunblog" element={<SunBlog />} />
+            <Route
+              path="/sunblog/new"
+              element={
+                <PrivateRoute>
+                  <NewBlogs />
+                </PrivateRoute>
+              }
+            />
             <Route path="/sunblog/:blogId" element={<Blog />} />
             <Route
               path="/design"

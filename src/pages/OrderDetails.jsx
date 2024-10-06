@@ -82,16 +82,16 @@ const OrderDetails = () => {
                 <img
                   src={`/frontend_assets/${item.product.images[0].image_url}.png`}
                   alt=""
-                  className="w-16 sm:w-20"
+                  className="w-16 sm:w-36"
                 />
                 <div>
                   <Link
                     to={`/product/${item?.product?.id}`}
-                    className="text-xs sm:text-lg"
+                    className="text-xs sm:text-xl"
                   >
                     {item?.product?.product_name}
                   </Link>
-                  <div className="flex items-center gap-5 mt-2">
+                  <div className="flex items-center justify-start gap-4 mt-2">
                     <p>${item?.product?.price}</p>
                     <p className="px-2 sm:px-3 sm:py-1 h-10 w-10 border bg-slate-50 flex items-center justify-center">
                       {item?.size}
