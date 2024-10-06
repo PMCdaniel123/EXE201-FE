@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { ShopContext } from "../context/ShopContext";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Design = () => {
-  const { isAddProduct, setIsAddProduct } = useContext(ShopContext);
+  const pathName = useLocation().pathname;
 
   return (
     <div className="pt-10 border-t border-gray-400">
@@ -11,27 +9,26 @@ const Design = () => {
         <Link
           to={""}
           className={`border border-gray-400 px-5 py-3 text-sm ${
-            isAddProduct === "" ? "font-semibold text-base" : ""
+            pathName === "/design" ? "font-semibold text-base" : ""
           }`}
-          onClick={() => setIsAddProduct("")}
         >
           My Products List
         </Link>
         <Link
-          to={"addProduct"}
+          to={"add-product"}
           className={`border border-gray-400 px-5 py-3 text-sm ${
-            isAddProduct === "add" ? "font-semibold text-base" : ""
+            pathName === "/design/add-product" ? "font-semibold text-base" : ""
           }`}
-          onClick={() => setIsAddProduct("add")}
         >
           Add New Product
         </Link>
         <Link
           to={"designer-orders"}
           className={`border border-gray-400 px-5 py-3 text-sm ${
-            isAddProduct === "orders" ? "font-semibold text-base" : ""
+            pathName === "/design/designer-orders"
+              ? "font-semibold text-base"
+              : ""
           }`}
-          onClick={() => setIsAddProduct("orders")}
         >
           View Designer Orders
         </Link>

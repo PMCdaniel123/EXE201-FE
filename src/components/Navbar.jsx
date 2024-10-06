@@ -26,6 +26,7 @@ const Navbar = () => {
   const handleLogout = () => {
     Cookies.remove("token");
     Cookies.remove("userID");
+    Cookies.remove("product_added");
     setIsLoggedIn(false);
     localStorage.removeItem("cart");
     setCart([]);

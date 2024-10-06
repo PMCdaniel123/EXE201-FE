@@ -11,15 +11,14 @@ const ShopContextProvider = (props) => {
   const currency = "$";
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
+  const [orderId, setOrderId] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [isAddProduct, setIsAddProduct] = useState("");
   const navigate = useNavigate();
   const itemsPerPage = 32;
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [role, setRole] = useState("");
-  const [openModal, setOpenModal] = useState(false);
   const [products, setProducts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -58,7 +57,7 @@ const ShopContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    if (cart.length > 0) {
+    if (cart.length >= 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart]);
@@ -84,10 +83,6 @@ const ShopContextProvider = (props) => {
     role,
     setRole,
     itemsPerPage,
-    isAddProduct,
-    setIsAddProduct,
-    openModal,
-    setOpenModal,
     cart,
     setCart,
     loading,
@@ -96,6 +91,8 @@ const ShopContextProvider = (props) => {
     setUserInfo,
     isLoggedIn,
     setIsLoggedIn,
+    orderId,
+    setOrderId,
   };
 
   return (

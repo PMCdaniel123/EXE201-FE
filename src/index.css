@@ -18,6 +18,11 @@ a.active {
     color: transparent;
 }
 
+:where(.css-dev-only-do-not-override-qnu6hi).ant-steps .ant-steps-item-process .ant-steps-item-icon {
+    border: none;
+    background: linear-gradient(to bottom right, #4A5942, #9d905a);
+}
+
 * {
     font-family: Outfit;
 }

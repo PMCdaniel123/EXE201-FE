@@ -96,12 +96,6 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-              {/* <input
-              type="number"
-              min={1}
-              defaultValue={item?.quantity}
-              className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
-            /> */}
               <img
                 src={assets.bin_icon}
                 alt=""
@@ -116,12 +110,21 @@ const Cart = () => {
           <div className="w-full sm:w-[450px]">
             <CartTotal items={cartData} />
             <div className="w-full text-end">
-              <button
-                className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm my-8 px-8 py-3"
-                onClick={() => navigate("/place-order")}
-              >
-                PROCEED TO CHECKOUT
-              </button>
+              {cartData.length === 0 ? (
+                <button
+                  className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm my-8 px-8 py-3"
+                  onClick={() => navigate("/collection")}
+                >
+                  CONTINUE SHOPPING
+                </button>
+              ) : (
+                <button
+                  className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm my-8 px-8 py-3"
+                  onClick={() => navigate("/place-order")}
+                >
+                  PROCEED TO CHECKOUT
+                </button>
+              )}
             </div>
           </div>
         </div>

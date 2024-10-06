@@ -97,7 +97,7 @@ const Footer = () => {
       </div>
 
       <div>
-        <hr />
+        <hr className="bg-gray-400" />
         <p className="py-5 text-sm text-center text-[#1c1c26]">
           Copyright 2024@ sunsetsoiree.com - All Right Reserved
         </p>

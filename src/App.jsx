@@ -22,36 +22,11 @@ import { ToastContainer } from "react-toastify";
 import { FloatButton } from "antd";
 import ScrollToTop from "./components/ScrollToTop";
 import DesignerOrders from "./components/DesignerOrders";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import axiosInstance from "./utils/axiosInstance";
+import PrivateRoute from "./layouts/PrivateRoute";
+import OrdersSuccessful from "./pages/OrdersSuccessful";
+import OrderDetails from "./pages/OrderDetails";
 
 const App = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [userInfo, setUserInfo] = useState(null);
-  // const [role, setRole] = useState("");
-
-  // useEffect(() => {
-  //   const token = Cookies.get("token");
-  //   const userID = Cookies.get("userID");
-  //   if (token) {
-  //     axiosInstance
-  //       .get(`/users/${userID}`, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((response) => {
-  //         setUserInfo(response.data);
-  //         setIsLoggedIn(true);
-  //         setRole(response.data.role);
-  //       })
-  //       .catch(() => {
-  //         Cookies.remove("token");
-  //         Cookies.remove("userID");
-  //         setIsLoggedIn(false);
-  //       });
-  //   }
-  // }, []);
-
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] bg-gradient-to-br from-[#4A5942] to-[#9d905a]">
       <div
@@ -64,12 +39,7 @@ const App = () => {
         <div className="relative w-full px-10 z-10">
           <ToastContainer />
           <ScrollToTop />
-          <Navbar
-            // isLoggedIn={isLoggedIn}
-            // setIsLoggedIn={setIsLoggedIn}
-            // userInfo={userInfo}
-            // role={role}
-          />
+          <Navbar />
           <SearchBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -77,25 +47,90 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/product/:productId" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
             <Route
-              path="/login"
+              path="/cart"
               element={
-                <Login
-                  // setIsLoggedIn={setIsLoggedIn}
-                  // setUserInfo={setUserInfo}
-                />
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
               }
             />
-            <Route path="/place-order" element={<PlaceOrder />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/place-order"
+              element={
+                <PrivateRoute>
+                  <PlaceOrder />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <PrivateRoute>
+                  <Orders />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/orders/:orderId"
+              element={
+                <PrivateRoute>
+                  <OrderDetails />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/orders-sucessful"
+              element={
+                <PrivateRoute>
+                  <OrdersSuccessful />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
             <Route path="/sunblog" element={<SunBlog />} />
             <Route path="/sunblog/:blogId" element={<Blog />} />
-            <Route path="/design" element={<Design />}>
-              <Route index path="" element={<ListProduct />} />
-              <Route path="addProduct" element={<AddProduct />} />
-              <Route path="designer-orders" element={<DesignerOrders />} />
+            <Route
+              path="/design"
+              element={
+                <PrivateRoute>
+                  <Design />
+                </PrivateRoute>
+              }
+            >
+              <Route
+                index
+                path=""
+                element={
+                  <PrivateRoute>
+                    <ListProduct />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="add-product"
+                element={
+                  <PrivateRoute>
+                    <AddProduct />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="designer-orders"
+                element={
+                  <PrivateRoute>
+                    <DesignerOrders />
+                  </PrivateRoute>
+                }
+              />
             </Route>
           </Routes>
           <Footer />

@@ -55,7 +55,7 @@ const Login = () => {
 
       setUserInfo(userInfoResponse.data);
       setIsLoggedIn(true);
-      toast.success("Login successfully");
+      toast.success("Register successfully");
       navigate("/");
     } catch (error) {
       console.log("Register failed: ", error);

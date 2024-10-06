@@ -38,35 +38,43 @@ const Profile = () => {
             className="w-full md:max-w-[480px]"
           />
         </div>
-        <div className="flex flex-col justify-center items-start gap-6 w-1/2 p-8 border border-gray-400">
+        <div className="flex flex-col justify-center items-center w-1/2 gap-10">
           {role === "Designer" && (
-            <p className="font-semibold text-xl text-gray-600">
-              {userInfo.designer?.full_name}
-            </p>
+            <div className="w-full flex flex-col justify-center items-start gap-6 p-8 border border-gray-400">
+              <p className="font-semibold text-xl text-gray-600">
+                Designer: {userInfo.designer?.full_name}
+              </p>
+              <p className="text-gray-800">
+                Contact: {userInfo.designer?.contact_info}
+              </p>
+              <p className="text-gray-800">Bio: {userInfo.designer?.bio}</p>
+            </div>
           )}
-          <p className="text-gray-800">Name: {userInfo.name}</p>
-          <p className="text-gray-800">Address: {userInfo.address}</p>
-          <p className="text-gray-800">Tel: {userInfo.phone}</p>
-          <p className="text-gray-800">Email: {userInfo.email}</p>
-          <p className="text-gray-800">Gender: {userInfo.gender}</p>
-          <div className="flex items-center justify-between mt-6 gap-4 w-full">
-            <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                Weight
-              </p>
-              <p className="text-gray-800">67kg</p>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                Height
-              </p>
-              <p className="text-gray-800">1.7m</p>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                IDK
-              </p>
-              <p className="text-gray-800">...</p>
+          <div className="w-full flex flex-col justify-center items-start gap-6 p-8 border border-gray-400">
+            <p className="text-gray-800">Name: {userInfo.name}</p>
+            <p className="text-gray-800">Address: {userInfo.address}</p>
+            <p className="text-gray-800">Tel: {userInfo.phone}</p>
+            <p className="text-gray-800">Email: {userInfo.email}</p>
+            <p className="text-gray-800">Gender: {userInfo.gender}</p>
+            <div className="flex items-center justify-between mt-6 gap-4 w-full">
+              <div className="flex items-center justify-center gap-4">
+                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
+                  Weight
+                </p>
+                <p className="text-gray-800">67kg</p>
+              </div>
+              <div className="flex items-center justify-center gap-4">
+                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
+                  Height
+                </p>
+                <p className="text-gray-800">1.7m</p>
+              </div>
+              <div className="flex items-center justify-center gap-4">
+                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
+                  IDK
+                </p>
+                <p className="text-gray-800">...</p>
+              </div>
             </div>
           </div>
         </div>

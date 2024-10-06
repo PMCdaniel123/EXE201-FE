@@ -7,8 +7,9 @@ import axiosInstance from "../utils/axiosInstance";
 import { assets } from "../assets/assets";
 
 const Premium = ({ type, price, time }) => {
-  const { currency, openModal, setOpenModal, userInfo, loading, setRole } =
-    useContext(ShopContext);
+  const { currency, userInfo, loading, setRole } = useContext(ShopContext);
+
+  const [openModal, setOpenModal] = useState(false);
 
   const {
     register,

@@ -1,160 +1,73 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { Steps, theme } from "antd";
+import AddInitialProduct from "./AddInitialProduct";
+import AddAttributeProduct from "./AddAttributeProduct";
+
+const steps = [
+  {
+    title: "Create an initial product",
+  },
+  {
+    title: "Add images, sizes and colors",
+  },
+  {
+    title: "Done",
+  },
+];
 
 const AddProduct = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const [images, setImages] = useState([]);
-
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    const imageFiles = files.map((file) => ({
-      file,
-      preview: URL.createObjectURL(file),
-    }));
-    setImages((prevImages) => [...prevImages, ...imageFiles]);
+  const { token } = theme.useToken();
+  const [current, setCurrent] = useState(0);
+  const next = () => {
+    setCurrent(current + 1);
   };
 
-  const handleRemoveImage = (index) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  const moveToNextStep = () => {
+    next();
   };
 
-  const onSubmitHandler = (data) => {
-    data.images = images;
-    console.log(data);
-    toast.success("Add new product successfully!");
+  const items = steps.map((item) => ({
+    key: item.title,
+    title: item.title,
+  }));
+
+  const contentStyle = {
+    textAlign: "center",
+    color: token.colorTextTertiary,
+    marginTop: 60,
+  };
+
+  const handleReloadPage = () => {
+    window.location.reload();
   };
 
   return (
-    <form
-      className="flex flex-col items-center w-[50%] gap-4 text-gray-800"
-      onSubmit={handleSubmit(onSubmitHandler)}
-    >
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Product Name</label>
-        <input
-          type="text"
-          placeholder="Product Name..."
-          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-          required
-          {...register("product_name")}
-        />
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Description</label>
-        <textarea
-          placeholder="Description..."
-          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-          {...register("description")}
-        />
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Price</label>
-        <input
-          type="text"
-          placeholder="Price..."
-          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-          required
-          {...register("price")}
-        />
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Category</label>
-        <select
-          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-          required
-          {...register("category")}
-        >
-          <option value="" disabled>
-            --Choose Category--
-          </option>
-          <option value="Men">Men</option>
-          <option value="Women">Women</option>
-          <option value="Kids">Kids</option>
-        </select>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Sub Category</label>
-        <select
-          className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-          required
-          {...register("subCategory")}
-        >
-          <option value="" disabled>
-            --Choose Sub Category--
-          </option>
-          <option value="Topwear">Top wear</option>
-          <option value="Bottomwear">Bottom wear</option>
-          <option value="Springwear">Spring Collection</option>
-          <option value="Summerwear">Summer Collection</option>
-          <option value="Autumnwear">Autumn Collection</option>
-          <option value="Winterwear">Winter Collection</option>
-        </select>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Size</label>
-        <div className="w-full py-2 flex items-center justify-between">
-          {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
-            <div
-              key={size}
-              className="flex items-center justify-center gap-1 sm:gap-2"
-            >
-              <input
-                type="checkbox"
-                {...register("size")}
-                value={size}
-                className={`w-4 h-4 appearance-none cursor-pointer rounded border transition-colors 
-          checked:bg-gradient-to-br checked:from-[#4A5942] checked:to-[#9d905a] bg-white bg-opacity-40 border-gray-400`}
-              />
-              <label>{size}</label>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row items-center">
-        <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Image</label>
-        <div className="w-full">
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
-            {...register("image")}
-            onChange={handleImageChange}
-          />
-          <div className="mt-4 flex gap-2 flex-wrap">
-            {images.map((img, index) => (
-              <div key={index} className="relative">
-                <img
-                  src={img.preview}
-                  alt={`Preview ${index + 1}`}
-                  className="w-20 h-20 sm:w-36 sm:h-36 object-cover border border-gray-300"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveImage(index)}
-                  className="absolute top-1 right-1 bg-red-500 text-white rounded-full px-2 py-1 sm:px-3 text-xs sm:text-base"
-                >
-                  &times;
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-10 py-[10px] text-base font-medium w-full hover:bg-gray-700"
+    <div className="w-[60%] flex flex-col items-center">
+      <Steps current={current} items={items} />
+      <div
+        style={contentStyle}
+        className="w-full flex items-center justify-center"
       >
-        ADD
-      </button>
-    </form>
+        {current === 0 && <AddInitialProduct moveToNextStep={moveToNextStep} />}
+        {current === 1 && (
+          <AddAttributeProduct moveToNextStep={moveToNextStep} />
+        )}
+        {current === 2 && (
+          <div className="flex flex-col justify-center items-center gap-4 text-base">
+            <p>Your product is created successfully.</p>
+            <p>
+              Please reload the page to see your product!{" "}
+              <span
+                className="text-[#4A5942] underline"
+                onClick={handleReloadPage}
+              >
+                Or click here
+              </span>
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -15,23 +15,6 @@ import { CupModel } from "../components/CupModel";
 const Home = () => {
   return (
     <div>
-      {/* <Canvas>
-        <ambientLight />
-        <OrbitControls />
-        <Suspense fallback={null}>
-          <CupModel />
-        </Suspense>
-        <Environment preset="sunset" />
-        <ContactShadows
-          position={[0, -0.5, 0]}
-          opacity={0.5}
-          scale={50}
-          blur={1}
-          far={10}
-          resolution={256}
-          color="#000000"
-        />
-      </Canvas> */}
       <Hero />
       <PicksSlider />
       <Trending />
