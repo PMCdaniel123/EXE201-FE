@@ -2,12 +2,10 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 import Cookies from "js-cookie";
-import { blog_data } from "../assets/assets";
 
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
-  // const currency = "₫";
   const currency = "$";
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
@@ -62,7 +60,6 @@ const ShopContextProvider = (props) => {
     }
   }, [cart]);
 
-  // Load cart from localStorage on page reload (if necessary)
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
@@ -72,7 +69,6 @@ const ShopContextProvider = (props) => {
 
   const value = {
     products,
-    blog_data,
     currency,
     delivery_fee,
     search,

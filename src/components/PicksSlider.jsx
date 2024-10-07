@@ -1,5 +1,4 @@
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import React, { useState } from "react";
+import React from "react";
 import Title from "./Title";
 import { Carousel } from "antd";
 
@@ -26,28 +25,7 @@ const slides = [
   },
 ];
 
-const contentStyle = {
-  height: "160px",
-  color: "#000000",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
-
 const PicksSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    );
-  };
 
   return (
     <div className="flex flex-col items-center p-8 my-10">
@@ -56,30 +34,6 @@ const PicksSlider = () => {
       </div>
 
       <div className="flex items-center justify-center w-full">
-        {/* <div
-          onClick={handlePrevClick}
-          className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
-        >
-          <LeftOutlined />
-        </div>
-
-        <div className="flex justify-center items-center w-4/5">
-          <div className="w-full h-96 overflow-hidden shadow-lg transition-transform duration-500 ease-in-out">
-            <img
-              src={slides[currentIndex].imageUrl}
-              alt={`Slide ${slides[currentIndex].id}`}
-              className="object-fill w-full h-full"
-            />
-          </div>
-        </div>
-
-        <div
-          onClick={handleNextClick}
-          className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
-        >
-          <RightOutlined />
-        </div> */}
-
         <Carousel autoplay className="w-96 sm:w-[1200px]">
           {slides.map((slide, index) => (
             <div key={index} className="w-full text-center relative">
