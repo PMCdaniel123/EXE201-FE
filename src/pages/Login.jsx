@@ -130,7 +130,7 @@ const Login = () => {
             {...register("gender")}
           >
             <option value="" disabled>
-              Gender
+              Select Gender
             </option>
             <option value="Men">Men</option>
             <option value="Women">Women</option>

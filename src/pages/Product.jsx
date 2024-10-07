@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import RelatedProducts from "../components/RelatedProducts";
-import { Spin } from "antd";
+import { Image, Spin } from "antd";
 import useGetProductByID from "../hooks/useGetProductByID";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
@@ -61,22 +61,23 @@ const Product = () => {
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
           <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
-            <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
+            <div className="flex sm:flex-col sm:h-[640px] overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18%] w-full">
               {product?.images.map((item, index) => (
                 <img
-                  src={`/frontend_assets/${item.image_url}.png`}
+                  src={item.image_url}
                   key={index}
                   alt={product.product_name}
-                  className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
+                  className="w-[24%] sm:w-full h-32 sm:mb-3 flex-shrink-0 cursor-pointer"
                   onClick={() => setImage(item.image_url)}
                 />
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img
-                src={`/frontend_assets/${image}.png`}
-                alt={product.product_name}
-                className="w-full h-auto"
+              <Image
+                width={"100%"}
+                height={640}
+                src={image}
+                className="object-cover"
               />
             </div>
           </div>
@@ -123,14 +124,12 @@ const Product = () => {
                   <button
                     key={index}
                     className={`border-2 w-10 h-10 py-2 px-4 ${
-                      item.color_template === color ? "border-[#9d905a]" : ""
+                      item.color_name === color ? "border-[#9d905a]" : ""
                     }`}
                     onClick={() =>
-                      setColor(
-                        item.color_template === color ? "" : item.color_template
-                      )
+                      setColor(item.color_name === color ? "" : item.color_name)
                     }
-                    style={{ backgroundColor: item.color_template }}
+                    style={{ backgroundColor: item.color_name }}
                   ></button>
                 ))}
               </div>

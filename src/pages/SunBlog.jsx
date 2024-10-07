@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogItem from "../components/BlogItem";
-import { assets, blog_data } from "../assets/assets";
+import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import axiosInstance from "../utils/axiosInstance";
 
 const SunBlog = () => {
-  const [menu, setMenu] = useState("All");
+  const [menu, setMenu] = useState("all");
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const userId = Cookies.get("userID");
+
+  const getBlogs = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axiosInstance.get("/news");
+      setBlogs(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getBlogs();
+  }, []);
 
   return (
     <div className="border-t border-gray-400">
@@ -18,9 +36,9 @@ const SunBlog = () => {
       <div className="flex justify-between items-center">
         <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
           <button
-            onClick={() => setMenu("All")}
+            onClick={() => setMenu("all")}
             className={
-              menu === "All"
+              menu === "all"
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
                 : "px-4"
             }
@@ -71,16 +89,16 @@ const SunBlog = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10">
-        {blog_data
-          .filter((item) => (menu === "All" ? true : item.category === menu))
+        {blogs
+          .filter((item) => (menu === "all" ? true : item.category === menu))
           .map((item, index) => {
             return (
               <BlogItem
                 key={index}
                 id={item.id}
                 title={item.title}
-                image={item.image}
-                description={item.description}
+                image={item.image_url}
+                date={item.created_at}
                 category={item.category}
               />
             );

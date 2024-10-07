@@ -1,24 +1,27 @@
-import { Button, ColorPicker } from "antd";
+import { Button, ColorPicker, Spin } from "antd";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import Cookies from "js-cookie";
+// import { v4 } from "uuid";
+// import { imageDB } from "../configs/firebaseConfig";
+// import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const AddAttributeProduct = ({ moveToNextStep }) => {
   const [images, setImages] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [imageURLs, setImageURLs] = useState([]);
   const [colors, setColors] = useState([{ id: 1, value: "#4A5942" }]);
   const [loading, setLoading] = useState(false);
 
   const product_id = Cookies.get("product_added");
 
-  // Function to add a new ColorPicker
   const addColorPicker = () => {
     const newId = colors.length + 1;
-    setColors([...colors, { id: newId, value: "#4A5942" }]); // Default value
+    setColors([...colors, { id: newId, value: "#4A5942" }]);
   };
 
-  // Function to update color in the array
   const updateColor = (id, newColor) => {
     setColors((prevColors) =>
       prevColors.map((color) =>
@@ -27,7 +30,6 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
     );
   };
 
-  // Function to remove a ColorPicker
   const removeColorPicker = (id) => {
     setColors((prevColors) => prevColors.filter((color) => color.id !== id));
   };
@@ -40,6 +42,7 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
+    setUploadedImages(files);
     const imageFiles = files.map((file) => ({
       file,
       preview: URL.createObjectURL(file),
@@ -49,6 +52,28 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
 
   const handleRemoveImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
+
+  const uploadImages = async (uploadedImages) => {
+    const imageUrls = await Promise.all(
+      uploadedImages.map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "syd5q0ri");
+        formData.append("cloud_name", "dywbaeo2q");
+
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/dywbaeo2q/image/upload",
+          {
+            method: "post",
+            body: formData,
+          }
+        );
+        const uploadedImageUrl = await res.json();
+        return uploadedImageUrl.secure_url;
+      })
+    );
+    return imageUrls;
   };
 
   const onSubmitHandler = async (data) => {
@@ -67,12 +92,14 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
       return;
     }
 
+    setLoading(true);
+
     try {
-      setLoading(true);
-      const imagesReq = images.map((item) =>
+      const urls = await uploadImages(uploadedImages);
+      const imagesReq = urls.map((url) =>
         axiosInstance.post(`/images`, {
           product_id: product_id,
-          image_url: "p_img2",
+          image_url: url,
         })
       );
       await Promise.all(imagesReq);
@@ -102,7 +129,9 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
     }
   };
 
-  return (
+  return loading ? (
+    <Spin />
+  ) : (
     <form
       className="flex flex-col items-center w-[90%] gap-4 text-gray-800"
       onSubmit={handleSubmit(onSubmitHandler)}

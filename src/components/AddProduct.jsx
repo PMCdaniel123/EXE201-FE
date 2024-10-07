@@ -58,7 +58,7 @@ const AddProduct = () => {
             <p>
               Please reload the page to see your product!{" "}
               <span
-                className="text-[#4A5942] underline"
+                className="text-[#4A5942] underline cursor-pointer"
                 onClick={handleReloadPage}
               >
                 Or click here

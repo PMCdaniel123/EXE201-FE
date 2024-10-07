@@ -6,6 +6,8 @@ export const ORDERS_TABLE_COLUMNS = [
     title: "ID",
     dataIndex: "id",
     key: "id",
+    fixed: "left",
+    width: 100,
     render: (text, value) => (
       <Link to={"/orders/" + value.id}>
         <Tooltip placement="top" title={text}>
@@ -64,13 +66,33 @@ export const ORDERS_TABLE_COLUMNS = [
       );
     },
   },
+  {
+    title: "Created At",
+    dataIndex: "created_at",
+    key: "created_at",
+    fixed: "right",
+    render: (value) => {
+      return (
+        <Typography.Text>
+          {new Date(value).toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </Typography.Text>
+      );
+    },
+  },
 ];
 
 export const DESIGNER_ORDERS_TABLE_COLUMNS = [
   {
-    title: "Product Image",
-    dataIndex: "image_url",
-    key: "image_url",
+    title: "Customer Name",
+    dataIndex: "customer_name",
+    key: "customer_name",
+    fixed: "left",
   },
   {
     title: "Product Name",
@@ -84,23 +106,26 @@ export const DESIGNER_ORDERS_TABLE_COLUMNS = [
   },
   {
     title: "Size",
-    dataIndex: "size",
-    key: "size",
+    dataIndex: "product_size",
+    key: "product_size",
+    width: 100,
   },
   {
     title: "Color",
-    dataIndex: "color",
-    key: "color",
-  },
-  {
-    title: "Full Name",
-    dataIndex: "full_name",
-    key: "full_name",
+    dataIndex: "product_color",
+    key: "product_color",
+    width: 100,
+    render: (value) => (
+      <p
+        className="px-2 sm:px-3 sm:py-1 h-10 w-10 border bg-slate-50"
+        style={{ backgroundColor: value }}
+      ></p>
+    ),
   },
   {
     title: "Shipping Address",
-    dataIndex: "shipping_address",
-    key: "shipping_address",
+    dataIndex: "address",
+    key: "address",
   },
   {
     title: "Phone Number",
@@ -116,6 +141,8 @@ export const DESIGNER_ORDERS_TABLE_COLUMNS = [
     title: "Status",
     dataIndex: "status",
     key: "status",
+    fixed: "right",
+    align: "center",
     render: (status) => {
       return (
         <Tag

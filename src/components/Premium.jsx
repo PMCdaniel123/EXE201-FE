@@ -36,6 +36,7 @@ const Premium = ({ type, price, time }) => {
       setRole("Designer");
       toast.success(response.message);
       setOpenModal(false);
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error(error.message);

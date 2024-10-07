@@ -1,6 +1,7 @@
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import Title from "./Title";
+import { Carousel } from "antd";
 
 const slides = [
   {
@@ -25,6 +26,14 @@ const slides = [
   },
 ];
 
+const contentStyle = {
+  height: "160px",
+  color: "#000000",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "#364d79",
+};
+
 const PicksSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,26 +49,14 @@ const PicksSlider = () => {
     );
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) =>
-  //       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-  //     );
-  //   }, 3000);
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
-
   return (
     <div className="flex flex-col items-center p-8 my-10">
       <div className="text-center py-8 text-6xl">
         <Title text1={"SUNSET'S"} text2={"PICKS"} />
       </div>
 
-      <div className="flex items-center justify-between w-full">
-        <div
+      <div className="flex items-center justify-center w-full">
+        {/* <div
           onClick={handlePrevClick}
           className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
         >
@@ -81,12 +78,25 @@ const PicksSlider = () => {
           className="inline-flex h-full p-4 rounded-full text-white bg-gradient-to-br from-[#4A5942] to-[#9d905a] cursor-pointer shadow-lg"
         >
           <RightOutlined />
-        </div>
-      </div>
+        </div> */}
 
-      <p className="mt-8 text-3xl font-extralight">
-        {slides[currentIndex].title}
-      </p>
+        <Carousel autoplay className="w-96 sm:w-[1200px]">
+          {slides.map((slide, index) => (
+            <div key={index} className="w-full text-center relative">
+              <div className="w-full h-[500px] overflow-hidden shadow-lg">
+                <img
+                  src={slide.imageUrl}
+                  alt={slide.title}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <p className="p-4 text-xl font-extralight absolute bottom-0 text-white bg-black opacity-40">
+                {slide.title}
+              </p>
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };

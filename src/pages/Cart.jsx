@@ -70,9 +70,9 @@ const Cart = () => {
             >
               <div className="flex items-start gap-6">
                 <img
-                  src={`/frontend_assets/${item.product.images[0].image_url}.png`}
+                  src={item.product.images[0].image_url}
                   alt=""
-                  className="w-16 sm:w-20"
+                  className="w-16 sm:w-32 sm:h-32 object-cover"
                 />
                 <div>
                   <Link

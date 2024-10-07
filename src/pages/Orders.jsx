@@ -20,7 +20,11 @@ const Orders = () => {
         <Title text1={"MY"} text2={"ORDERS"} />
       </div>
 
-      <Table dataSource={updatedOrders} columns={ORDERS_TABLE_COLUMNS} />
+      <Table
+        dataSource={updatedOrders}
+        columns={ORDERS_TABLE_COLUMNS}
+        scroll={{ x: 2000 }}
+      />
     </div>
   );
 };

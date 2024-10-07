@@ -70,6 +70,7 @@ import blog_pic_13 from "/frontend_assets/blog_pic_13.png";
 import blog_pic_14 from "/frontend_assets/blog_pic_14.png";
 import blog_pic_15 from "/frontend_assets/blog_pic_15.png";
 import blog_pic_16 from "/frontend_assets/blog_pic_16.png";
+import default_blog_image from "/frontend_assets/default_blog_img.png";
 
 import logo from "/frontend_assets/logo.png";
 import hero_img from "/frontend_assets/hero_img.png";
@@ -142,6 +143,7 @@ export const assets = {
   trend_2,
   trend_3,
   vertical_bg,
+  default_blog_image,
 };
 
 export const products = [
