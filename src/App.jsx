@@ -26,6 +26,7 @@ import PrivateRoute from "./layouts/PrivateRoute";
 import OrdersSuccessful from "./pages/OrdersSuccessful";
 import OrderDetails from "./pages/OrderDetails";
 import NewBlogs from "./pages/NewBlogs";
+import MyBlogs from "./pages/MyBlogs";
 
 const App = () => {
   return (
@@ -103,6 +104,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <NewBlogs />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/myblog"
+              element={
+                <PrivateRoute>
+                  <MyBlogs />
                 </PrivateRoute>
               }
             />

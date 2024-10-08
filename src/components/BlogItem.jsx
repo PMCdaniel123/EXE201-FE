@@ -1,10 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { DeleteOutlined } from "@ant-design/icons";
+import Cookies from "js-cookie";
+import axiosInstance from "../utils/axiosInstance";
 
-const BlogItem = ({ title, image, date, category, id }) => {
+const BlogItem = ({ title, image, date, category, id, author, onDelete }) => {
+  const userId = Cookies.get("userID");
+
+  const handleDelete = async () => {
+    try {
+      const response = await axiosInstance.delete(`/news/${id}`);
+      onDelete(id);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className=" bg-white border hover:scale-105 hover:shadow-xl">
+    <div className=" bg-white border hover:scale-105 hover:shadow-xl relative">
+      {author === Number(userId) && (
+        <div
+          className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-10 cursor-pointer"
+          onClick={handleDelete}
+        >
+          <DeleteOutlined />
+        </div>
+      )}
       <Link to={`/sunblog/${id}`}>
         <img
           src={image !== "null" ? image : assets.default_blog_image}

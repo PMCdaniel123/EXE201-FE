@@ -1,17 +1,13 @@
 import { Button, ColorPicker, Spin } from "antd";
 import { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import Cookies from "js-cookie";
-// import { v4 } from "uuid";
-// import { imageDB } from "../configs/firebaseConfig";
-// import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const AddAttributeProduct = ({ moveToNextStep }) => {
   const [images, setImages] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
-  const [imageURLs, setImageURLs] = useState([]);
   const [colors, setColors] = useState([{ id: 1, value: "#4A5942" }]);
   const [loading, setLoading] = useState(false);
 
@@ -158,7 +154,7 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
       </div>
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Colors</label>
-        <div className="w-full py-2 flex items-center justify-between">
+        <div className="w-full py-2 flex flex-col items-start justify-start gap-4">
           {colors.map((colorObj, index) => (
             <div key={index}>
               <div className="w-full flex flex-wrap items-center justify-between gap-2">
@@ -180,9 +176,13 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
               </div>
             </div>
           ))}
-          <Button type="primary" onClick={addColorPicker}>
+          <button
+            type="button"
+            onClick={addColorPicker}
+            className="px-3 py-2 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white"
+          >
             Add Color
-          </Button>
+          </button>
         </div>
       </div>
       <div className="w-full flex flex-col sm:flex-row items-center">

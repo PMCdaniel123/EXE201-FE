@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { Spin } from "antd";
 import { assets } from "../assets/assets";
+import { PoweroffOutlined, ShopOutlined, SnippetsOutlined, UserOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -102,16 +103,21 @@ const Navbar = () => {
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-30">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                 <Link to="/profile">
-                  <p className="cursor-pointer hover:text-black">My Profile</p>
+                  <p className="cursor-pointer hover:text-black flex gap-2"><UserOutlined /> Profile</p>
                 </Link>
                 <Link to="/orders">
-                  <p className="cursor-pointer hover:text-black">Orders</p>
+                  <p className="cursor-pointer hover:text-black flex gap-2"><ShopOutlined /> Orders</p>
+                </Link>
+                <Link to="/myblog">
+                  <p className="cursor-pointer hover:text-black flex gap-2">
+                    <SnippetsOutlined /> My Blogs
+                  </p>
                 </Link>
                 <p
-                  className="cursor-pointer hover:text-black"
+                  className="cursor-pointer hover:text-black flex gap-2"
                   onClick={handleLogout}
                 >
-                  Logout
+                  <PoweroffOutlined /> Logout
                 </p>
               </div>
             </div>

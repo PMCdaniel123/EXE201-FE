@@ -69,7 +69,9 @@ const ListProduct = () => {
       </div>
 
       {myProducts?.length === 0 ? (
-        <div>You have not created any products yet</div>
+        <div className="text-center text-gray-600">
+          You have not created any products yet
+        </div>
       ) : (
         <div>
           {myProducts.map((item, index) => (

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +24,7 @@ a.active {
 }
 
 * {
-    font-family: Outfit;
+    font-family: Merriweather Sans;
 }
 
 ::-webkit-scrollbar {
@@ -45,7 +45,7 @@ a.active {
 }
 
 canvas {
-    height: 500px;
+    height: 2000px;
 }
 
 .editor-container {

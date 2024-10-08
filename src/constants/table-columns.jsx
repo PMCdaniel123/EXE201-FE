@@ -1,4 +1,4 @@
-import { Tag, Tooltip, Typography } from "antd";
+import { Select, Tag, Tooltip, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 export const ORDERS_TABLE_COLUMNS = [
@@ -43,30 +43,6 @@ export const ORDERS_TABLE_COLUMNS = [
     key: "payment_method",
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-    render: (status) => {
-      return (
-        <Tag
-          color={
-            status === "pending"
-              ? "orange"
-              : status === "processing"
-              ? "blue"
-              : status === "shipping"
-              ? "yellow"
-              : status === "successful"
-              ? "success"
-              : "error"
-          }
-        >
-          {status.charAt(0).toUpperCase() + status.slice(1)}
-        </Tag>
-      );
-    },
-  },
-  {
     title: "Created At",
     dataIndex: "created_at",
     key: "created_at",
@@ -87,7 +63,13 @@ export const ORDERS_TABLE_COLUMNS = [
   },
 ];
 
-export const DESIGNER_ORDERS_TABLE_COLUMNS = [
+const { Option } = Select;
+export const DESIGNER_ORDERS_TABLE_COLUMNS = ({
+  editableRowKey,
+  handleStatusChange,
+  onEditStatus,
+  onSaveStatus,
+}) => [
   {
     title: "Customer Name",
     dataIndex: "customer_name",
@@ -143,22 +125,40 @@ export const DESIGNER_ORDERS_TABLE_COLUMNS = [
     key: "status",
     fixed: "right",
     align: "center",
-    render: (status) => {
-      return (
+    render: (status, record) => {
+      const st = status && status !== "N/A" ? status : "waiting";
+
+      return editableRowKey === record.order_detail_id ? (
+        <Select
+          defaultValue={st}
+          style={{ width: 120 }}
+          onChange={(value) =>
+            handleStatusChange(record.order_detail_id, value)
+          }
+          onBlur={() => onSaveStatus(record.order_detail_id)}
+        >
+          <Option value="processing">Processing</Option>
+          <Option value="shipping">Shipping</Option>
+          <Option value="successful">Successful</Option>
+          <Option value="waiting">Waiting</Option>
+        </Select>
+      ) : (
         <Tag
           color={
-            status === "pending"
+            st === "waiting"
               ? "orange"
-              : status === "processing"
+              : st === "processing"
               ? "blue"
-              : status === "shipping"
+              : st === "shipping"
               ? "yellow"
-              : status === "successful"
-              ? "success"
-              : "error"
+              : st === "successful"
+              ? "green"
+              : "red"
           }
+          onClick={() => onEditStatus(record.order_detail_id)}
+          style={{ cursor: "pointer" }}
         >
-          {status.charAt(0).toUpperCase() + status.slice(1)}
+          {st.charAt(0).toUpperCase() + st.slice(1)}
         </Tag>
       );
     },

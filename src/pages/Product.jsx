@@ -83,7 +83,7 @@ const Product = () => {
           </div>
 
           <div className="flex-1">
-            <h1 className="font-medium text-2xl mt-2">
+            <h1 className="font-medium text-3xl mt-2">
               {product?.product_name}
             </h1>
             <div className="flex items-center gap-1 mt-2">

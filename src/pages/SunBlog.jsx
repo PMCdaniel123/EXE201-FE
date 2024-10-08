@@ -27,6 +27,10 @@ const SunBlog = () => {
     getBlogs();
   }, []);
 
+  const handleDeleteBlog = (id) => {
+    setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== id));
+  };
+
   return (
     <div className="border-t border-gray-400">
       <div className="flex justify-center items-center mt-10 w-full relative overflow-hidden">
@@ -100,6 +104,8 @@ const SunBlog = () => {
                 image={item.image_url}
                 date={item.created_at}
                 category={item.category}
+                author={item.author.id}
+                onDelete={handleDeleteBlog}
               />
             );
           })}

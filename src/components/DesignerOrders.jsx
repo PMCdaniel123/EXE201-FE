@@ -9,6 +9,38 @@ const DesignerOrders = () => {
   const { userInfo } = useContext(ShopContext);
   const [loading, setLoading] = useState(false);
   const [ordersList, setOrdersList] = useState([]);
+  const [editableRowKey, setEditableRowKey] = useState(null);
+
+  console.log(ordersList);
+
+  const handleStatusChange = async (orderId, newStatus) => {
+    const updatedData = ordersList.map((order) =>
+      order.order_detail_id === Number(orderId)
+        ? { ...order, status: newStatus }
+        : order
+    );
+    setOrdersList(updatedData);
+
+    try {
+      setLoading(true);
+      const response = await axiosInstance.put(
+        "/designers/order-detail/update-status/" + orderId,
+        { status: newStatus }
+      );
+      setEditableRowKey(null);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onEditStatus = (orderId) => {
+    setEditableRowKey(orderId);
+  };
+
+  const onSaveStatus = () => {
+    setEditableRowKey(null);
+  };
 
   const getOrdersList = async () => {
     try {
@@ -28,8 +60,6 @@ const DesignerOrders = () => {
     getOrdersList();
   }, [userInfo]);
 
-  console.log(ordersList);
-
   return loading ? (
     <Spin />
   ) : (
@@ -40,7 +70,12 @@ const DesignerOrders = () => {
 
       <Table
         dataSource={ordersList}
-        columns={DESIGNER_ORDERS_TABLE_COLUMNS}
+        columns={DESIGNER_ORDERS_TABLE_COLUMNS({
+          editableRowKey,
+          handleStatusChange,
+          onEditStatus,
+          onSaveStatus,
+        })}
         scroll={{ x: 2000 }}
       />
     </div>

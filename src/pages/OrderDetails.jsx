@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { ShopContext } from "../context/ShopContext";
+import { useEffect, useState } from "react";
 import Title from "../components/Title";
 import { Link, useParams } from "react-router-dom";
-import { Spin, Tooltip, Typography } from "antd";
+import { Spin, Tag } from "antd";
 import axiosInstance from "../utils/axiosInstance";
 
 const OrderDetails = () => {
@@ -102,6 +101,27 @@ const OrderDetails = () => {
                     ></p>
                   </div>
                 </div>
+              </div>
+              <div>
+                <Tag
+                  color={
+                    item?.status === "waiting"
+                      ? "orange"
+                      : item?.status === "processing"
+                      ? "blue"
+                      : item?.status === "shipping"
+                      ? "yellow"
+                      : item?.status === "successful"
+                      ? "success"
+                      : "orange"
+                  }
+                  className="text-sm px-3 py-1 rounded-sm"
+                >
+                  {item?.status
+                    ? item?.status.charAt(0).toUpperCase() +
+                      item?.status.slice(1)
+                    : "waiting"}
+                </Tag>
               </div>
             </div>
           ))}
