@@ -112,7 +112,7 @@ const ListProduct = () => {
                         {item.colors.map((c, index) => (
                           <p
                             className="px-2 sm:px-3 sm:py-1 h-10 w-10 border bg-slate-50"
-                            style={{ backgroundColor: c.color_template }}
+                            style={{ backgroundColor: c.color_name }}
                             key={index}
                           ></p>
                         ))}
