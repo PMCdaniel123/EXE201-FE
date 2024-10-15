@@ -135,6 +135,16 @@ const Product = () => {
           </div>
 
           <div className="flex-1">
+            {product?.sale && (
+              <div className="mb-6 mt-2">
+                <span className="text-white top-2 left-2 py-3 px-5 text-sm bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-lg">
+                  {Number(product?.sale)
+                    ? Number(product?.sale).toFixed(0)
+                    : "0"}
+                  % OFF
+                </span>
+              </div>
+            )}
             <h1 className="font-medium text-3xl mt-2">
               {product?.product_name}
             </h1>
@@ -156,10 +166,28 @@ const Product = () => {
               />
               <p>{product?.designer.full_name}</p>
             </Link>
-            <p className="mt-5 text-3xl font-medium">
-              {currency}
-              {product?.price}
-            </p>
+            {product?.sale ? (
+              <div className="flex items-center gap-2 px-2 pb-2 mt-5">
+                <span className=" text-3xl font-medium text-black">
+                  {currency}
+                  {product?.price}
+                </span>
+                <span className="text-xl text-gray-400 line-through decoration-[#FF0909]">
+                  {currency}
+                  {(
+                    product?.price *
+                    ((100 + Number(product?.sale)) / 100)
+                  ).toFixed(2)}
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 px-2 pb-2 mt-5">
+                <span className=" text-3xl font-medium text-black">
+                  {currency}
+                  {product?.price}
+                </span>
+              </div>
+            )}
             <p className="mt-5 text-gray-500 md:w-4/5">
               {product?.description}
             </p>

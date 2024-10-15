@@ -8,7 +8,7 @@ const Footer = () => {
   const { navigate } = useContext(ShopContext);
   return (
     <div className="mt-20">
-      <div className="flex flex-col gap-4 p-8 border border-gray-400">
+      <div className="flex flex-col gap-4 p-4 md:p-8 border border-gray-400">
         <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-0">
           <div className="flex flex-col lg:w-1/3 gap-6 py-4 lg:px-4">
             <div className="flex items-center gap-3">
@@ -27,7 +27,7 @@ const Footer = () => {
               <span className="font-medium text-base text-[#1c1c26]">
                 EXCLUSIVE BENEFITS
               </span>
-              <div className="w-2/3 lg:w-full flex items-center gap-4 bg-white border border-solid border-[#e2e3e4]">
+              <div className="md:w-2/3 lg:w-full flex items-center gap-4 bg-white border border-solid border-[#e2e3e4]">
                 <input
                   placeholder="Email address"
                   className="w-full px-6 py-3 bg-transparent text-[#1c1c26] text-base focus:outline-none"

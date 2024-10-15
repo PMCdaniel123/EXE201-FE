@@ -38,10 +38,15 @@ a.active {
     font-style: normal;
 }
 
-@media (max-width:640px) {
+@media (max-width:600px) {
     a.active {
-        background-color: black;
-        color: white;
+        font-weight: 600;
+        scale: 1;
+        background: linear-gradient(to bottom right, #4A5942, #9d905a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
     }
 }
 

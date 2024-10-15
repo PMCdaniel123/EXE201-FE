@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import Premium from "../components/Premium";
 import Title from "../components/Title";
 import { ShopContext } from "../context/ShopContext";
 import { Spin } from "antd";
 import { assets } from "../assets/assets";
+import { Canvas } from "@react-three/fiber";
+import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { Hailry } from "../../public/Model3d";
 
 const Profile = () => {
   const { userInfo, role, loading } = useContext(ShopContext);
@@ -58,6 +61,30 @@ const Profile = () => {
             <p className="text-gray-800">Gender: {userInfo.gender}</p>
           </div>
         </div>
+      </div>
+
+      <div className="my-20">
+        <div className="text-center text-3xl p-10">
+          <Title text1={"DIGITAL"} text2={"YOU"} />
+        </div>
+
+        <Canvas camera={{ near: 0.01, far: 1000 }}>
+          <ambientLight />
+          <OrbitControls />
+          <Suspense fallback={null}>
+            <Hailry />
+          </Suspense>
+          <Environment preset="sunset" />
+          <ContactShadows
+            position={[0, -2.5, 0]}
+            opacity={0.5}
+            scale={50}
+            blur={1}
+            far={10}
+            resolution={256}
+            color="#000000"
+          />
+        </Canvas>
       </div>
 
       <div className="text-center mb-10">

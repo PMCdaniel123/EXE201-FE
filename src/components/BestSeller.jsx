@@ -10,14 +10,16 @@ const BestSeller = () => {
   const [bestSeller, setBestSeller] = useState([]);
 
   useEffect(() => {
-    setBestSeller(products.slice(0, 10));
+    setBestSeller(
+      products.filter((item) => item.is_bestSeller === 1).slice(0, 5)
+    );
   }, [products]);
 
   return loading ? (
     <Spin />
   ) : (
     <div className="my-10">
-      <div className="text-center md:text-4xl lg:text-6xl py-10">
+      <div className="text-center text-2xl md:text-4xl lg:text-6xl py-10">
         <Title text1={"BEST"} text2={"SELLER"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam,
@@ -35,13 +37,14 @@ const BestSeller = () => {
             image={item.images}
             name={item.product_name}
             price={item.price}
+            sale={item.sale}
           />
         ))}
       </div>
 
       <div className="text-center mt-8">
         <Link to="/collection">
-          <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+          <button className="max-sm:w-full bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
             SEE MORE
           </button>
         </Link>

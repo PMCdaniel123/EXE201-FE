@@ -28,12 +28,12 @@ const slides = [
 const PicksSlider = () => {
   return (
     <div className="flex flex-col items-center p-8 my-10">
-      <div className="text-center py-8 md:text-4xl lg:text-6xl">
+      <div className="text-center py-8 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"SUNSET'S"} text2={"PICKS"} />
       </div>
 
       <div className="flex items-center justify-center w-full">
-        <Carousel autoplay className="w-96 md:w-[76vw]">
+        <Carousel autoplay className="w-[76vw]">
           {slides.map((slide, index) => (
             <div key={index} className="w-full text-center relative">
               <div className="w-full h-[300px] lg:h-[500px] overflow-hidden shadow-lg">

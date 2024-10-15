@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { DeleteOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
@@ -16,6 +16,7 @@ const BlogItem = ({
   onDelete,
 }) => {
   const userId = Cookies.get("userID");
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
@@ -28,7 +29,10 @@ const BlogItem = ({
   };
 
   return (
-    <div className=" bg-white border hover:scale-105 hover:shadow-xl relative">
+    <div
+      className=" bg-white border hover:scale-105 hover:shadow-xl relative cursor-pointer"
+      onClick={() => navigate(`/sunblog/${id}`)}
+    >
       {author === Number(userId) && (
         <div
           className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-10 cursor-pointer"
