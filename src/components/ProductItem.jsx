@@ -20,7 +20,7 @@ const ProductItem = ({ id, image, name, price }) => {
           20% OFF
         </div>
       </div>
-      <p className="pt-3 pb-1 text-sm px-2">{name}</p>
+      <p className="pt-3 pb-1 text-sm px-2 truncate" title={name}>{name}</p>
       <div className="flex items-center gap-2 px-2 pb-2">
         <span className="text-base font-bold text-black">
           {currency}

@@ -11,8 +11,6 @@ const DesignerOrders = () => {
   const [ordersList, setOrdersList] = useState([]);
   const [editableRowKey, setEditableRowKey] = useState(null);
 
-  console.log(ordersList);
-
   const handleStatusChange = async (orderId, newStatus) => {
     const updatedData = ordersList.map((order) =>
       order.order_detail_id === Number(orderId)

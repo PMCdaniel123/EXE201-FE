@@ -1,4 +1,5 @@
 import { Color } from "@tiptap/extension-color";
+import HardBreak from "@tiptap/extension-hard-break";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
@@ -238,6 +239,9 @@ const extensions = [
       keepMarks: true,
       keepAttributes: false,
     },
+  }),
+  HardBreak.configure({
+    keepMarks: false,
   }),
 ];
 

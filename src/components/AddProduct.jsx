@@ -42,7 +42,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-[60%] flex flex-col items-center">
+    <div className="w-full lg:w-[60%] flex flex-col items-center">
       <Steps current={current} items={items} />
       <div
         style={contentStyle}

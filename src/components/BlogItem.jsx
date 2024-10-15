@@ -5,7 +5,16 @@ import { DeleteOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
 import axiosInstance from "../utils/axiosInstance";
 
-const BlogItem = ({ title, image, date, category, id, author, onDelete }) => {
+const BlogItem = ({
+  title,
+  image,
+  date,
+  category,
+  id,
+  author,
+  authorName,
+  onDelete,
+}) => {
   const userId = Cookies.get("userID");
 
   const handleDelete = async () => {
@@ -39,9 +48,20 @@ const BlogItem = ({ title, image, date, category, id, author, onDelete }) => {
         {category}
       </p>
       <div className="p-5">
-        <h5 className="mb-2 text-lg font-medium tracking-tight text-black">
+        <h5
+          className="mb-2 text-lg font-medium tracking-tight text-black truncate"
+          title={title}
+        >
           {title}
         </h5>
+        <div className="flex items-center gap-2 mb-2 cursor-pointer">
+          <img
+            src={assets.default_blog_image}
+            alt="avatar"
+            className="w-8 h-8 rounded-full"
+          />
+          <p>{authorName}</p>
+        </div>
         <p className="mb-3 text-sm tracking-tight text-gray-700">
           {new Date(date).toLocaleString("en-GB", {
             day: "2-digit",

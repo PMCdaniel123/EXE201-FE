@@ -21,8 +21,14 @@ const ShopContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const getProducts = async () => {
+    setLoading(true);
     const { data } = await axiosInstance.get("/products");
-    setProducts(data);
+    const sortedProducts = data.sort(
+      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    );
+
+    setProducts(sortedProducts);
+    setLoading(false);
   };
 
   useEffect(() => {

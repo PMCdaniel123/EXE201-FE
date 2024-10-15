@@ -16,14 +16,14 @@ const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText, image }) => {
         </div>
 
         <div className="relative flex w-full mx-auto">
-          <div className="flex flex-col w-3/5 mr-12 p-12">
-            <h1 className="text-6xl text-white font-extrabold uppercase w-4/5">
+          <div className="flex flex-col w-3/5 lg:mr-12 p-12">
+            <h1 className="text-base md:text-4xl lg:text-6xl text-white font-extrabold uppercase lg:w-4/5">
               {title1}
             </h1>
             <p className="mt-2 text-sm text-[#8F8F8F] uppercase">{subTitle1}</p>
           </div>
 
-          <div className="absolute bottom-0 right-12 bg-white px-6 pt-4 pb-4 flex flex-col w-[360px]">
+          <div className="lg:absolute lg:bottom-0 lg:right-12 bg-white px-6 pt-4 pb-4 flex flex-col w-[360px]">
             <div className="flex items-center justify-between w-full mb-6">
               <h2 className="text-base font-extrabold">{title2}</h2>
             </div>

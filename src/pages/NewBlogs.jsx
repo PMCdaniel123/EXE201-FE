@@ -6,6 +6,7 @@ import axiosInstance from "../utils/axiosInstance";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import parse from "html-react-parser";
 
 const NewBlogs = () => {
   const [content, setContent] = useState("");
@@ -130,6 +131,8 @@ const NewBlogs = () => {
           <TipTap content={content} setContent={setContent} />
         </div>
 
+        <p className="text-gray-400 italic">Shift + Enter for new line</p>
+
         <button
           type="submit"
           className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-base py-3 rounded-lg"
@@ -137,6 +140,8 @@ const NewBlogs = () => {
           Submit
         </button>
       </form>
+
+      <div className="mt-20 news-content">{parse(content)}</div>
     </div>
   );
 };

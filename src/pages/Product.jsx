@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import RelatedProducts from "../components/RelatedProducts";
 import { Image, Spin } from "antd";
@@ -7,14 +7,25 @@ import useGetProductByID from "../hooks/useGetProductByID";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import { assets } from "../assets/assets";
+import { useForm } from "react-hook-form";
 
 const Product = () => {
   const { productId } = useParams();
   const { data: product } = useGetProductByID(productId);
-  const { currency, role, userInfo, setCart } = useContext(ShopContext);
+  const { currency, userInfo, setCart } = useContext(ShopContext);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [image, setImage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading1, setIsLoading1] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (product && product.images && product.images.length > 0) {
@@ -25,7 +36,7 @@ const Product = () => {
   if (!product || Object.keys(product).length === 0) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Spin size="large" />
+        <Spin />
       </div>
     );
   }
@@ -41,6 +52,8 @@ const Product = () => {
         toast.error("Please select a color");
         return;
       }
+
+      setIsLoading(true);
       const response = await axiosInstance.post("/carts", {
         user_id: userInfo.id,
         product_id: productId,
@@ -50,35 +63,74 @@ const Product = () => {
       });
 
       setCart((prevCart) => [...prevCart, response.data]);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+      setIsLoading(false);
+    }
+  };
+
+  const handleCreate3D = async (data) => {
+    const submittedData = {
+      bust: Number(data.bust),
+      waist: Number(data.waist),
+      hips: Number(data.hips),
+      weight: Number(data.weight),
+      height: Number(data.height),
+      user_id: userInfo.id + "",
+      product_id: productId,
+    };
+    try {
+      setIsLoading1(true);
+      await axiosInstance.post("/model-3d", submittedData);
+      setIsLoading1(false);
+      reset();
+      toast.success(
+        "3D model created successfully. Please check your email after 24 hours"
+      );
+    } catch (error) {
+      console.log(error);
+      setIsLoading1(false);
     }
   };
 
   return (
     <div className="border-t border-gray-400 pt-10">
       <div className=" transition-opacity ease-in duration-500 opacity-100">
-        <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
-          <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
-            <div className="flex sm:flex-col sm:h-[640px] overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18%] w-full">
+        <div className="flex gap-12 sm:gap-12 flex-col lg:flex-row">
+          <div className="flex-1 flex flex-col-reverse gap-3 lg:flex-row">
+            <div className="flex flex-row lg:flex-col lg:h-[640px] overflow-x-scroll lg:overflow-x-auto lg:overflow-y-scroll justify-between lg:justify-normal">
               {product?.images.map((item, index) => (
                 <img
                   src={item.image_url}
                   key={index}
                   alt={product.product_name}
-                  className="w-[24%] sm:w-full h-32 sm:mb-3 flex-shrink-0 cursor-pointer"
+                  className="lg:w-full md:h-40 lg:h-32 sm:mb-3 flex-shrink-0 cursor-pointer"
                   onClick={() => setImage(item.image_url)}
                 />
               ))}
             </div>
-            <div className="w-full sm:w-[80%]">
+            <div className="w-full lg:w-[80%]">
               <Image
                 width={"100%"}
                 height={640}
                 src={image}
                 className="object-cover"
               />
+              {userInfo && (
+                <button
+                  className={`${
+                    !userInfo
+                      ? "bg-gray-400"
+                      : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                  } text-white px-8 py-3 text-xl mt-2 w-full`}
+                  onClick={() => setShowModal(!showModal)}
+                  disabled={!userInfo}
+                >
+                  CREATE 3D MODEL
+                </button>
+              )}
             </div>
           </div>
 
@@ -92,8 +144,18 @@ const Product = () => {
               <img src={assets.star_icon} alt="" className="w-3" />
               <img src={assets.star_icon} alt="" className="w-3" />
               <img src={assets.star_dull_icon} alt="" className="w-3" />
-              <p className="pl-2">(122)</p>
             </div>
+            <Link
+              to={`/designer-info/${product?.designer.id}`}
+              className="flex items-center gap-2 mt-5 cursor-pointer"
+            >
+              <img
+                src={assets.default_blog_image}
+                alt="avatar"
+                className="w-8 h-8 rounded-full"
+              />
+              <p>{product?.designer.full_name}</p>
+            </Link>
             <p className="mt-5 text-3xl font-medium">
               {currency}
               {product?.price}
@@ -134,17 +196,21 @@ const Product = () => {
                 ))}
               </div>
             </div>
-            <button
-              className={`${
-                !userInfo
-                  ? "bg-gray-400"
-                  : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
-              } text-white px-8 py-3 text-sm `}
-              onClick={handleAddToCart}
-              disabled={!userInfo}
-            >
-              ADD TO CART
-            </button>
+            {isLoading ? (
+              <Spin />
+            ) : (
+              <button
+                className={`${
+                  !userInfo
+                    ? "bg-gray-400"
+                    : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                } text-white px-8 py-3 text-sm `}
+                onClick={handleAddToCart}
+                disabled={!userInfo}
+              >
+                ADD TO CART
+              </button>
+            )}
 
             <hr className="mt-14 sm:w-4/5 bg-gray-400 h-[2px]" />
 
@@ -155,6 +221,168 @@ const Product = () => {
             </div>
           </div>
         </div>
+
+        {showModal && (
+          <div className="max-w-md mx-auto mt-20 p-6 bg-inherit shadow-lg rounded-md">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-center">
+                Enter Your Measurements
+              </h2>
+              <form
+                onSubmit={handleSubmit(handleCreate3D)}
+                className="space-y-6"
+              >
+                <div>
+                  <label
+                    htmlFor="bust"
+                    className="block text-sm font-medium text-gray-600"
+                  >
+                    Bust (cm)
+                  </label>
+                  <input
+                    id="bust"
+                    type="number"
+                    {...register("bust", {
+                      required: "Bust is required",
+                      min: {
+                        value: 0,
+                        message: "Bust measurement must be at least 0 cm",
+                      },
+                    })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    placeholder="Bust"
+                  />
+                  {errors.bust && (
+                    <span className="text-red-500 text-sm">
+                      {errors.bust.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="waist"
+                    className="block text-sm font-medium text-gray-600"
+                  >
+                    Waist (cm)
+                  </label>
+                  <input
+                    id="waist"
+                    type="number"
+                    {...register("waist", {
+                      required: "Waist is required",
+                      min: {
+                        value: 0,
+                        message: "Waist measurement must be at least 0 cm",
+                      },
+                    })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    placeholder="Waist"
+                  />
+                  {errors.waist && (
+                    <span className="text-red-500 text-sm">
+                      {errors.waist.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="hips"
+                    className="block text-sm font-medium text-gray-600"
+                  >
+                    Hips (cm)
+                  </label>
+                  <input
+                    id="hips"
+                    type="number"
+                    {...register("hips", {
+                      required: "Hips are required",
+                      min: {
+                        value: 0,
+                        message: "Hips measurement must be at least 0 cm",
+                      },
+                    })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    placeholder="Hips"
+                  />
+                  {errors.hips && (
+                    <span className="text-red-500 text-sm">
+                      {errors.hips.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="weight"
+                    className="block text-sm font-medium text-gray-600"
+                  >
+                    Weight (kg)
+                  </label>
+                  <input
+                    id="weight"
+                    type="number"
+                    {...register("weight", {
+                      required: "Weight is required",
+                      min: {
+                        value: 0,
+                        message: "Weight measurement must be at least 0 cm",
+                      },
+                    })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    placeholder="Weight"
+                  />
+                  {errors.weight && (
+                    <span className="text-red-500 text-sm">
+                      {errors.weight.message}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="height"
+                    className="block text-sm font-medium text-gray-600"
+                  >
+                    Height (cm)
+                  </label>
+                  <input
+                    id="height"
+                    type="number"
+                    {...register("height", {
+                      required: "Height is required",
+                      min: {
+                        value: 0,
+                        message: "Height measurement must be at least 0 cm",
+                      },
+                    })}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                    placeholder="Height"
+                  />
+                  {errors.height && (
+                    <span className="text-red-500 text-sm">
+                      {errors.height.message}
+                    </span>
+                  )}
+                </div>
+
+                {isLoading1 ? (
+                  <Spin />
+                ) : (
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="w-full py-2 px-4 bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-semibold rounded-md"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
+        )}
 
         <div className="mt-20">
           <div className="flex">

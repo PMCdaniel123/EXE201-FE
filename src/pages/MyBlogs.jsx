@@ -53,6 +53,7 @@ const MyBlogs = () => {
                 date={item.created_at}
                 category={item.category}
                 author={item.author.id}
+                authorName={item.author.name}
                 onDelete={handleDeleteBlog}
               />
             );

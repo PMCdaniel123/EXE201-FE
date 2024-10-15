@@ -3,18 +3,21 @@ import { ShopContext } from "../context/ShopContext";
 import Title from "./Title";
 import ProductItem from "./ProductItem";
 import { Link } from "react-router-dom";
+import { Spin } from "antd";
 
 const BestSeller = () => {
-  const { products } = useContext(ShopContext);
+  const { products, loading } = useContext(ShopContext);
   const [bestSeller, setBestSeller] = useState([]);
 
   useEffect(() => {
     setBestSeller(products.slice(0, 10));
   }, [products]);
 
-  return (
+  return loading ? (
+    <Spin />
+  ) : (
     <div className="my-10">
-      <div className="text-center text-6xl py-10">
+      <div className="text-center md:text-4xl lg:text-6xl py-10">
         <Title text1={"BEST"} text2={"SELLER"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam,
@@ -24,7 +27,7 @@ const BestSeller = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6">
         {bestSeller.map((item, index) => (
           <ProductItem
             key={index}

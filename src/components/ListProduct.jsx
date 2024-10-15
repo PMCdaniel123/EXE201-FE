@@ -11,8 +11,6 @@ const ListProduct = () => {
   const [isUpdated, setIsUpdated] = useState("");
   const [loading, setLoading] = useState(false);
 
-  console.log(myProducts);
-
   const {
     register,
     handleSubmit,
@@ -128,16 +126,16 @@ const ListProduct = () => {
                   <div className="flex gap-4">
                     <button
                       className="border border-gray-400 px-4 py-2 text-sm font-medium rounded-sm hover:bg-green-500 hover:text-white transition-all ease-in-out"
-                      onClick={() => {
-                        setIsUpdated(item.id === isUpdated ? "" : item.id);
-                        reset();
-                      }}
+                      // onClick={() => {
+                      //   setIsUpdated(item.id === isUpdated ? "" : item.id);
+                      //   reset();
+                      // }}
                     >
                       Update
                     </button>
                     <button
                       className="border border-gray-400 px-4 py-2 text-sm font-medium rounded-sm hover:bg-red-500 hover:text-white transition-all ease-in-out"
-                      onClick={() => deleteProduct(item.id)}
+                      // onClick={() => deleteProduct(item.id)}
                     >
                       Delete
                     </button>

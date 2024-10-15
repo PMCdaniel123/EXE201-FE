@@ -27,6 +27,7 @@ import OrdersSuccessful from "./pages/OrdersSuccessful";
 import OrderDetails from "./pages/OrderDetails";
 import NewBlogs from "./pages/NewBlogs";
 import MyBlogs from "./pages/MyBlogs";
+import DesignerInfo from "./pages/DesignerInfo";
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/collection" element={<Collection />} />
+            <Route path="/designer-info/:designerId" element={<DesignerInfo />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/product/:productId" element={<Product />} />

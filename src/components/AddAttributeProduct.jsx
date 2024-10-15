@@ -135,7 +135,7 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
       <div className="w-full flex flex-col sm:flex-row items-center">
         <label className="w-full sm:w-1/3 mb-2 sm:mb-0">Sizes</label>
         <div className="w-full py-2 flex items-center justify-between">
-          {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
+          {["S", "M", "L", "XL", "2XL", "3XL"].map((size) => (
             <div
               key={size}
               className="flex items-center justify-center gap-1 sm:gap-2"

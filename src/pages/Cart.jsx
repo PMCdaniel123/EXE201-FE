@@ -22,8 +22,6 @@ const Cart = () => {
     );
   };
 
-  console.log(cart);
-
   const fetchProductInfo = async () => {
     try {
       if (cart.length === 0) return;
@@ -61,13 +59,13 @@ const Cart = () => {
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
 
-      <div className="flex flex-col sm:flex-row items-start justify-between gap-20">
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-20">
         {cartData.length === 0 ? (
-          <div className="w-2/3">
+          <div className="w-full lg:w-2/3">
             <p className="text-gray-500 text-center">Your cart is empty.</p>
           </div>
         ) : (
-          <div className="w-2/3">
+          <div className="w-full lg:w-2/3">
             {cartData.map((item, index) => (
               <div
                 key={index}
@@ -112,7 +110,7 @@ const Cart = () => {
           </div>
         )}
 
-        <div className="flex justify-end my-20 w-1/3">
+        <div className="flex justify-end mb-20 lg:mt-20 w-full lg:w-1/3">
           <div className="w-full sm:w-[450px]">
             <CartTotal items={cartData} />
             <div className="w-full text-end">

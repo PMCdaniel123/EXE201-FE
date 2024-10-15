@@ -1,12 +1,9 @@
-import { Suspense, useContext } from "react";
+import { useContext } from "react";
 import Premium from "../components/Premium";
 import Title from "../components/Title";
 import { ShopContext } from "../context/ShopContext";
 import { Spin } from "antd";
 import { assets } from "../assets/assets";
-import { Canvas } from "@react-three/fiber";
-import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-import { Hailry } from "../../public/Model3d";
 
 const Profile = () => {
   const { userInfo, role, loading } = useContext(ShopContext);
@@ -33,15 +30,15 @@ const Profile = () => {
         <Title text1={"MY"} text2={"PROFILE"} />
       </div>
 
-      <div className="my-10 flex flex-col md:flex-row justify-center items-center gap-10 mb-20">
-        <div className="w-1/2 flex justify-center">
+      <div className="my-10 flex flex-col lg:flex-row justify-center items-center gap-10 mb-20">
+        <div className="w-full lg:w-1/2 flex justify-center">
           <img
-            src={assets.contact_img}
+            src={assets.default_blog_image}
             alt=""
-            className="w-full md:max-w-[480px]"
+            className="w-full lg:max-w-[500px] md:h-[450px] object-cover shadow-lg"
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-1/2 gap-10">
+        <div className="flex flex-col justify-center items-center w-full lg:w-1/2 gap-10">
           {role === "Designer" && (
             <div className="w-full flex flex-col justify-center items-start gap-6 p-8 border border-gray-400">
               <p className="font-semibold text-xl text-gray-600">
@@ -59,51 +56,8 @@ const Profile = () => {
             <p className="text-gray-800">Tel: {userInfo.phone}</p>
             <p className="text-gray-800">Email: {userInfo.email}</p>
             <p className="text-gray-800">Gender: {userInfo.gender}</p>
-            <div className="flex items-center justify-between mt-6 gap-4 w-full">
-              <div className="flex items-center justify-center gap-4">
-                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                  Weight
-                </p>
-                <p className="text-gray-800">50kg</p>
-              </div>
-              <div className="flex items-center justify-center gap-4">
-                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                  Height
-                </p>
-                <p className="text-gray-800">1.7m</p>
-              </div>
-              <div className="flex items-center justify-center gap-4">
-                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-6 py-3">
-                  IDK
-                </p>
-                <p className="text-gray-800">...</p>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-
-      <div className="my-20">
-        <div className="text-center text-3xl p-10">
-          <Title text1={"DIGITAL"} text2={"YOU"} />
-        </div>
-        <Canvas camera={{ near: 0.01, far: 1000 }}>
-          <ambientLight />
-          <OrbitControls />
-          <Suspense fallback={null}>
-            <Hailry />
-          </Suspense>
-          <Environment preset="sunset" />
-          <ContactShadows
-            position={[0, -2.5, 0]}
-            opacity={0.5}
-            scale={50}
-            blur={1}
-            far={10}
-            resolution={256}
-            color="#000000"
-          />
-        </Canvas>
       </div>
 
       <div className="text-center mb-10">
@@ -148,7 +102,7 @@ const Profile = () => {
               assumenda dignissimos voluptas, vero facilis eos in pariatur
               excepturi unde optio velit. Delectus!
             </p>
-            <div className="mt-6 flex justify-center gap-8">
+            <div className="mt-6 flex flex-wrap justify-center gap-8">
               <Premium type={"Basic"} price={"270,000"} time={"3"} />
               <Premium type={"Basic"} price={"500,000"} time={"6"} />
               <Premium type={"Basic"} price={"750,000"} time={"9"} />
@@ -165,7 +119,7 @@ const Profile = () => {
               assumenda dignissimos voluptas, vero facilis eos in pariatur
               excepturi unde optio velit. Delectus!
             </p>
-            <div className="mt-6 flex justify-center gap-8">
+            <div className="mt-6 flex flex-wrap justify-center gap-8">
               <Premium type={"Premium"} price={"500,000"} time={"3"} />
               <Premium type={"Premium"} price={"900,000"} time={"6"} />
               <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
