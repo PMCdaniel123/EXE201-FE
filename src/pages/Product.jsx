@@ -100,18 +100,18 @@ const Product = () => {
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col-reverse gap-3 lg:flex-row">
-            <div className="flex flex-row lg:flex-col lg:h-[640px] overflow-x-scroll lg:overflow-x-auto lg:overflow-y-scroll justify-between lg:justify-normal">
+            <div className="flex flex-row lg:flex-col lg:w-1/5 lg:h-[640px] overflow-x-scroll lg:overflow-x-auto lg:overflow-y-scroll justify-between lg:justify-normal">
               {product?.images.map((item, index) => (
                 <img
                   src={item.image_url}
                   key={index}
                   alt={product.product_name}
-                  className="lg:w-full md:h-40 lg:h-32 sm:mb-3 flex-shrink-0 cursor-pointer"
+                  className="lg:w-[100%] md:h-40 lg:h-32 sm:mb-3 flex-shrink-0 cursor-pointer object-cover"
                   onClick={() => setImage(item.image_url)}
                 />
               ))}
             </div>
-            <div className="w-full lg:w-[80%]">
+            <div className="w-full lg:w-4/5">
               <Image
                 width={"100%"}
                 height={640}

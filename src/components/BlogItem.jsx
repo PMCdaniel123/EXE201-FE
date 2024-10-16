@@ -29,13 +29,10 @@ const BlogItem = ({
   };
 
   return (
-    <div
-      className=" bg-white border hover:scale-105 hover:shadow-xl relative cursor-pointer"
-      onClick={() => navigate(`/sunblog/${id}`)}
-    >
+    <div className=" bg-white border hover:scale-105 hover:shadow-xl relative">
       {author === Number(userId) && (
         <div
-          className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-10 cursor-pointer"
+          className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-50 cursor-pointer"
           onClick={handleDelete}
         >
           <DeleteOutlined />
@@ -48,13 +45,14 @@ const BlogItem = ({
           className="w-full h-64 border-b cursor-pointer object-cover"
         />
       </Link>
-      <p className="ml-5 mt-5 p-1 inline-block bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm">
+      <p className="ml-5 mt-5 p-2 inline-block bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm">
         {category}
       </p>
       <div className="p-5">
         <h5
-          className="mb-2 text-lg font-medium tracking-tight text-black truncate"
+          className="mb-2 text-lg font-medium tracking-tight text-black truncate cursor-pointer"
           title={title}
+          onClick={() => navigate(`/sunblog/${id}`)}
         >
           {title}
         </h5>

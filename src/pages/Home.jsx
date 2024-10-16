@@ -12,9 +12,43 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <video
+        src="/EXE101_USP.mp4"
+        autoPlay
+        loop
+        muted
+        className="w-full mt-40 mb-20"
+      ></video>
       <PicksSlider />
       <Trending />
       <FeatureCollections />
+      <div className="my-20 w-full shadow-lg">
+        <iframe
+          src="https://viewer.jig.space/?jig=r7EzdYEG&step=1&sbox=1&autoload=1&autoplay=1&stepdelay=5"
+          width="100%"
+          height="600"
+          allow="fullscreen; xr-spatial-tracking;"
+          allowFullScreen="true"
+          frameBorder="0"
+        ></iframe>
+        <p className="text-center py-6 text-black">
+          <a
+            href="https://link.jig.space/sKzdWpYMNJb?utm_medium=embed&utm_campaign=sharing"
+            target="_blank"
+            style={{ color: "#304de4" }}
+          >
+            Fashion in augmented reality
+          </a>{" "}
+          powered by{" "}
+          <a
+            href="https://www.jig.space?utm_medium=embed&utm_campaign=sharing&utm_content=r7EzdYEG"
+            target="_blank"
+            style={{ color: "#304de4" }}
+          >
+            JigSpace
+          </a>
+        </p>
+      </div>
       <LatestCollection />
       <BestSeller />
       <OurPolicy />

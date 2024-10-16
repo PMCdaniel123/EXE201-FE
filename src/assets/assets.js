@@ -31,6 +31,7 @@ import bg_6 from "/frontend_assets/group6.png";
 import vertical_bg from "/frontend_assets/vertical_bg.jpg";
 import bg_7 from "/frontend_assets/bg_7.png";
 import bg_8 from "/frontend_assets/bg_8.avif";
+import bg_10 from "/frontend_assets/bg_12.png";
 import trend_1 from "/frontend_assets/trend_1.avif";
 import trend_2 from "/frontend_assets/trend_2.avif";
 import trend_3 from "/frontend_assets/trend_3.avif";
@@ -66,6 +67,7 @@ export const assets = {
   bg_6,
   bg_7,
   bg_8,
+  bg_10,
   trend_1,
   trend_2,
   trend_3,
