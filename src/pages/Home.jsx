@@ -12,12 +12,12 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="w-full my-20">
+      {/* <div className="w-full my-20">
         <video autoPlay loop muted width="100%">
           <source src="/EXE101_USP.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      </div>
+      </div> */}
       <PicksSlider />
       <Trending />
       <FeatureCollections />
