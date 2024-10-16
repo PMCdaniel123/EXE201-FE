@@ -12,13 +12,12 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <video
-        src="/EXE101_USP.mp4"
-        autoPlay
-        loop
-        muted
-        className="w-full mt-40 mb-20"
-      ></video>
+      <div className="w-full my-20">
+        <video autoPlay loop muted width="100%">
+          <source src="/EXE101_USP.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <PicksSlider />
       <Trending />
       <FeatureCollections />
@@ -28,7 +27,7 @@ const Home = () => {
           width="100%"
           height="600"
           allow="fullscreen; xr-spatial-tracking;"
-          allowFullScreen="true"
+          allowFullScreen={true}
           frameBorder="0"
         ></iframe>
         <p className="text-center py-6 text-black">
