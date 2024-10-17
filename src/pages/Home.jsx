@@ -12,16 +12,25 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      {/* <div className="w-full my-20">
-        <video autoPlay loop muted width="100%">
-          <source src="/EXE101_USP.mp4" type="video/mp4" />
+      <div className="w-full my-20">
+        <video
+          width="100%"
+          autoPlay
+          loop
+          muted
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729150465/EXE101_USP_etdkud.mp4"
+        >
+          {/* <source
+            src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729150465/EXE101_USP_etdkud.mp4"
+            type="video/mp4"
+          /> */}
           Your browser does not support the video tag.
         </video>
-      </div> */}
+      </div>
       <PicksSlider />
       <Trending />
       <FeatureCollections />
-      <div className="my-20 w-full shadow-lg">
+      {/* <div className="my-20 w-full shadow-lg">
         <iframe
           src="https://viewer.jig.space/?jig=r7EzdYEG&step=1&sbox=1&autoload=1&autoplay=1&stepdelay=5"
           width="100%"
@@ -47,7 +56,7 @@ const Home = () => {
             JigSpace
           </a>
         </p>
-      </div>
+      </div> */}
       <LatestCollection />
       <BestSeller />
       <OurPolicy />
