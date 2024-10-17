@@ -71,11 +71,10 @@ const AddInitialProduct = ({ moveToNextStep }) => {
         <select
           className="w-full px-3 py-3 border border-gray-800 outline-none bg-white bg-opacity-40"
           required
+          defaultValue={"All"}
           {...register("category")}
         >
-          <option value="" disabled>
-            --Choose Category--
-          </option>
+          <option value="All">General</option>
           <option value="Men">Men</option>
           <option value="Women">Women</option>
           <option value="Kids">Kids</option>

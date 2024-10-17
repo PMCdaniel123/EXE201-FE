@@ -118,6 +118,20 @@ const Collection = () => {
             <p className="flex gap-2 items-center">
               <input
                 type="checkbox"
+                value={"All"}
+                className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
+                  ${
+                    category.includes("All")
+                      ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
+                      : "bg-white"
+                  }`}
+                onClick={toggleCategory}
+              />{" "}
+              General
+            </p>
+            <p className="flex gap-2 items-center">
+              <input
+                type="checkbox"
                 value={"Men"}
                 className={`w-4 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors 
                   ${

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { DeleteOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
 import axiosInstance from "../utils/axiosInstance";
+import { Spin } from "antd";
 
 const BlogItem = ({
   title,
@@ -17,12 +18,14 @@ const BlogItem = ({
 }) => {
   const userId = Cookies.get("userID");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
     try {
+      setLoading(true);
       const response = await axiosInstance.delete(`/news/${id}`);
       onDelete(id);
-      console.log(response);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -30,14 +33,17 @@ const BlogItem = ({
 
   return (
     <div className=" bg-white border hover:scale-105 hover:shadow-xl relative">
-      {author === Number(userId) && (
-        <div
-          className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-50 cursor-pointer"
-          onClick={handleDelete}
-        >
-          <DeleteOutlined />
-        </div>
-      )}
+      {author === Number(userId) &&
+        (loading ? (
+          <Spin />
+        ) : (
+          <div
+            className="absolute top-0 right-0 px-3 py-2 text-white bg-red-500 z-50 cursor-pointer"
+            onClick={handleDelete}
+          >
+            <DeleteOutlined />
+          </div>
+        ))}
       <Link to={`/sunblog/${id}`}>
         <img
           src={image !== "null" ? image : assets.default_blog_image}

@@ -47,7 +47,7 @@ const Home = () => {
             </p>
           </div>
           <div className="flex w-1/2 border border-gray-400">
-            <Canvas camera={{ near: 0.01, far: 500 }}>
+            <Canvas camera={{ near: 0.01, far: 50 }}>
               <ambientLight />
               <OrbitControls />
               <Suspense fallback={null}>

@@ -48,7 +48,7 @@ const Premium = ({ type, price, time }) => {
   };
 
   return (
-    <div className="group w-72 h-96 hover:scale-110 hover:bg-[#2D320D] bg-[#D9D9D9] py-6 px-4 flex flex-col justify-between shadow-md">
+    <div className="group w-72 h-[500px] hover:scale-110 hover:bg-[#2D320D] bg-[#D9D9D9] py-6 px-4 flex flex-col justify-between shadow-md">
       <div className="flex flex-col justify-start">
         <div className="items-center gap-2 flex">
           <div className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] rounded-full">
@@ -70,6 +70,43 @@ const Premium = ({ type, price, time }) => {
           for {time} months
         </div>
         <hr className="w-full border-none h-[1px] bg-black group-hover:bg-white" />
+        {type === "Basic" && (
+          <ul className="mt-4 text-start list-disc p-4 flex flex-col gap-6 text-sm">
+            <li className="text-black group-hover:text-white">
+              Upload fashion items
+            </li>
+            <li className="text-black group-hover:text-white">
+              Directly chatting with buyers
+            </li>
+            <li className="text-black group-hover:text-white">
+              Access meta data for managing goods and services
+            </li>
+          </ul>
+        )}
+        {type === "Premium" && (
+          <ul className="mt-4 text-start list-disc p-4 flex flex-col gap-6 text-sm">
+            <li className="text-black group-hover:text-white">
+              All the features from Basic level
+            </li>
+            <li className="text-black group-hover:text-white">
+              Access to giant partner system include suppliers, distributors,
+              shipping chains
+            </li>
+            <li className="text-black group-hover:text-white">
+              Be prioritised to appear on the front page
+            </li>
+          </ul>
+        )}
+        {type === "Customer" && (
+          <ul className="mt-4 text-start list-disc p-4 flex flex-col gap-6 text-sm">
+            <li className="text-black group-hover:text-white">
+              Own customized 3D model with your own face
+            </li>
+            <li className="text-black group-hover:text-white">
+              Prioritise orders in each service usage
+            </li>
+          </ul>
+        )}
       </div>
       {type === "Basic" || type === "Premium" ? (
         <>
