@@ -8,9 +8,18 @@ a.active hr {
     display: block;
 }
 
-a.active {
+.navbar a.active,
+.navbar a:hover {
     font-weight: 600;
     scale: 1.2;
+    background: linear-gradient(to bottom right, #4A5942, #9d905a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.model3D-text {
     background: linear-gradient(to bottom right, #4A5942, #9d905a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -51,8 +60,11 @@ a.active {
 }
 
 canvas {
-    height: 2000px;
+    height: 800px !important;
+    /* width: 400px !important; */
 }
+
+
 
 .editor-container {
     border: 2px solid #d1d5db;

@@ -45,7 +45,7 @@ const Navbar = () => {
         <img src={assets.logo} alt="" className="w-28 lg:w-36" />
       </Link>
 
-      <ul className="hidden md:flex gap-6 lg:gap-16 text-xs lg:text-base text-black">
+      <ul className="hidden md:flex gap-6 lg:gap-16 text-xs lg:text-base text-black navbar">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p className="lg:text-base">HOME</p>
           <hr className="w-3/4 border-none h-[1.8px] bg-gradient-to-br from-[#4A5942] to-[#9d905a] hidden" />
@@ -101,7 +101,7 @@ const Navbar = () => {
               alt=""
               className="w-4 lg:w-5 cursor-pointer"
             />
-            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-30">
+            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-30 navbar">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                 <Link to="/profile">
                   <p className="cursor-pointer hover:text-black flex gap-2">
@@ -144,7 +144,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-50 ${
+        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-50 navbar ${
           visible ? "w-full" : "w-0"
         }`}
       >

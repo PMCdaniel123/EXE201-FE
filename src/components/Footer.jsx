@@ -5,13 +5,16 @@ import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { navigate } = useContext(ShopContext);
+  const { navigate, userInfo } = useContext(ShopContext);
   return (
     <div className="mt-20">
       <div className="flex flex-col gap-4 p-4 md:p-8 border border-gray-400">
         <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-0">
           <div className="flex flex-col lg:w-1/3 gap-6 py-4 lg:px-4">
-            <div className="flex items-center gap-3">
+            <div
+              className="flex items-center gap-3 cursor-pointer"
+              onClick={() => navigate("/")}
+            >
               <div className="rounded-full bg-gradient-to-br from-[#4A5942] to-[#9d905a]">
                 <img
                   src={assets.favicon_white}
@@ -49,12 +52,24 @@ const Footer = () => {
                 SHOP
               </span>
               <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li>Men</li>
-                <li>Women</li>
-                <li>All Collections</li>
-                <li>New Arrivals</li>
-                <li>Collaboration</li>
-                <li>Visit Us</li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() => navigate("/collection")}
+                >
+                  All Collections
+                </li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() => navigate("/sunblog")}
+                >
+                  Our Blogs
+                </li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() => navigate("/about")}
+                >
+                  Visit Us
+                </li>
               </ul>
             </div>
 
@@ -63,10 +78,21 @@ const Footer = () => {
                 EXPLORE
               </span>
               <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li>About Us</li>
-                <li>Track My Order</li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() => navigate("/about")}
+                >
+                  About Us
+                </li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() =>
+                    userInfo ? navigate("/orders") : navigate("/login")
+                  }
+                >
+                  Track My Order
+                </li>
                 <li>Product Care</li>
-                <li>Stories</li>
               </ul>
             </div>
 
@@ -75,11 +101,24 @@ const Footer = () => {
                 MORE
               </span>
               <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li>My Account</li>
-                <li>Shipping Info</li>
-                <li>Size Guide</li>
                 <li
-                  className="cursor-pointer"
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() =>
+                    userInfo ? navigate("/profile") : navigate("/login")
+                  }
+                >
+                  My Account
+                </li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                  onClick={() =>
+                    userInfo ? navigate("/orders") : navigate("/login")
+                  }
+                >
+                  Shipping Info
+                </li>
+                <li
+                  className="cursor-pointer hover:scale-110 transition ease-in-out"
                   onClick={() => navigate("contact")}
                 >
                   Contact
