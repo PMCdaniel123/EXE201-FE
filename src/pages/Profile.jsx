@@ -108,7 +108,7 @@ const Profile = () => {
             <div className="mt-6 flex flex-wrap justify-center gap-8">
               <Premium type={"Basic"} price={"270,000"} time={"3"} />
               <Premium type={"Basic"} price={"500,000"} time={"6"} />
-              <Premium type={"Basic"} price={"750,000"} time={"9"} />
+              {/* <Premium type={"Basic"} price={"750,000"} time={"9"} /> */}
               <Premium type={"Basic"} price={"1,000,000"} time={"12"} />
             </div>
           </div>
@@ -125,7 +125,7 @@ const Profile = () => {
             <div className="mt-6 flex flex-wrap justify-center gap-8">
               <Premium type={"Premium"} price={"500,000"} time={"3"} />
               <Premium type={"Premium"} price={"900,000"} time={"6"} />
-              <Premium type={"Premium"} price={"1,350,000"} time={"9"} />
+              {/* <Premium type={"Premium"} price={"1,350,000"} time={"9"} /> */}
               <Premium type={"Premium"} price={"1,800,000"} time={"12"} />
             </div>
           </div>
