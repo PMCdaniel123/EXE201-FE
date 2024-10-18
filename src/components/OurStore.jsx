@@ -4,7 +4,7 @@ const OurStore = ({ title1, subTitle1, title2, subTitle2, btnText, image }) => {
   const url = "url('/frontend_assets/" + image + "')";
 
   return (
-    <div className="py-10">
+    <div className="py-10 my-10">
       <div className="relative w-full h-[400px] flex items-center justify-center">
         <div
           className="absolute inset-0 bg-[#1c1c26] bg-fixed bg-center"

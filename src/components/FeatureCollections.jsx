@@ -4,7 +4,7 @@ import { assets } from "../assets/assets";
 
 const FeatureCollections = () => {
   return (
-    <div className="my-10">
+    <div className="my-40">
       <div className="flex max-sm:flex-col gap-4 h-fit">
         <div className="flex flex-col gap-4 max-sm:w-full w-1/2">
           <div className="relative overflow-hidden">

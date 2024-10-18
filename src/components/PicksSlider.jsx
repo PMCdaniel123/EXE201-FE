@@ -27,7 +27,7 @@ const slides = [
 
 const PicksSlider = () => {
   return (
-    <div className="flex flex-col items-center p-8 my-10">
+    <div className="flex flex-col items-center p-8 my-20">
       <div className="text-center py-8 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"SUNSET'S"} text2={"PICKS"} />
       </div>

@@ -18,7 +18,7 @@ const BestSeller = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="my-10">
+    <div className="my-40">
       <div className="text-center text-2xl md:text-4xl lg:text-6xl py-10">
         <Title text1={"BEST"} text2={"SELLER"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">

@@ -17,36 +17,68 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="w-full my-20">
+      <div className="w-full my-40 flex flex-col items-center gap-10">
+        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
+          MEET OUR MODELS
+        </p>
         <video
           width="100%"
           autoPlay
           loop
           muted
-          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729150465/EXE101_USP_etdkud.mp4"
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226169/EXE101_USP_-_1_aham5j.mp4"
         >
-          {/* <source
-            src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729150465/EXE101_USP_etdkud.mp4"
-            type="video/mp4"
-          /> */}
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div className="w-full my-40 flex flex-col items-center gap-10">
+        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
+          CHOOSE YOUR WEAR
+        </p>
+        <video
+          width="100%"
+          autoPlay
+          loop
+          muted
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226168/EXE101_USP_-_2_vithyi.mp4"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div className="w-full my-40 flex flex-col items-center gap-10">
+        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
+          USE YOUR OWN FACE
+        </p>
+        <video
+          width="100%"
+          autoPlay
+          loop
+          muted
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226164/EXE101_USP_-_3_qsqviq.mp4"
+        >
           Your browser does not support the video tag.
         </video>
       </div>
 
       <div className="mt-40">
         <div className="flex gap-4 lg:flex-row flex-col justify-between items-center w-full">
-          <div className="flex flex-col gap-4 w-1/2">
-            <p className="font-bold text-gray-800 text-3xl uppercase tracking-wide model3D-text">
+          <div className="flex flex-col gap-10 w-1/2">
+            <p className="font-extrabold text-gray-800 text-4xl uppercase tracking-wide model3D-text">
               Immersive Augmented Reality (AR)
             </p>
-            <p className=" text-gray-600 text-lg">
+            <p className=" text-gray-600 text-sm italic">
               Step into a new dimension of shopping! Our AR feature allows you
               to visualize designs in real-time, bringing every piece to life
               right before your eyes. No more guessing—experience the magic of
               trying on outfits virtually from the comfort of your home.
             </p>
+            <button className="max-sm:w-full bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
+              EXPLORE NOW
+            </button>
           </div>
-          <div className="flex w-1/2 border border-gray-400">
+          <div className="flex w-1/2">
             <Canvas camera={{ near: 0.01, far: 50 }}>
               <ambientLight />
               <OrbitControls />
@@ -71,33 +103,6 @@ const Home = () => {
       <PicksSlider />
       <Trending />
       <FeatureCollections />
-      {/* <div className="my-20 w-full shadow-lg">
-        <iframe
-          src="https://viewer.jig.space/?jig=r7EzdYEG&step=1&sbox=1&autoload=1&autoplay=1&stepdelay=5"
-          width="100%"
-          height="600"
-          allow="fullscreen; xr-spatial-tracking;"
-          allowFullScreen={true}
-          frameBorder="0"
-        ></iframe>
-        <p className="text-center py-6 text-black">
-          <a
-            href="https://link.jig.space/sKzdWpYMNJb?utm_medium=embed&utm_campaign=sharing"
-            target="_blank"
-            style={{ color: "#304de4" }}
-          >
-            Fashion in augmented reality
-          </a>{" "}
-          powered by{" "}
-          <a
-            href="https://www.jig.space?utm_medium=embed&utm_campaign=sharing&utm_content=r7EzdYEG"
-            target="_blank"
-            style={{ color: "#304de4" }}
-          >
-            JigSpace
-          </a>
-        </p>
-      </div> */}
       <LatestCollection />
       <BestSeller />
       <OurPolicy />

@@ -5,7 +5,7 @@ import { assets } from "../assets/assets";
 
 const Trending = () => {
   return (
-    <div className="my-10 mb-20">
+    <div className="my-20 mb-20">
       <div className="text-center py-10 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"SUNSET'S"} text2={"TRENDINGS"} />
       </div>
