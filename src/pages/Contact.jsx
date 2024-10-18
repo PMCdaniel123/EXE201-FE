@@ -4,7 +4,7 @@ import Title from "../components/Title";
 
 const Contact = () => {
   return (
-    <div>
+    <div className="px-10">
       <div className="text-center text-2xl pt-10 border-t border-gray-400">
         <Title text1={"CONTACT"} text2={"US"} />
       </div>

@@ -26,7 +26,7 @@ const Home = () => {
           autoPlay
           loop
           muted
-          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226169/EXE101_USP_-_1_aham5j.mp4"
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729260861/EXE101_USP_-_1_tnt36e.mp4"
         >
           Your browser does not support the video tag.
         </video>
@@ -41,7 +41,7 @@ const Home = () => {
           autoPlay
           loop
           muted
-          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226168/EXE101_USP_-_2_vithyi.mp4"
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729260828/EXE101_USP_-_2_a4bpab.mp4"
         >
           Your browser does not support the video tag.
         </video>
@@ -56,13 +56,13 @@ const Home = () => {
           autoPlay
           loop
           muted
-          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729226164/EXE101_USP_-_3_qsqviq.mp4"
+          src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729260833/EXE101_USP_-_3_gnmsnp.mp4"
         >
           Your browser does not support the video tag.
         </video>
       </div>
 
-      <div className="mt-40">
+      <div className="mt-40 lg:px-10">
         <div className="flex gap-4 lg:flex-row flex-col justify-between items-center w-full">
           <div className="flex flex-col gap-10 w-1/2">
             <p className="font-extrabold text-gray-800 text-4xl uppercase tracking-wide model3D-text">

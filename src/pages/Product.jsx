@@ -63,6 +63,7 @@ const Product = () => {
       });
 
       setCart((prevCart) => [...prevCart, response.data]);
+      toast.success("Product added to cart");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -96,7 +97,7 @@ const Product = () => {
   };
 
   return (
-    <div className="border-t border-gray-400 pt-10">
+    <div className="border-t border-gray-400 pt-10 px-10">
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col-reverse gap-3 lg:flex-row">
@@ -245,7 +246,7 @@ const Product = () => {
             <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
               <p>100% Original Product.</p>
               <p>Cash on delivery is available on this product.</p>
-              <p>Easy return and exchange policy within 7 days.</p>
+              <p>Easy return and exchange policy within 30 days.</p>
             </div>
           </div>
         </div>

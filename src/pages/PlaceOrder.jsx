@@ -10,8 +10,7 @@ import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
-  const { cart, loading, navigate, setOrderId } =
-    useContext(ShopContext);
+  const { cart, loading, navigate, setOrderId } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   const fetchProductInfo = async () => {
@@ -74,7 +73,7 @@ const PlaceOrder = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="flex flex-col sm:flex-row justify-between sm:gap-20 pt-5 sm:pt-14 min-h-[80vh] border-t border-gray-400">
+    <div className="flex flex-col sm:flex-row justify-between sm:gap-20 pt-5 sm:pt-14 min-h-[80vh] border-t border-gray-400 px-10">
       <form
         className="flex flex-col gap-4 w-full sm:w-1/2"
         onSubmit={handleSubmit(handleOrder)}

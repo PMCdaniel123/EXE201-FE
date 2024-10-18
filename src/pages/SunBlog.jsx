@@ -37,11 +37,15 @@ const SunBlog = () => {
 
   return (
     <div className="border-t border-gray-400">
-      <div className="flex justify-center items-center mt-10 w-full relative overflow-hidden">
-        <img src={assets.bg_2} alt="" className="w-full h-96 object-cover" />
+      <div className="flex justify-center items-center w-full relative overflow-hidden">
+        <img
+          src={assets.bg_2}
+          alt=""
+          className="w-full h-[500px] object-cover"
+        />
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
-      <div className="flex justify-between items-center md:flex-row flex-col">
+      <div className="flex justify-between items-center md:flex-row flex-col px-10">
         <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
           <button
             onClick={() => setMenu("all")}
@@ -99,7 +103,7 @@ const SunBlog = () => {
       {loading ? (
         <Spin />
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10 px-10">
           {blogs
             .filter((item) => (menu === "all" ? true : item.category === menu))
             .map((item, index) => {

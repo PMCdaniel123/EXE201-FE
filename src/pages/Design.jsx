@@ -4,7 +4,7 @@ const Design = () => {
   const pathName = useLocation().pathname;
 
   return (
-    <div className="pt-10 border-t border-gray-400">
+    <div className="pt-10 border-t border-gray-400 px-10">
       <div className="flex">
         <Link
           to={""}

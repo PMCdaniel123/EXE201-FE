@@ -39,7 +39,7 @@ const App = () => {
         }}
       >
         <div className="absolute inset-0 mix-blend-plus-darker bg-white opacity-[0.85]"></div>
-        <div className="relative w-full px-10 z-10">
+        <div className="relative w-full z-10">
           <ToastContainer />
           <ScrollToTop />
           <Navbar />

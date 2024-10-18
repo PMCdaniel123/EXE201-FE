@@ -94,7 +94,7 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-gray-400">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 px-10 border-t border-gray-400">
       <div className="min-w-48 lg:min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
@@ -270,7 +270,7 @@ const Collection = () => {
       </div>
 
       <div className="flex-1">
-        <div className="flex justify-between text-base md:text-xl lg:text-2xl mb-5">
+        <div className="flex justify-between text-base md:text-xl lg:text-2xl mb-4">
           <Title text1={"ALL"} text2={"COLLECTIONS"} />
           <select
             onChange={(e) => setSortType(e.target.value)}

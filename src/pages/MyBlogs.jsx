@@ -34,7 +34,7 @@ const MyBlogs = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="border-t border-gray-400 pt-14">
+    <div className="border-t border-gray-400 pt-14 px-10">
       <div className="text-base sm:text-2xl mb-4">
         <Title text1={"MY"} text2={"BLOGS"} />
       </div>

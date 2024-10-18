@@ -15,7 +15,7 @@ const Orders = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="border-t border-gray-400 pt-16">
+    <div className="border-t border-gray-400 pt-16 px-10">
       <div className="text-2xl">
         <Title text1={"MY"} text2={"ORDERS"} />
       </div>

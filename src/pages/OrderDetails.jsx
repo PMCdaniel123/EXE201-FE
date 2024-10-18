@@ -56,7 +56,7 @@ const OrderDetails = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="border-t border-gray-400 pt-4">
+    <div className="border-t border-gray-400 pt-4 px-10">
       <div className="mb-12">
         <Link
           to="/orders"

@@ -5,47 +5,77 @@ import { assets } from "../assets/assets";
 const About = () => {
   return (
     <div>
-      <div className="text-2xl text-center pt-8 border-t border-gray-400">
+      <div className="text-3xl text-center pt-8 border-t border-gray-400">
         <Title text1={"ABOUT"} text2={"US"} />
       </div>
 
-      <div className="my-10 flex flex-col lg:flex-row gap-16">
+      <div className="my-10 flex flex-col lg:flex-row gap-16 px-10">
         <img
-          src={assets.about_img}
+          src={assets.default_blog_image}
           alt=""
-          className="w-full md:max-h-[400px] lg:max-w-[450px] object-cover"
+          className="w-full md:h-full lg:w-2/5 object-cover"
         />
-        <div className="flex flex-col justify-center gap-6 lg:w-1/2 text-gray-600">
+        <div className="flex flex-col justify-center gap-6 lg:w-3/5 text-gray-600">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            deleniti soluta officia sed aspernatur itaque, eos recusandae vitae
-            explicabo quia laborum sunt tenetur consequatur ex, nostrum
-            inventore voluptas. Omnis quisquam harum temporibus, optio quis
-            voluptatibus quidem molestias, doloremque ipsam aperiam in veniam
-            cupiditate esse aut? Dolorum magnam impedit, nemo officiis facere
-            mollitia accusamus iusto asperiores amet.
+            Sunset Soiree’ is a creative playground for trendy fashionistas in
+            the digital age. We promote the value of timeliness, uniqueness and
+            personalization.
           </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            et, cumque inventore animi vel at sunt alias ea. Necessitatibus
-            quasi perspiciatis optio atque veniam tempore vitae beatae
-            temporibus numquam minima.
+            A place where each designer is free to create their own fashion
+            brand. Feel free to share their artistic child with the world.
           </p>
-          <b className="text-gray-800">Our Mission</b>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-            vero, blanditiis dolorem reprehenderit ab nemo modi id dolorum nobis
-            corporis fugiat. Aut cupiditate, vel fugit unde obcaecati molestias
-            sint error.
+            A destination for users who aspire to seek superior perfection,
+            outstanding personality and spiritual harmony through each outfit.
           </p>
         </div>
       </div>
 
-      <div className="text-xl py-4">
+      <div className="flex flex-col gap-4 px-10 mb-10 text-gray-600">
+        <b className="text-gray-800 font-bold text-xl">Mission:</b>
+        <p>
+          Provide a new fashion business model for young designers who want to
+          build a brand with limited resources and a fashion consumption
+          solution for customers who aim for novelty, personality and uniqueness
+          in fashion.
+        </p>
+        <b className="text-gray-800 font-bold text-xl">Vision:</b>
+        <p>
+          Become a familiar and prestigious name in the fashion industry,
+          especially in the Vietnamese market. We wish to expand a versatile
+          ecosystem that provides high-end and in-depth fashion experiences.
+        </p>
+        <b className="text-gray-800 font-bold text-xl">Core value:</b>
+        <div>
+          <p>
+            Bring practical values ​​to promote the true values ​​of fashion,
+            creativity and personalization based on three core development
+            points
+          </p>
+          <ul className="list-disc list-inside mt-4 space-y-2">
+            <li>
+              <span className="text-gray-800 font-bold">Human resources:</span>{" "}
+              Invest in the intelligence and mental health of human resources to
+              enhance their creativity and dedication
+            </li>
+            <li>
+              <span className="text-gray-800 font-bold">Customers:</span> Invest
+              in a high-end and complete customer experience
+            </li>
+            <li>
+              <span className="text-gray-800 font-bold">Service:</span>{" "}
+              Continuously improve and expand unique and convenient features
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="text-3xl py-4 px-10">
         <Title text1={"WHY"} text2={"CHOOSE US"} />
       </div>
 
-      <div className="flex flex-col gap-4 mb-8">
+      <div className="flex flex-col gap-4 mb-8 px-10">
         <p className="font-bold italic text-gray-800">
           "Revolutionizing Fashion: Where Imagination Meets Innovation!"
         </p>
@@ -57,7 +87,7 @@ const About = () => {
       </div>
 
       <div className="flex flex-col lg:grid lg:grid-cols-3 text-sm">
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Immersive Augmented Reality (AR)</b>
           <p className="text-gray-600">
             Step into a new dimension of shopping! Our AR feature allows you to
@@ -66,7 +96,7 @@ const About = () => {
             outfits virtually from the comfort of your home.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Stunning 3D Models</b>
           <p className="text-gray-600">
             Our state-of-the-art 3D modeling transforms your ideas into vibrant,
@@ -75,7 +105,7 @@ const About = () => {
             just informed, but inspired.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Personalized Fit Experience</b>
           <p className="text-gray-600">
             Enjoy a tailor-made experience! With our innovative technology,
@@ -86,7 +116,7 @@ const About = () => {
         </div>
       </div>
       <div className="flex flex-col lg:grid lg:grid-cols-3 text-sm mb-10">
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Seamless User Interface</b>
           <p className="text-gray-600">
             Designed with you in mind, our platform offers an intuitive and
@@ -95,7 +125,7 @@ const About = () => {
             resonate with your personal flair.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Creative Community Connection</b>
           <p className="text-gray-600">
             Join a thriving community of designers and fashion enthusiasts.
@@ -103,7 +133,7 @@ const About = () => {
             network that values creativity and innovation.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 md:px-16 py-8 lg:py-20 flex flex-col gap-5">
+        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Sustainable Fashion Forward</b>
           <p className="text-gray-600">
             We champion sustainable practices, ensuring that your fashion
@@ -114,9 +144,9 @@ const About = () => {
         </div>
       </div>
 
-      <hr className="bg-gray-400 h-[1.6px] mb-4" />
+      <hr className="bg-gray-600 h-[2px] mb-4" />
 
-      <div className="mb-20">
+      <div className="mb-20 px-10">
         <p className="italic text-gray-600 text-sm font-extralight">
           With us, you’re not just shopping; you’re experiencing a revolution in
           fashion. Embrace the future of style with our AR and 3D model

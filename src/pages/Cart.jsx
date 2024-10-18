@@ -9,21 +9,24 @@ import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { currency, navigate, cart, setCart, loading } =
-    useContext(ShopContext);
+  const { currency, navigate, cart, setCart } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async (id) => {
+    setLoading(true);
     const res = await axiosInstance.delete(`/carts/${id}`);
     toast.success(res.message);
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
     setCartData((prevCartData) =>
       prevCartData.filter((item) => item.id !== id)
     );
+    setLoading(false);
   };
 
   const fetchProductInfo = async () => {
     try {
+      setLoading(true);
       if (cart.length === 0) return;
 
       const productReq = cart.map((item) =>
@@ -38,8 +41,10 @@ const Cart = () => {
       }));
 
       setCartData(updatedCart);
+      setLoading(false);
     } catch (error) {
       console.error("Failed to fetch product info:", error);
+      setLoading(false);
     }
   };
 
@@ -49,12 +54,8 @@ const Cart = () => {
     }
   }, [cart, loading]);
 
-  if (loading) {
-    return <Spin />;
-  }
-
   return (
-    <div className="border-t border-gray-400 pt-14">
+    <div className="border-t border-gray-400 pt-14 px-10">
       <div className="text-2xl mb-3">
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
@@ -64,6 +65,8 @@ const Cart = () => {
           <div className="w-full lg:w-2/3">
             <p className="text-gray-500 text-center">Your cart is empty.</p>
           </div>
+        ) : loading ? (
+          <Spin />
         ) : (
           <div className="w-full lg:w-2/3">
             {cartData.map((item, index) => (

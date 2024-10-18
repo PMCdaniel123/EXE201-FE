@@ -27,6 +27,8 @@ const Navbar = () => {
     setCart,
   } = useContext(ShopContext);
 
+  console.log(userInfo);
+
   const handleLogout = () => {
     Cookies.remove("token");
     Cookies.remove("userID");
@@ -40,7 +42,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between py-4 font-medium">
+    <div className="flex items-center justify-between py-4 font-medium px-10">
       <Link to="/">
         <img src={assets.logo} alt="" className="w-28 lg:w-36" />
       </Link>
