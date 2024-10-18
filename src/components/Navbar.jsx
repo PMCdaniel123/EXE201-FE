@@ -27,8 +27,6 @@ const Navbar = () => {
     setCart,
   } = useContext(ShopContext);
 
-  console.log(userInfo);
-
   const handleLogout = () => {
     Cookies.remove("token");
     Cookies.remove("userID");

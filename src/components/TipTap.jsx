@@ -1,6 +1,8 @@
 import { Color } from "@tiptap/extension-color";
 import HardBreak from "@tiptap/extension-hard-break";
+import Image from "@tiptap/extension-image";
 import ListItem from "@tiptap/extension-list-item";
+import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -16,6 +18,10 @@ import {
   FaUndo,
   FaRedo,
   FaTextHeight,
+  FaImage,
+  FaAlignCenter,
+  FaAlignLeft,
+  FaAlignRight,
 } from "react-icons/fa";
 
 const MenuBar = () => {
@@ -24,6 +30,14 @@ const MenuBar = () => {
   if (!editor) {
     return null;
   }
+
+  const addImage = () => {
+    const url = prompt("Enter the image URL");
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  };
 
   return (
     <div className="p-2 bg-gray-200 rounded-lg shadow-md flex space-x-2 mb-4">
@@ -60,13 +74,37 @@ const MenuBar = () => {
         </button>
         <button
           type="button"
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={!editor.can().chain().focus().toggleCode().run()}
+          onClick={addImage}
+          className="p-2 rounded-md hover:bg-gray-300"
+        >
+          <FaImage />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("left").run()}
           className={`p-2 rounded-md hover:bg-gray-300 ${
-            editor.isActive("code") ? "is-active" : ""
+            editor.isActive({ textAlign: "left" }) ? "is-active" : ""
           }`}
         >
-          <FaCode />
+          <FaAlignLeft />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("center").run()}
+          className={`p-2 rounded-md hover:bg-gray-300 ${
+            editor.isActive({ textAlign: "center" }) ? "is-active" : ""
+          }`}
+        >
+          <FaAlignCenter />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("right").run()}
+          className={`p-2 rounded-md hover:bg-gray-300 ${
+            editor.isActive({ textAlign: "right" }) ? "is-active" : ""
+          }`}
+        >
+          <FaAlignRight />
         </button>
         <button
           type="button"
@@ -229,6 +267,10 @@ const MenuBar = () => {
 };
 
 const extensions = [
+  Image,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
   TextStyle.configure({ types: [ListItem.name] }),
   StarterKit.configure({
     bulletList: {

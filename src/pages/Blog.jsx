@@ -100,10 +100,10 @@ const Blog = () => {
 
   return !loading ? (
     <div>
-      <div className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] py-5 px-5 md:px-12 lg:px-28">
+      <div className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] py-5 px-5 md:px-12 lg:px-10">
         <div className="text-center my-24">
           <h1
-            className="text-2xl sm:text-5xl font-semibold max-w-[1200px] mx-auto text-white tracking-wide"
+            className="text-2xl sm:text-4xl font-semibold max-w-[1200px] mx-auto text-white tracking-wide"
             style={{ lineHeight: "1.2" }}
           >
             {blogDetail[0]?.title}

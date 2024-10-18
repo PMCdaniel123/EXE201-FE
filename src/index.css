@@ -189,6 +189,14 @@ canvas {
     margin: 2rem 0;
 }
 
+.tiptap img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+}
+
 /*---------------------------------------------------------------------------------- */
 
 .news-content:first-child {
@@ -288,4 +296,12 @@ canvas {
     border: none;
     border-top: 1px solid rgba(128, 128, 128, 0.4);
     margin: 2rem 0;
+}
+
+.news-content img {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+    display: block;
 }

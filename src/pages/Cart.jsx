@@ -13,6 +13,8 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  console.log(cart);
+
   const handleDelete = async (id) => {
     setLoading(true);
     const res = await axiosInstance.delete(`/carts/${id}`);
@@ -26,7 +28,6 @@ const Cart = () => {
 
   const fetchProductInfo = async () => {
     try {
-      setLoading(true);
       if (cart.length === 0) return;
 
       const productReq = cart.map((item) =>
@@ -41,10 +42,8 @@ const Cart = () => {
       }));
 
       setCartData(updatedCart);
-      setLoading(false);
     } catch (error) {
       console.error("Failed to fetch product info:", error);
-      setLoading(false);
     }
   };
 

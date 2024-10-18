@@ -101,7 +101,7 @@ const SunBlog = () => {
         </div>
       </div>
       {loading ? (
-        <Spin />
+        <Spin className="w-full h-full items-center justify-center" />
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 mb-10 px-10">
           {blogs
