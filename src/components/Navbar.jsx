@@ -39,6 +39,7 @@ const Navbar = () => {
     setRole("");
     navigate("/");
     toast.success("Logout successfully");
+    window.location.reload();
   };
 
   return (

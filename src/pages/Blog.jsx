@@ -219,32 +219,34 @@ const Blog = () => {
               ))
             )}
           </div>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
-          >
-            <textarea
-              {...register("comment", { required: true })}
-              placeholder={`${userInfo?.name}'s comment...`}
-              className="w-full p-2 border border-gray-400 rounded-lg resize-none bg-inherit"
-              rows={4}
-            />
-            {loading1 ? (
-              <Spin />
-            ) : (
-              <button
-                type="submit"
-                className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-4 rounded-lg"
-              >
-                Post Comment
-              </button>
-            )}
-          </form>
+          {userInfo && (
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-4"
+            >
+              <textarea
+                {...register("comment", { required: true })}
+                placeholder={`${userInfo?.name}'s comment...`}
+                className="w-full p-2 border border-gray-400 rounded-lg resize-none bg-inherit"
+                rows={4}
+              />
+              {loading1 ? (
+                <Spin />
+              ) : (
+                <button
+                  type="submit"
+                  className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-4 rounded-lg"
+                >
+                  Post Comment
+                </button>
+              )}
+            </form>
+          )}
         </div>
       </div>
     </div>
   ) : (
-    <Spin />
+    <Spin className="w-full h-screen flex items-center justify-center" />
   );
 };
 
