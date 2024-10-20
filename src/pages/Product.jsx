@@ -251,6 +251,23 @@ const Product = () => {
           </div>
         </div>
 
+        {productId === 12 + "" && (
+          <div className="w-full my-40 flex flex-col items-center gap-10">
+            <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
+              DIGITAL ON 3D MODEL
+            </p>
+            <video
+              width="100%"
+              autoPlay
+              loop
+              muted
+              src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729397962/Rotate_0130_ga91fm.mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+
         {showModal && (
           <div className="max-w-md mx-auto mt-20 p-6 bg-inherit shadow-lg rounded-md">
             <div>
