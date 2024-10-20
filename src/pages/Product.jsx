@@ -195,7 +195,7 @@ const Product = () => {
             <div className="flex flex-col gap-4 my-8">
               <p>Select Size</p>
               <div className="flex gap-2">
-                {product.sizes.map((item, index) => (
+                {product?.sizes.map((item, index) => (
                   <button
                     key={index}
                     className={`border-2 py-2 px-4 bg-gray-100 ${
@@ -211,7 +211,7 @@ const Product = () => {
             <div className="flex flex-col gap-4 my-8">
               <p>Select Color</p>
               <div className="flex gap-2">
-                {product.colors.map((item, index) => (
+                {product?.colors.map((item, index) => (
                   <button
                     key={index}
                     className={`border-2 w-10 h-10 py-2 px-4 ${
