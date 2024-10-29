@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import RelatedProducts from "../components/RelatedProducts";
@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import { assets } from "../assets/assets";
 import { useForm } from "react-hook-form";
+import { Canvas } from "@react-three/fiber";
+import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { Final } from "../../public/10_Final";
 
 const Product = () => {
   const { productId } = useParams();
@@ -251,23 +254,6 @@ const Product = () => {
           </div>
         </div>
 
-        {productId === 12 + "" && (
-          <div className="w-full my-40 flex flex-col items-center gap-10">
-            <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
-              DIGITAL ON 3D MODEL
-            </p>
-            <video
-              width="100%"
-              autoPlay
-              loop
-              muted
-              src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729397962/Rotate_0130_ga91fm.mp4"
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )}
-
         {showModal && (
           <div className="max-w-md mx-auto mt-20 p-6 bg-inherit shadow-lg rounded-md">
             <div>
@@ -427,6 +413,43 @@ const Product = () => {
                 )}
               </form>
             </div>
+          </div>
+        )}
+
+        {productId === 12 + "" && (
+          <div className="w-full my-40 flex flex-col items-center gap-10">
+            <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
+              DIGITAL ON 3D MODEL
+            </p>
+            <div className="flex w-full my-20">
+              <Canvas camera={{ near: 0.01, far: 50 }}>
+                <ambientLight />
+                <OrbitControls />
+                <Suspense fallback={null}>
+                  <Final position={[0, -0.5, 0]} />
+                </Suspense>
+                <Environment preset="sunset" />
+                <ContactShadows
+                  position={[0, -2.5, 0]}
+                  opacity={0.5}
+                  scale={50}
+                  blur={1}
+                  far={10}
+                  resolution={256}
+                  color="#000000"
+                />
+              </Canvas>
+            </div>
+
+            <video
+              width="100%"
+              autoPlay
+              loop
+              muted
+              src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729397962/Rotate_0130_ga91fm.mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         )}
 

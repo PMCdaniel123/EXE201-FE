@@ -33,7 +33,7 @@ const BlogItem = ({
 
   return (
     <div className=" bg-white border hover:scale-105 hover:shadow-xl relative">
-      {author === Number(userId) &&
+      {/* {author === Number(userId) &&
         (loading ? (
           <Spin />
         ) : (
@@ -43,7 +43,7 @@ const BlogItem = ({
           >
             <DeleteOutlined />
           </div>
-        ))}
+        ))} */}
       <Link to={`/sunblog/${id}`}>
         <img
           src={image !== "null" ? image : assets.default_blog_image}

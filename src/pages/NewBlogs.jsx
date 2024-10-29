@@ -72,7 +72,7 @@ const NewBlogs = () => {
   return (
     <div className="border-t border-gray-400 pt-14 px-10">
       <div className="text-2xl mb-3">
-        <Title text1={"CREATE"} text2={"POSTS"} />
+        <Title text1={"CREATE"} text2={"BLOGS"} />
       </div>
 
       <form
