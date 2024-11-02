@@ -62,10 +62,13 @@ a.active hr {
 
 canvas {
     height: 800px !important;
-    /* width: 400px !important; */
 }
 
-
+@media (max-width:600px) {
+    canvas {
+        height: 500px !important;
+    }
+}
 
 .editor-container {
     border: 2px solid #d1d5db;

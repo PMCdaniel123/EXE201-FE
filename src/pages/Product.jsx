@@ -115,10 +115,10 @@ const Product = () => {
                 />
               ))}
             </div>
-            <div className="w-full lg:w-4/5">
+            <div className="w-full lg:w-4/5 h-auto">
               <Image
                 width={"100%"}
-                height={640}
+                height={"auto"}
                 src={image}
                 className="object-cover"
               />
