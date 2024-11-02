@@ -16,14 +16,14 @@ const LatestCollection = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="my-40 px-10">
+    <div className="my-20 lg:my-40 px-6 lg:px-10">
       <div className="text-center py-8 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"LATEST"} text2={"COLLECTION"} />
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam,
-          veritatis? Ratione, laboriosam quia in aut nisi, alias earum a
-          perspiciatis, ipsum provident animi? Incidunt assumenda accusantium,
-          corporis quos saepe libero?
+        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-400 italic">
+          Step into the season with our latest collection, where timeless
+          elegance meets modern style. Discover pieces designed to elevate your
+          look, from effortlessly chic staples to bold statement items. Embrace
+          the beauty of fashion redefined—crafted with care, curated for you.
         </p>
       </div>
 

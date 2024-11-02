@@ -62,7 +62,7 @@ const ListProduct = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="text-base sm:text-2xl mb-4">
+      <div className="text-xl md:text-2xl mb-4">
         <Title text1={"MY PRODUCTS"} text2={"LIST"} />
       </div>
 
@@ -82,17 +82,17 @@ const ListProduct = () => {
                   <img
                     src={item.images[0].image_url}
                     alt=""
-                    className="w-16 sm:w-32 sm:h-32 object-cover"
+                    className="w-28 md:w-36 object-cover"
                     onClick={() => navigate(`/product/${item.id}`)}
                   />
                   <div>
                     <Link
                       to={`/product/${item.id}`}
-                      className="sm:text-xl font-medium"
+                      className="md:text-xl font-medium text-black"
                     >
                       {item.product_name}
                     </Link>
-                    <div className="flex flex-col items-start gap-4 mt-2 text-base text-gray-700">
+                    <div className="flex flex-col items-start gap-4 mt-2 text-sm md:text-base text-gray-700">
                       <p>
                         Price: {currency}
                         {item.price}

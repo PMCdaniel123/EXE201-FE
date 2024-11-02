@@ -11,12 +11,13 @@ a.active hr {
 .navbar a.active,
 .navbar a:hover {
     font-weight: 600;
-    scale: 1.2;
+    scale: 1.1;
     background: linear-gradient(to bottom right, #4A5942, #9d905a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    transition: all 0.3s ease-in-out;
 }
 
 .model3D-text {

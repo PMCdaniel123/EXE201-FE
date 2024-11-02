@@ -27,13 +27,13 @@ const slides = [
 
 const PicksSlider = () => {
   return (
-    <div className="flex flex-col items-center p-8 my-20">
-      <div className="text-center py-8 text-2xl md:text-4xl lg:text-6xl">
+    <div className="flex flex-col items-center lg:p-8 my-20 p-6 gap-4 lg:gap-0">
+      <div className="text-center lg:py-8 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"SUNSET'S"} text2={"PICKS"} />
       </div>
 
       <div className="flex items-center justify-center w-full">
-        <Carousel autoplay className="w-[76vw]">
+        <Carousel autoplay className="lg:w-[76vw] w-[calc(100vw-32px)]">
           {slides.map((slide, index) => (
             <div key={index} className="w-full text-center relative">
               <div className="w-full h-[300px] lg:h-[500px] overflow-hidden shadow-lg">
@@ -43,7 +43,7 @@ const PicksSlider = () => {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <p className="p-4 text-xl font-extralight absolute bottom-0 text-white bg-black opacity-40">
+              <p className="p-2 md:p-4 text-sm md:text-xl font-extralight absolute bottom-0 text-white bg-black opacity-40">
                 {slide.title}
               </p>
             </div>

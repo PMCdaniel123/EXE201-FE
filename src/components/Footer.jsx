@@ -8,9 +8,9 @@ const Footer = () => {
   const { navigate, userInfo } = useContext(ShopContext);
   return (
     <div className="mt-20">
-      <div className="flex flex-col gap-4 p-4 md:p-8 border border-gray-400">
+      <div className="flex flex-col gap-4 p-6 md:p-8 border-t border-b border-gray-400">
         <div className="flex flex-col lg:flex-row justify-between gap-6 lg:gap-0">
-          <div className="flex flex-col lg:w-1/3 gap-6 py-4 lg:px-4">
+          <div className="flex flex-col lg:w-1/3 gap-6 py-4">
             <div
               className="flex items-center gap-3 cursor-pointer"
               onClick={() => navigate("/")}
@@ -30,12 +30,12 @@ const Footer = () => {
               <span className="font-medium text-base text-[#1c1c26]">
                 EXCLUSIVE BENEFITS
               </span>
-              <div className="md:w-2/3 lg:w-full flex items-center gap-4 bg-white border border-solid border-[#e2e3e4]">
+              <div className="w-full flex items-center gap-4 bg-white border border-solid border-[#e2e3e4]">
                 <input
                   placeholder="Email address"
-                  className="w-full px-6 py-3 bg-transparent text-[#1c1c26] text-base focus:outline-none"
+                  className="w-full px-3 bg-transparent text-[#1c1c26] text-base focus:outline-none"
                 />
-                <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-6 py-4 w-1/2">
+                <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-4 py-3 w-1/2">
                   SUBSCRIBE
                 </button>
               </div>
@@ -51,25 +51,25 @@ const Footer = () => {
               <span className="font-medium text-xl text-[#1c1c26] uppercase">
                 SHOP
               </span>
-              <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+              <ul className="flex flex-col text-sm gap-4 uppercase navbar">
+                <a
+                  className="cursor-pointer"
                   onClick={() => navigate("/collection")}
                 >
                   All Collections
-                </li>
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                </a>
+                <a
+                  className="cursor-pointer"
                   onClick={() => navigate("/sunblog")}
                 >
                   Our Blogs
-                </li>
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                </a>
+                <a
+                  className="cursor-pointer"
                   onClick={() => navigate("/about")}
                 >
                   Visit Us
-                </li>
+                </a>
               </ul>
             </div>
 
@@ -77,22 +77,22 @@ const Footer = () => {
               <span className="font-medium text-xl text-[#1c1c26] uppercase">
                 EXPLORE
               </span>
-              <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+              <ul className="flex flex-col text-sm gap-4 uppercase navbar">
+                <a
+                  className="cursor-pointer"
                   onClick={() => navigate("/about")}
                 >
                   About Us
-                </li>
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                </a>
+                <a
+                  className="cursor-pointer"
                   onClick={() =>
                     userInfo ? navigate("/orders") : navigate("/login")
                   }
                 >
                   Track My Order
-                </li>
-                <li>Product Care</li>
+                </a>
+                <a>Product Care</a>
               </ul>
             </div>
 
@@ -100,29 +100,29 @@ const Footer = () => {
               <span className="font-medium text-xl text-[#1c1c26] uppercase">
                 MORE
               </span>
-              <ul className="flex flex-col text-sm gap-4 uppercase">
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+              <ul className="flex flex-col text-sm gap-4 uppercase navbar">
+                <a
+                  className="cursor-pointer"
                   onClick={() =>
                     userInfo ? navigate("/profile") : navigate("/login")
                   }
                 >
                   My Account
-                </li>
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                </a>
+                <a
+                  className="cursor-pointer"
                   onClick={() =>
                     userInfo ? navigate("/orders") : navigate("/login")
                   }
                 >
                   Shipping Info
-                </li>
-                <li
-                  className="cursor-pointer hover:scale-110 transition ease-in-out"
+                </a>
+                <a
+                  className="cursor-pointer"
                   onClick={() => navigate("contact")}
                 >
                   Contact
-                </li>
+                </a>
               </ul>
             </div>
           </div>

@@ -20,14 +20,13 @@ const RelatedProducts = ({ category, subcategory }) => {
   }, [products]);
 
   return (
-    <div className="my-20 px-10">
-      <div className="text-center text-3xl py-8">
+    <div className="my-20 lg:px-10">
+      <div className="text-center text-2xl md:text-3xl py-8">
         <Title text1={"RELATED"} text2={"PRODUCTS"} />
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam,
-          veritatis? Ratione, laboriosam quia in aut nisi, alias earum a
-          perspiciatis, ipsum provident animi? Incidunt assumenda accusantium,
-          corporis quos saepe libero?
+        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-400 italic">
+          You may also love these styles! Explore our curated selection of
+          related products, designed to complement your unique look and elevate
+          your wardrobe.
         </p>
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6">

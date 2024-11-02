@@ -36,7 +36,7 @@ const SunBlog = () => {
   };
 
   return (
-    <div className="border-t border-gray-400">
+    <div className="border-t border-gray-400 w-full">
       <div className="flex justify-center items-center w-full relative overflow-hidden">
         <img
           src={assets.bg_2}
@@ -45,13 +45,13 @@ const SunBlog = () => {
         />
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
-      <div className="flex justify-between items-center md:flex-row flex-col px-10">
-        <div className="inline-flex justify-center gap-6 my-10 border border-gray-400">
+      <div className="flex justify-between items-center md:flex-row flex-col px-6 md:px-10 max-sm:mt-10 max-sm:gap-4 max-sm:w-full">
+        <div className="inline-flex justify-center md:gap-6 md:my-10 border border-gray-400 max-sm:w-full">
           <button
             onClick={() => setMenu("all")}
             className={
               menu === "all"
-                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
                 : "px-4"
             }
           >
@@ -61,7 +61,7 @@ const SunBlog = () => {
             onClick={() => setMenu("Technology")}
             className={
               menu === "Technology"
-                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
                 : "px-4"
             }
           >
@@ -71,7 +71,7 @@ const SunBlog = () => {
             onClick={() => setMenu("Startup")}
             className={
               menu === "Startup"
-                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
                 : "px-4"
             }
           >
@@ -81,7 +81,7 @@ const SunBlog = () => {
             onClick={() => setMenu("Lifestyle")}
             className={
               menu === "Lifestyle"
-                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-6 rounded-sm"
+                ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
                 : "px-4"
             }
           >
@@ -89,11 +89,11 @@ const SunBlog = () => {
           </button>
         </div>
 
-        <div>
+        <div className="max-sm:w-full">
           {userId ? (
             <button
               onClick={() => navigate("/sunblog/new")}
-              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-base py-2 px-6"
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-base py-2 px-6 max-sm:w-full"
             >
               Create Posts
             </button>

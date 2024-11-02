@@ -5,17 +5,17 @@ import { assets } from "../assets/assets";
 const About = () => {
   return (
     <div>
-      <div className="text-3xl text-center pt-8 border-t border-gray-400">
+      <div className="text-2xl md:text-4xl lg:text-6xl text-center pt-8 border-t border-gray-400">
         <Title text1={"ABOUT"} text2={"US"} />
       </div>
 
-      <div className="my-10 flex flex-col lg:flex-row gap-16 px-10">
+      <div className="my-10 flex flex-col lg:flex-row gap-16 md:px-10 max-sm:text-sm">
         <img
           src={assets.default_blog_image}
           alt=""
-          className="w-full md:h-full lg:w-2/5 object-cover"
+          className="w-full md:h-full lg:w-3/5 object-cover"
         />
-        <div className="flex flex-col justify-center gap-6 lg:w-3/5 text-gray-600">
+        <div className="flex flex-col justify-center max-sm:px-6 gap-6 lg:w-3/5 text-gray-600">
           <p>
             Sunset Soiree’ is a creative playground for trendy fashionistas in
             the digital age. We promote the value of timeliness, uniqueness and
@@ -32,21 +32,23 @@ const About = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 px-10 mb-10 text-gray-600">
-        <b className="text-gray-800 font-bold text-xl">Mission:</b>
+      <div className="flex flex-col gap-4 px-6 lg:px-10 mb-10 text-gray-600 max-sm:text-sm">
+        <b className="text-gray-800 font-bold text-base md:text-xl">Mission:</b>
         <p>
           Provide a new fashion business model for young designers who want to
           build a brand with limited resources and a fashion consumption
           solution for customers who aim for novelty, personality and uniqueness
           in fashion.
         </p>
-        <b className="text-gray-800 font-bold text-xl">Vision:</b>
+        <b className="text-gray-800 font-bold text-base md:text-xl">Vision:</b>
         <p>
           Become a familiar and prestigious name in the fashion industry,
           especially in the Vietnamese market. We wish to expand a versatile
           ecosystem that provides high-end and in-depth fashion experiences.
         </p>
-        <b className="text-gray-800 font-bold text-xl">Core value:</b>
+        <b className="text-gray-800 font-bold text-base md:text-xl">
+          Core value:
+        </b>
         <div>
           <p>
             Bring practical values ​​to promote the true values ​​of fashion,
@@ -71,11 +73,11 @@ const About = () => {
         </div>
       </div>
 
-      <div className="text-3xl py-4 px-10">
+      <div className="text-2xl md:text-3xl py-4 px-6 md:px-10">
         <Title text1={"WHY"} text2={"CHOOSE US"} />
       </div>
 
-      <div className="flex flex-col gap-4 mb-8 px-10">
+      <div className="flex flex-col gap-4 mb-8 px-6 md:px-10">
         <p className="font-bold italic text-gray-800">
           "Revolutionizing Fashion: Where Imagination Meets Innovation!"
         </p>
@@ -87,7 +89,7 @@ const About = () => {
       </div>
 
       <div className="flex flex-col lg:grid lg:grid-cols-3 text-sm">
-        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
+        <div className="border-t border-b border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Immersive Augmented Reality (AR)</b>
           <p className="text-gray-600">
             Step into a new dimension of shopping! Our AR feature allows you to
@@ -105,7 +107,7 @@ const About = () => {
             just informed, but inspired.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
+        <div className="border-t border-b border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Personalized Fit Experience</b>
           <p className="text-gray-600">
             Enjoy a tailor-made experience! With our innovative technology,
@@ -116,7 +118,7 @@ const About = () => {
         </div>
       </div>
       <div className="flex flex-col lg:grid lg:grid-cols-3 text-sm mb-10">
-        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
+        <div className="border-b border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Seamless User Interface</b>
           <p className="text-gray-600">
             Designed with you in mind, our platform offers an intuitive and
@@ -125,7 +127,7 @@ const About = () => {
             resonate with your personal flair.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
+        <div className="border-b border-l border-r border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Creative Community Connection</b>
           <p className="text-gray-600">
             Join a thriving community of designers and fashion enthusiasts.
@@ -133,7 +135,7 @@ const About = () => {
             network that values creativity and innovation.
           </p>
         </div>
-        <div className="border border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
+        <div className="border-b border-gray-400 px-10 py-8 lg:py-10 flex flex-col gap-5">
           <b>Sustainable Fashion Forward</b>
           <p className="text-gray-600">
             We champion sustainable practices, ensuring that your fashion
@@ -144,10 +146,8 @@ const About = () => {
         </div>
       </div>
 
-      <hr className="bg-gray-600 h-[2px] mb-4" />
-
       <div className="mb-20 px-10">
-        <p className="italic text-gray-600 text-sm font-extralight">
+        <p className="italic text-gray-400 text-sm">
           With us, you’re not just shopping; you’re experiencing a revolution in
           fashion. Embrace the future of style with our AR and 3D model
           features, and let your creativity soar!

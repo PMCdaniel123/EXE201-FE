@@ -70,7 +70,7 @@ const NewBlogs = () => {
   };
 
   return (
-    <div className="border-t border-gray-400 pt-14 px-10">
+    <div className="border-t border-gray-400 pt-14 px-6 md:px-10">
       <div className="text-2xl mb-3">
         <Title text1={"CREATE"} text2={"BLOGS"} />
       </div>
@@ -87,7 +87,7 @@ const NewBlogs = () => {
             type="text"
             id="title"
             placeholder="Title"
-            className="border border-gray-400 p-3 rounded-lg"
+            className="border border-gray-400 text-sm p-3 rounded-lg"
             {...register("title", { required: true })}
           />
           {errors.title && <p className="text-red-500">Title is required</p>}
@@ -97,7 +97,7 @@ const NewBlogs = () => {
             Category
           </label>
           <select
-            className="border border-gray-400 p-3 rounded-lg"
+            className="border border-gray-400 text-sm p-3 rounded-lg"
             defaultValue={""}
             {...register("category", { required: true })}
           >
@@ -120,7 +120,7 @@ const NewBlogs = () => {
             type="file"
             id="image"
             accept="image/*"
-            className="border border-gray-400 p-3 rounded-lg"
+            className="border border-gray-400 text-sm p-3 rounded-lg"
             {...register("image")}
           />
         </div>
@@ -131,7 +131,7 @@ const NewBlogs = () => {
           <TipTap content={content} setContent={setContent} />
         </div>
 
-        <p className="text-gray-400 italic">Shift + Enter for new line</p>
+        <p className="text-gray-400 italic md:text-base text-xs">Shift + Enter for new line</p>
 
         <button
           type="submit"

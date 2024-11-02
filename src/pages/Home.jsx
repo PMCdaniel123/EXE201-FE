@@ -17,10 +17,10 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="w-full my-40 flex flex-col items-center gap-10">
-        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
-          MEET OUR MODELS
-        </p>
+      <div className="w-full my-20 lg:my-40 flex flex-col items-center gap-4 lg:gap-8">
+        <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
+          <Title text1={"MEET"} text2={"OUR MODELS"} />
+        </div>
         <video
           width="100%"
           autoPlay
@@ -32,10 +32,10 @@ const Home = () => {
         </video>
       </div>
 
-      <div className="w-full my-40 flex flex-col items-center gap-10">
-        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
-          CHOOSE YOUR WEAR
-        </p>
+      <div className="w-full my-20 lg:my-40 flex flex-col items-center gap-4 lg:gap-8">
+        <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
+          <Title text1={"CHOOSE"} text2={"YOUR WEAR"} />
+        </div>
         <video
           width="100%"
           autoPlay
@@ -47,10 +47,10 @@ const Home = () => {
         </video>
       </div>
 
-      <div className="w-full my-40 flex flex-col items-center gap-10">
-        <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
-          USE YOUR OWN FACE
-        </p>
+      <div className="w-full my-20 lg:my-40 flex flex-col items-center gap-4 lg:gap-8">
+        <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
+          <Title text1={"USE"} text2={"YOUR OWN FACE"} />
+        </div>
         <video
           width="100%"
           autoPlay
@@ -62,10 +62,10 @@ const Home = () => {
         </video>
       </div>
 
-      <div className="mt-40 lg:px-10">
+      <div className="lg:mt-40 lg:px-10">
         <div className="flex gap-4 lg:flex-row flex-col justify-between items-center w-full">
-          <div className="flex flex-col gap-10 w-1/2">
-            <p className="font-extrabold text-gray-800 text-4xl uppercase tracking-wide model3D-text">
+          <div className="flex flex-col gap-10 lg:w-1/2 lg:p-0 p-6">
+            <p className="font-extrabold text-gray-800 text-xl md:text-2xl lg:text-4xl uppercase tracking-wide model3D-text">
               Immersive Augmented Reality (AR)
             </p>
             <p className=" text-gray-600 text-sm italic">
@@ -78,7 +78,7 @@ const Home = () => {
               EXPLORE NOW
             </button>
           </div>
-          <div className="flex w-1/2">
+          <div className="flex w-full lg:w-1/2">
             <Canvas camera={{ near: 0.01, far: 50 }}>
               <ambientLight />
               <OrbitControls />

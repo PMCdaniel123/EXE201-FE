@@ -100,17 +100,17 @@ const Product = () => {
   };
 
   return (
-    <div className="border-t border-gray-400 pt-10 px-10">
+    <div className="border-t border-gray-400 pt-10 px-6 md:px-10">
       <div className=" transition-opacity ease-in duration-500 opacity-100">
         <div className="flex gap-12 sm:gap-12 flex-col lg:flex-row">
           <div className="flex-1 flex flex-col-reverse gap-3 lg:flex-row">
-            <div className="flex flex-row lg:flex-col lg:w-1/5 lg:h-[640px] overflow-x-scroll lg:overflow-x-auto lg:overflow-y-scroll justify-between lg:justify-normal">
+            <div className="flex flex-row lg:flex-col lg:w-1/5 lg:h-[640px] overflow-x-scroll lg:overflow-x-auto lg:overflow-y-scroll justify-start gap-2 lg:gap-0 lg:justify-normal">
               {product?.images.map((item, index) => (
                 <img
                   src={item.image_url}
                   key={index}
                   alt={product.product_name}
-                  className="lg:w-[100%] md:h-40 lg:h-32 sm:mb-3 flex-shrink-0 cursor-pointer object-cover"
+                  className="lg:w-[100%] w-24 md:h-40 lg:h-32 sm:mb-3 flex-shrink-0 cursor-pointer object-cover"
                   onClick={() => setImage(item.image_url)}
                 />
               ))}
@@ -128,7 +128,7 @@ const Product = () => {
                     !userInfo
                       ? "bg-gray-400"
                       : "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
-                  } text-white px-8 py-3 text-xl mt-2 w-full`}
+                  } text-white px-8 py-3 text-sm md:text-xl mt-2 w-full`}
                   onClick={() => setShowModal(!showModal)}
                   disabled={!userInfo}
                 >
@@ -149,7 +149,7 @@ const Product = () => {
                 </span>
               </div>
             )}
-            <h1 className="font-medium text-3xl mt-2">
+            <h1 className="font-medium text-2xl md:text-3xl mt-2">
               {product?.product_name}
             </h1>
             <div className="flex items-center gap-1 mt-2">
@@ -171,12 +171,12 @@ const Product = () => {
               <p>{product?.designer.full_name}</p>
             </Link>
             {product?.sale ? (
-              <div className="flex items-center gap-2 px-2 pb-2 mt-5">
-                <span className=" text-3xl font-medium text-black">
+              <div className="flex items-center gap-2 md:px-2 pb-2 mt-5">
+                <span className="text-xl md:text-3xl font-medium text-black">
                   {currency}
                   {product?.price}
                 </span>
-                <span className="text-xl text-gray-400 line-through decoration-[#FF0909]">
+                <span className="text-base md:text-xl text-gray-400 line-through decoration-[#FF0909]">
                   {currency}
                   {(
                     product?.price *
@@ -185,14 +185,14 @@ const Product = () => {
                 </span>
               </div>
             ) : (
-              <div className="flex items-center gap-2 px-2 pb-2 mt-5">
-                <span className=" text-3xl font-medium text-black">
+              <div className="flex items-center gap-2 md:px-2 pb-2 mt-5">
+                <span className="text-2xl md:text-3xl font-medium text-black">
                   {currency}
                   {product?.price}
                 </span>
               </div>
             )}
-            <p className="mt-5 text-gray-500 md:w-4/5">
+            <p className="mt-5 text-gray-500 md:w-4/5 w-full text-sm">
               {product?.description}
             </p>
             <div className="flex flex-col gap-4 my-8">

@@ -4,9 +4,9 @@ import { assets } from "../assets/assets";
 
 const FeatureCollections = () => {
   return (
-    <div className="my-40">
-      <div className="flex max-sm:flex-col gap-4 h-fit">
-        <div className="flex flex-col gap-4 max-sm:w-full w-1/2">
+    <div className="my-20 lg:my-40">
+      <div className="flex max-sm:flex-col gap-10 lg:gap-4 h-fit">
+        <div className="flex flex-col gap-10 lg:gap-4 max-sm:w-full w-1/2">
           <div className="relative overflow-hidden">
             <img
               src={assets.bg_1}
@@ -49,11 +49,13 @@ const FeatureCollections = () => {
             alt="Runway"
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-30 text-center text-white text-sm flex flex-col justify-end items-center ">
-            <p className="px-2 lg:px-32 py-6 mb-8 border font-light max-sm:text-xs text-sm">
-              SHOPPING WITH US IS NOT JUST ABOUT FINDING <br />
-              THE PERFECT OUTFIT. IT'S AN EXPERIENCE.
-            </p>
+          <div className="absolute inset-0 bg-black bg-opacity-30 text-center text-white text-sm flex flex-col justify-end items-center">
+            <div className="max-sm:w-full max-sm:p-8">
+              <p className="px-2 lg:px-32 py-6 lg:mb-8 border font-light max-sm:text-xs text-sm">
+                SHOPPING WITH US IS NOT JUST ABOUT FINDING <br />
+                THE PERFECT OUTFIT. IT'S AN EXPERIENCE.
+              </p>
+            </div>
           </div>
         </div>
       </div>

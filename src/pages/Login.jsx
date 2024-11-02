@@ -205,17 +205,17 @@ const Login = () => {
         </div>
       )}
       <div className="w-full flex justify-between text-sm mt-[2px]">
-        <p className="cursor-pointer">Forgot your password?</p>
+        <p>Forgot your password?</p>
         {currentState === "Login" ? (
           <p
-            className="cursor-pointer"
+            className="cursor-pointer text-[#9d905a]"
             onClick={() => setCurrentState("Sign Up")}
           >
-            Create account
+            Create your account
           </p>
         ) : (
           <p
-            className="cursor-pointer"
+            className="cursor-pointer text-[#9d905a]"
             onClick={() => setCurrentState("Login")}
           >
             Login Here
@@ -228,13 +228,13 @@ const Login = () => {
             type="checkbox"
             value={"agree"}
             onChange={() => setChecked(!checked)}
-            className={`mt-[6px] w-10 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors ${
+            className={`mt-[4px] w-10 h-4 appearance-none cursor-pointer rounded border border-gray-400 transition-colors ${
               checked
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a]"
                 : "bg-white"
             }`}
           />{" "}
-          <span className="text-gray-400">
+          <span className="text-gray-500 text-sm">
             By providing my phone number and checking this box, I agree to
             receive recurring automated promotional messages. Message and data
             rates may apply.

@@ -5,11 +5,11 @@ import { assets } from "../assets/assets";
 
 const Trending = () => {
   return (
-    <div className="my-20 mb-20">
-      <div className="text-center py-10 text-2xl md:text-4xl lg:text-6xl">
+    <div className="flex flex-col my-20 mb-20 gap-4 lg:gap-0">
+      <div className="text-center lg:py-8 text-2xl md:text-4xl lg:text-6xl">
         <Title text1={"SUNSET'S"} text2={"TRENDINGS"} />
       </div>
-      <div className="mx-auto grid border border-gray-400">
+      <div className="mx-auto grid border-t border-b border-gray-400">
         <div className="grid grid-cols-5 justify-center items-center gap-4">
           <div className="max-sm:hidden col-span-1 flex items-center justify-center">
             <div className="text-xl md:text-3xl font-extrabold">1.</div>
@@ -64,10 +64,10 @@ const Trending = () => {
         </div>
       </div>
 
-      <div className="text-center mt-8">
+      <div className="text-center mt-4 lg:mt-8 max-sm:px-6">
         <Link to="/sunblog">
-          <button className="max-sm:w-full bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 sm:px-10 sm:py-4">
-          EXPLORE THE SUNBLOG
+          <button className="max-sm:w-full bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-xs sm:text-sm px-5 py-3 md:px-10 md:py-4">
+            EXPLORE THE SUNBLOG
           </button>
         </Link>
       </div>

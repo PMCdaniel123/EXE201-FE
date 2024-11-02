@@ -62,7 +62,7 @@ const DesignerOrders = () => {
     <Spin />
   ) : (
     <div className="flex flex-col w-full">
-      <div className="text-base sm:text-2xl mb-4">
+      <div className="text-xl md:text-2xl mb-4">
         <Title text1={"DESIGNER"} text2={"ORDERS"} />
       </div>
 

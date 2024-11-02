@@ -129,7 +129,7 @@ const AddAttributeProduct = ({ moveToNextStep }) => {
     <Spin />
   ) : (
     <form
-      className="flex flex-col items-center w-[90%] gap-4 text-gray-800"
+      className="flex flex-col items-center w-full md:w-[90%] gap-6 md:gap-4 text-gray-800"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
       <div className="w-full flex flex-col sm:flex-row items-center">

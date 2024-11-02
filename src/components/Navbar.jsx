@@ -41,9 +41,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between py-4 font-medium px-10">
+    <div className="flex items-center justify-between py-4 font-medium px-4 lg:px-10">
       <Link to="/">
-        <img src={assets.logo} alt="" className="w-28 lg:w-36" />
+        <img src={assets.logo} alt="" className="w-24 lg:w-36" />
       </Link>
 
       <ul className="hidden md:flex gap-6 lg:gap-16 text-xs lg:text-base text-black navbar">
@@ -119,12 +119,11 @@ const Navbar = () => {
                     <SnippetsOutlined /> My Blogs
                   </p>
                 </Link>
-                <p
-                  className="cursor-pointer hover:text-black flex gap-2"
-                  onClick={handleLogout}
-                >
-                  <PoweroffOutlined /> Logout
-                </p>
+                <Link onClick={handleLogout}>
+                  <p className="cursor-pointer hover:text-black flex gap-2">
+                    <PoweroffOutlined /> Logout
+                  </p>
+                </Link>
               </div>
             </div>
           </div>
@@ -145,13 +144,13 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-50 navbar ${
+        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-50 ${
           visible ? "w-full" : "w-0"
         }`}
       >
         <div className="flex flex-col text-gray-600">
           <div
-            className="flex items-center gap-4 p-3 cursor-pointer"
+            className="flex items-center justify-start gap-4 p-3 cursor-pointer w-full"
             onClick={() => setVisible(false)}
           >
             <img src={assets.dropdown_icon} alt="" className="h-4 rotate-180" />

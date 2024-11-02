@@ -18,14 +18,14 @@ const BestSeller = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="my-40 px-10">
+    <div className="my-20 lg:my-40 px-6 lg:px-10">
       <div className="text-center text-2xl md:text-4xl lg:text-6xl py-10">
         <Title text1={"BEST"} text2={"SELLER"} />
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam,
-          veritatis? Ratione, laboriosam quia in aut nisi, alias earum a
-          perspiciatis, ipsum provident animi? Incidunt assumenda accusantium,
-          corporis quos saepe libero?
+        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-400 italic">
+          Discover our bestsellers—iconic styles loved for their perfect blend
+          of comfort and trend-setting design. Each piece is crafted to bring
+          effortless elegance to your everyday look. Shop the favorites that
+          define style, quality, and versatility.
         </p>
       </div>
 

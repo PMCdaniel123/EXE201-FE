@@ -94,11 +94,11 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 px-10 border-t border-gray-400">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 md:px-10 px-6 border-t border-gray-400">
       <div className="min-w-48 lg:min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex items-center cursor-pointer gap-2"
+          className="my-2 text-base md:text-xl flex items-center cursor-pointer gap-2"
         >
           FILTERS{" "}
           <img
@@ -221,7 +221,7 @@ const Collection = () => {
                   }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Spring Collection
+              Spring
             </p>
             <p className="flex gap-2 items-center">
               <input
@@ -235,7 +235,7 @@ const Collection = () => {
                   }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Summer Collection
+              Summer
             </p>
             <p className="flex gap-2 items-center">
               <input
@@ -249,7 +249,7 @@ const Collection = () => {
                   }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Autumn Collection
+              Autumn
             </p>
             <p className="flex gap-2 items-center">
               <input
@@ -263,23 +263,25 @@ const Collection = () => {
                   }`}
                 onClick={toggleSubCategory}
               />{" "}
-              Winter Collection
+              Winter
             </p>
           </div>
         </div>
       </div>
 
       <div className="flex-1">
-        <div className="flex justify-between text-base md:text-xl lg:text-2xl mb-4">
-          <Title text1={"ALL"} text2={"COLLECTIONS"} />
-          <select
-            onChange={(e) => setSortType(e.target.value)}
-            className="border border-gray-400 text-sm px-2 bg-white bg-opacity-40 outline-none"
-          >
-            <option value="relavent">Sort by: Relavent</option>
-            <option value="low-high">Sort by: Low to High</option>
-            <option value="high-low">Sort by: High to Low</option>
-          </select>
+        <div className="flex justify-between text-xl lg:text-2xl mb-4 w-full">
+          <div className="flex md:flex-row flex-col items-center justify-between gap-4 w-full">
+            <Title text1={"ALL"} text2={"COLLECTIONS"} />
+            <select
+              onChange={(e) => setSortType(e.target.value)}
+              className="border border-gray-400 text-sm p-3 bg-white bg-opacity-40 outline-none max-sm:w-full"
+            >
+              <option value="relavent">Sort by: Relavent</option>
+              <option value="low-high">Sort by: Low to High</option>
+              <option value="high-low">Sort by: High to Low</option>
+            </select>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6 mb-10">

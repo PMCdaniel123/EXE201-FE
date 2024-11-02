@@ -6,7 +6,7 @@ const OurPolicy = () => {
       <div>
         <img src={assets.exchange_icon} alt="" className="w-12 m-auto mb-5" />
         <p className="font-semibold">Return items policy</p>
-        <ul className="text-gray-400 mt-6 space-y-2 list-inside list-decimal lg:px-32">
+        <ul className="text-gray-400 text-xs lg:text-sm mt-6 space-y-2 list-inside list-decimal lg:px-32">
           <li>
             You may return one or more items within 30 days of the delivery date
             of your order.
@@ -32,7 +32,7 @@ const OurPolicy = () => {
       <div>
         <img src={assets.quality_icon} alt="" className="w-12 m-auto mb-5" />
         <p className="font-semibold">Processing a return</p>
-        <p className="text-gray-400 mt-6 lg:px-32">
+        <p className="text-gray-400 text-xs lg:text-sm mt-6 lg:px-32">
           Log in a Sunset Soiree' account, access your orders and request a
           return. Then you will receive a form to check the status of your item
           from the platform. You have to fill in all the information and it will
@@ -45,7 +45,7 @@ const OurPolicy = () => {
       <div>
         <img src={assets.quality_icon} alt="" className="w-12 m-auto mb-5" />
         <p className="font-semibold">Delivery</p>
-        <ul className="text-gray-400 mt-6 space-y-2 list-inside list-decimal lg:px-32">
+        <ul className="text-gray-400 text-xs lg:text-sm mt-6 space-y-2 list-inside list-decimal lg:px-32">
           <li>
             Delivery options and times may vary depending on your address, time
             of purchase and availability of items.
@@ -64,7 +64,7 @@ const OurPolicy = () => {
       <div>
         <img src={assets.support_img} alt="" className="w-12 m-auto mb-5" />
         <p className="font-semibold">Best Customer Support</p>
-        <p className="text-gray-400 mt-6 lg:px-32">
+        <p className="text-gray-400 text-xs lg:text-sm mt-6 lg:px-32">
           We provide 24/7 customer support
         </p>
       </div>
