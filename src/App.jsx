@@ -36,6 +36,7 @@ const App = () => {
         className="relative inset-0 bg-fixed bg-center"
         style={{
           backgroundImage: "url('/frontend_assets/vertical_bg.jpg')",
+          backgroundAttachment: "fixed",
         }}
       >
         <div className="absolute inset-0 mix-blend-plus-darker bg-white opacity-[0.85]"></div>

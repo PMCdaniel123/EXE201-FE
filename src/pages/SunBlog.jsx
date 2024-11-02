@@ -46,13 +46,13 @@ const SunBlog = () => {
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
       <div className="flex justify-between items-center md:flex-row flex-col px-6 md:px-10 max-sm:mt-10 max-sm:gap-4 max-sm:w-full">
-        <div className="inline-flex justify-center md:gap-6 md:my-10 border border-gray-400 max-sm:w-full">
+        <div className="flex items-center md:inline-flex justify-evenly md:gap-6 md:my-10 border border-gray-400 max-sm:w-full max-sm:text-sm">
           <button
             onClick={() => setMenu("all")}
             className={
               menu === "all"
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
-                : "px-4"
+                : "md:px-4"
             }
           >
             All
@@ -62,7 +62,7 @@ const SunBlog = () => {
             className={
               menu === "Technology"
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
-                : "px-4"
+                : "md:px-4"
             }
           >
             Technology
@@ -72,7 +72,7 @@ const SunBlog = () => {
             className={
               menu === "Startup"
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
-                : "px-4"
+                : "md:px-4"
             }
           >
             Startup
@@ -82,7 +82,7 @@ const SunBlog = () => {
             className={
               menu === "Lifestyle"
                 ? "bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white py-2 px-3 md:px-6 rounded-sm"
-                : "px-4"
+                : "md:px-4"
             }
           >
             Lifestyle
