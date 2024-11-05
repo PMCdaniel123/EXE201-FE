@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function EllaModel(props) {
-  const { nodes, materials } = useGLTF('/Female/Ella/Ella.glb')
+  const { nodes, materials } = useGLTF('/Ella.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function MaxModel(props) {
-  const { nodes, materials } = useGLTF('/Male/Male/Max/Max.glb')
+  const { nodes, materials } = useGLTF('/Max.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function JohnModel(props) {
-  const { nodes, materials } = useGLTF('/Male/Male/John/John.glb')
+  const { nodes, materials } = useGLTF('/John.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

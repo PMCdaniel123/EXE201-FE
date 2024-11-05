@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function ShifaModel(props) {
-  const { nodes, materials } = useGLTF('/Female/Shifa/Shifa.glb')
+  const { nodes, materials } = useGLTF('/Shifa.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

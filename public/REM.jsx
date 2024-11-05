@@ -7,7 +7,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function REMModel(props) {
-  const { nodes, materials } = useGLTF('/Female/Rem/REM.glb')
+  const { nodes, materials } = useGLTF('/REM.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

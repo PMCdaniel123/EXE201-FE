@@ -10,12 +10,12 @@ import { assets } from "../assets/assets";
 import { useForm } from "react-hook-form";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-import { REMModel } from "../../public/Female/Rem/REM.jsx";
-import { EllaModel } from "../../public/Female/Ella/Ella.jsx";
-import { ShifaModel } from "../../public/Female/Shifa/Shifa.jsx";
-import { MaxModel } from "../../public/Male/Male/Max/Max.jsx";
-import { JohnModel } from "../../public/Male/Male/John/John.jsx";
-import { BarryModel } from "../../public/Male/Male/Barry/Barry.jsx";
+import { REMModel } from "../../public/REM.jsx";
+import { EllaModel } from "../../public/Ella.jsx";
+import { ShifaModel } from "../../public/Shifa.jsx";
+import { MaxModel } from "../../public/Max.jsx";
+import { JohnModel } from "../../public/John.jsx";
+import { BarryModel } from "../../public/Barry.jsx";
 import Title from "../components/Title";
 
 const Product = () => {
