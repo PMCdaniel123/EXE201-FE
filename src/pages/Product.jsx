@@ -2,7 +2,7 @@ import { Suspense, useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import RelatedProducts from "../components/RelatedProducts";
-import { Image, Spin } from "antd";
+import { Image, Modal, Spin } from "antd";
 import useGetProductByID from "../hooks/useGetProductByID";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
@@ -10,12 +10,12 @@ import { assets } from "../assets/assets";
 import { useForm } from "react-hook-form";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-import { REMModel } from "../../public/REM.jsx";
-import { EllaModel } from "../../public/Ella.jsx";
-import { ShifaModel } from "../../public/Shifa.jsx";
-import { MaxModel } from "../../public/Max.jsx";
-import { JohnModel } from "../../public/John.jsx";
-import { BarryModel } from "../../public/Barry.jsx";
+import { REMModel } from "../../public/REM";
+import { EllaModel } from "../../public/Ella";
+import { ShifaModel } from "../../public/Shifa";
+import { MaxModel } from "../../public/Max";
+import { JohnModel } from "../../public/John";
+import { BarryModel } from "../../public/Barry";
 import Title from "../components/Title";
 
 const Product = () => {
@@ -29,6 +29,15 @@ const Product = () => {
   const [isLoading1, setIsLoading1] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [userFeatures, setUserFeatures] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const show3DModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     if (userInfo) {
@@ -218,7 +227,10 @@ const Product = () => {
                     className={`border-2 py-2 px-4 bg-gray-100 ${
                       item.size === size ? "border-[#9d905a]" : ""
                     }`}
-                    onClick={() => setSize(item.size === size ? "" : item.size)}
+                    onClick={() => {
+                      setSize(item.size === size ? "" : item.size);
+                      setIsModalOpen(true);
+                    }}
                   >
                     {item.size}
                   </button>
@@ -430,7 +442,63 @@ const Product = () => {
           </div>
         )}
 
-        {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
+        <Modal
+          title={
+            <div className="text-xl md:text-2xl lg:text-4xl uppercase text-center">
+              <Title text1={"DIGITAL"} text2={"ON YOU"} />
+            </div>
+          }
+          open={isModalOpen}
+          onCancel={handleCancel}
+          footer={null}
+          width={800}
+        >
+          <div>
+            {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
+              size.length > 0 && (
+                <div className="w-full flex flex-col items-center gap-10">
+                  <div className="flex w-full my-10">
+                    <Canvas camera={{ near: 0.01, far: 50 }}>
+                      <ambientLight />
+                      <OrbitControls />
+                      <Suspense fallback={null}>
+                        {userInfo.gender === "Men" && size === "M" && (
+                          <JohnModel position={[0, -1, 0]} />
+                        )}
+                        {userInfo.gender === "Men" && size === "L" && (
+                          <MaxModel position={[0, -1, 0]} />
+                        )}
+                        {userInfo.gender === "Men" && size === "XL" && (
+                          <BarryModel position={[0, -1, 0]} />
+                        )}
+                        {userInfo.gender === "Women" && size === "M" && (
+                          <EllaModel position={[0, -1, 0]} />
+                        )}
+                        {userInfo.gender === "Women" && size === "L" && (
+                          <REMModel position={[0, -1, 0]} />
+                        )}
+                        {userInfo.gender === "Women" && size === "XL" && (
+                          <ShifaModel position={[0, -1, 0]} />
+                        )}
+                      </Suspense>
+                      <Environment preset="sunset" />
+                      <ContactShadows
+                        position={[0, -1, 0]}
+                        opacity={0.5}
+                        scale={50}
+                        blur={1}
+                        far={10}
+                        resolution={256}
+                        color="#000000"
+                      />
+                    </Canvas>
+                  </div>
+                </div>
+              )}
+          </div>
+        </Modal>
+
+        {/* {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
           size.length > 0 && (
             <div className="w-full my-40 flex flex-col items-center gap-10">
               <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
@@ -473,7 +541,7 @@ const Product = () => {
                 </Canvas>
               </div>
             </div>
-          )}
+          )} */}
 
         <div className="mt-20">
           <div className="flex">
