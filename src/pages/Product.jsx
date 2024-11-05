@@ -10,7 +10,13 @@ import { assets } from "../assets/assets";
 import { useForm } from "react-hook-form";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-import { Final } from "../../public/10_Final";
+import { REMModel } from "../../public/Female/Rem/REM.jsx";
+import { EllaModel } from "../../public/Female/Ella/Ella.jsx";
+import { ShifaModel } from "../../public/Female/Shifa/Shifa.jsx";
+import { MaxModel } from "../../public/Male/Male/Max/Max.jsx";
+import { JohnModel } from "../../public/Male/Male/John/John.jsx";
+import { BarryModel } from "../../public/Male/Male/Barry/Barry.jsx";
+import Title from "../components/Title";
 
 const Product = () => {
   const { productId } = useParams();
@@ -22,6 +28,13 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoading1, setIsLoading1] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [userFeatures, setUserFeatures] = useState([]);
+
+  useEffect(() => {
+    if (userInfo) {
+      setUserFeatures(userInfo?.user_feature);
+    }
+  }, [userInfo]);
 
   const {
     register,
@@ -122,7 +135,8 @@ const Product = () => {
                 src={image}
                 className="object-cover"
               />
-              {userInfo && (
+              {userFeatures.filter((item) => item.feature_id === 3).length >
+                0 && (
                 <button
                   className={`${
                     !userInfo
@@ -416,42 +430,50 @@ const Product = () => {
           </div>
         )}
 
-        {productId === 12 + "" && (
-          <div className="w-full my-40 flex flex-col items-center gap-10">
-            <p className="font-extrabold text-gray-800 text-6xl uppercase tracking-wide model3D-text">
-              DIGITAL ON 3D MODEL
-            </p>
-            <div className="flex w-full my-20">
-              <Canvas camera={{ near: 0.01, far: 50 }}>
-                <ambientLight />
-                <OrbitControls />
-                <Suspense fallback={null}>
-                  <Final position={[0, -0.5, 0]} />
-                </Suspense>
-                <Environment preset="sunset" />
-                <ContactShadows
-                  position={[0, -2.5, 0]}
-                  opacity={0.5}
-                  scale={50}
-                  blur={1}
-                  far={10}
-                  resolution={256}
-                  color="#000000"
-                />
-              </Canvas>
+        {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
+          size.length > 0 && (
+            <div className="w-full my-40 flex flex-col items-center gap-10">
+              <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
+                <Title text1={"DIGITAL"} text2={"ON YOU"} />
+              </div>
+              <div className="flex w-full my-20">
+                <Canvas camera={{ near: 0.01, far: 50 }}>
+                  <ambientLight />
+                  <OrbitControls />
+                  <Suspense fallback={null}>
+                    {userInfo.gender === "Men" && size === "M" && (
+                      <JohnModel position={[0, -1, 0]} />
+                    )}
+                    {userInfo.gender === "Men" && size === "L" && (
+                      <MaxModel position={[0, -1, 0]} />
+                    )}
+                    {userInfo.gender === "Men" && size === "XL" && (
+                      <BarryModel position={[0, -1, 0]} />
+                    )}
+                    {userInfo.gender === "Women" && size === "M" && (
+                      <EllaModel position={[0, -1, 0]} />
+                    )}
+                    {userInfo.gender === "Women" && size === "L" && (
+                      <REMModel position={[0, -1, 0]} />
+                    )}
+                    {userInfo.gender === "Women" && size === "XL" && (
+                      <ShifaModel position={[0, -1, 0]} />
+                    )}
+                  </Suspense>
+                  <Environment preset="sunset" />
+                  <ContactShadows
+                    position={[0, -1, 0]}
+                    opacity={0.5}
+                    scale={50}
+                    blur={1}
+                    far={10}
+                    resolution={256}
+                    color="#000000"
+                  />
+                </Canvas>
+              </div>
             </div>
-
-            <video
-              width="100%"
-              autoPlay
-              loop
-              muted
-              src="https://res.cloudinary.com/dywbaeo2q/video/upload/v1729397962/Rotate_0130_ga91fm.mp4"
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )}
+          )}
 
         <div className="mt-20">
           <div className="flex">

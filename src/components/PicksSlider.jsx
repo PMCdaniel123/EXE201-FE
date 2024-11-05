@@ -33,7 +33,10 @@ const PicksSlider = () => {
       </div>
 
       <div className="flex items-center justify-center w-full">
-        <Carousel autoplay className="lg:w-[76vw] w-[calc(100vw-32px)]">
+        <Carousel
+          autoplay
+          className="lg:w-[calc(91vw-138px)] w-[calc(100vw-32px)]"
+        >
           {slides.map((slide, index) => (
             <div key={index} className="w-full text-center relative">
               <div className="w-full h-[300px] lg:h-[500px] overflow-hidden shadow-lg">

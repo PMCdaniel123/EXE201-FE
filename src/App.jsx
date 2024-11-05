@@ -28,6 +28,8 @@ import OrderDetails from "./pages/OrderDetails";
 import NewBlogs from "./pages/NewBlogs";
 import MyBlogs from "./pages/MyBlogs";
 import DesignerInfo from "./pages/DesignerInfo";
+import PremiumRegister from "./pages/PremiumRegister";
+import PremiumRegisterSuccessful from "./pages/PremiumRegisterSuccessful";
 
 const App = () => {
   return (
@@ -69,6 +71,22 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <PlaceOrder />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/premium-register"
+              element={
+                <PrivateRoute>
+                  <PremiumRegister />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/premium-register-successful"
+              element={
+                <PrivateRoute>
+                  <PremiumRegisterSuccessful />
                 </PrivateRoute>
               }
             />

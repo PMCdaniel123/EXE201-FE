@@ -191,8 +191,8 @@ const Login = () => {
               <option value="" disabled>
                 Select Gender
               </option>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
+              <option value="Men">Male</option>
+              <option value="Women">Female</option>
               <option value="Others">Others</option>
             </select>
 

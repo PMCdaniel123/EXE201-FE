@@ -7,44 +7,27 @@ import axiosInstance from "../utils/axiosInstance";
 import { assets } from "../assets/assets";
 
 const Premium = ({ type, price, time }) => {
-  const { currency, userInfo, loading, setRole } = useContext(ShopContext);
+  const { currency, navigate } = useContext(ShopContext);
 
-  const [openModal, setOpenModal] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const showModal = () => {
-    setOpenModal(true);
-  };
-
-  if (loading) {
-    return <Spin />;
-  }
-
-  const handleOk = async (data) => {
+  const handleClick = () => {
+    let currentFeatureId;
+    if (type === "Basic") {
+      currentFeatureId = 1;
+    } else if (type === "Premium") {
+      currentFeatureId = 2;
+    } else {
+      currentFeatureId = 3;
+    }
     try {
-      const response = await axiosInstance.post("/designers", {
-        user_id: userInfo.id,
-        full_name: data.full_name,
-        contact_info: data.contact_info,
-        bio: data.bio,
-      });
-      setRole("Designer");
-      toast.success(response.message);
-      setOpenModal(false);
-      window.location.reload();
+      localStorage.setItem(
+        "feature",
+        JSON.stringify({ featureId: currentFeatureId, price, time, type })
+      );
+      navigate("/premium-register");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
     }
-  };
-
-  const handleCancel = () => {
-    setOpenModal(false);
   };
 
   return (
@@ -108,60 +91,12 @@ const Premium = ({ type, price, time }) => {
           </ul>
         )}
       </div>
-      {type === "Basic" || type === "Premium" ? (
-        <>
-          <button
-            className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4"
-            onClick={showModal}
-          >
-            PURCHASE
-          </button>
-          <Modal
-            open={openModal}
-            title="Become to Designer"
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={null}
-          >
-            <form
-              className="flex flex-col items-center w-[90%] sm:max-w-[600px] m-auto mt-10 gap-4 text-gray-800"
-              onSubmit={handleSubmit(handleOk)}
-            >
-              <input
-                type="text"
-                placeholder="Author Name"
-                className="w-full px-3 py-2 border border-gray-800"
-                required
-                {...register("full_name")}
-              />
-              <input
-                type="text"
-                placeholder="Contact Info"
-                className="w-full px-3 py-2 border border-gray-800"
-                required
-                {...register("contact_info")}
-              />
-              <input
-                type="text"
-                placeholder="Bio"
-                className="w-full px-3 py-2 border border-gray-800"
-                required
-                {...register("bio")}
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white font-medium px-8 py-[10px] mt-2 w-full"
-              >
-                Submit
-              </button>
-            </form>
-          </Modal>
-        </>
-      ) : (
-        <button className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4">
-          PURCHASE
-        </button>
-      )}
+      <button
+        className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white text-sm font-bold px-8 py-4"
+        onClick={handleClick}
+      >
+        PURCHASE
+      </button>
     </div>
   );
 };
