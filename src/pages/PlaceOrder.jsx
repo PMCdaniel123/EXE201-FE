@@ -49,7 +49,8 @@ const PlaceOrder = () => {
     const orderInformation = {
       customer_id: Cookies.get("userID"),
       full_name: data.first_name + " " + data.last_name,
-      shipping_address: data.street + ", " + data.province + ", " + data.city,
+      shipping_address:
+        data.street + ", " + data.province + ", " + "TP Hồ Chí Minh",
       phone: data.phone,
       payment_method: method,
       total_amount:
@@ -58,7 +59,7 @@ const PlaceOrder = () => {
             acc + Number(item.quantity) * Number(item.product.price),
           0
         ) + 10,
-    };
+    };    
 
     try {
       const response = await axiosInstance.post("/orders", orderInformation);
@@ -104,20 +105,43 @@ const PlaceOrder = () => {
           {...register("street")}
         />
         <div className="flex gap-3">
-          <input
+          <select
             type="text"
             placeholder="Province"
             className="border border-gray-300 rounded py-2 px-4 w-full"
             required
+            defaultValue=""
             {...register("province")}
-          />
-          <input
-            type="text"
-            placeholder="City"
-            className="border border-gray-300 rounded py-2 px-4 w-full"
-            required
-            {...register("city")}
-          />
+          >
+            <option value="" disabled>
+              Select Province
+            </option>
+            <option value="Thủ Đức">Thủ Đức</option>
+            <option value="Quận 1">Quận 1</option>
+            <option value="Quận 3">Quận 3</option>
+            <option value="Quận 4">Quận 4</option>
+            <option value="Quận 5">Quận 5</option>
+            <option value="Quận 6">Quận 6</option>
+            <option value="Quận 7">Quận 7</option>
+            <option value="Quận 8">Quận 8</option>
+            <option value="Quận 10">Quận 10</option>
+            <option value="Quận 11">Quận 11</option>
+            <option value="Quận 12">Quận 12</option>
+            <option value="Quận Bình Tân">Quận Bình Tân</option>
+            <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+            <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+            <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+            <option value="Quận Tân Bình">Quận Tân Bình</option>
+            <option value="Quận Tân Phú">Quận Tân Phú</option>
+            <option value="Huyện Bình Chánh">Huyện Bình Chánh</option>
+            <option value="Huyện Cần Giờ">Huyện Cần Giờ</option>
+            <option value="Huyện Củ Chi">Huyện Củ Chi</option>
+            <option value="Huyện Hóc Môn">Huyện Hóc Môn</option>
+            <option value="Huyện Nhà Bè">Huyện Nhà Bè</option>
+          </select>
+          <p className="border border-gray-300 rounded py-2 px-4 w-full bg-white">
+            TP Hồ Chí Minh
+          </p>
         </div>
         <input
           type="number"
