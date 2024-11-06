@@ -281,7 +281,7 @@ const Product = () => {
         </div>
 
         {showModal && (
-          <div className="max-w-md mx-auto mt-20 p-6 bg-inherit shadow-lg rounded-md">
+          <div className="max-w-md mx-auto mt-20 p-6 bg-white shadow-lg rounded-md">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-center">
                 Enter Your Measurements
@@ -498,58 +498,13 @@ const Product = () => {
           </div>
         </Modal>
 
-        {/* {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
-          size.length > 0 && (
-            <div className="w-full my-40 flex flex-col items-center gap-10">
-              <div className="text-2xl md:text-4xl lg:text-6xl uppercase">
-                <Title text1={"DIGITAL"} text2={"ON YOU"} />
-              </div>
-              <div className="flex w-full my-20">
-                <Canvas camera={{ near: 0.01, far: 50 }}>
-                  <ambientLight />
-                  <OrbitControls />
-                  <Suspense fallback={null}>
-                    {userInfo.gender === "Men" && size === "M" && (
-                      <JohnModel position={[0, -1, 0]} />
-                    )}
-                    {userInfo.gender === "Men" && size === "L" && (
-                      <MaxModel position={[0, -1, 0]} />
-                    )}
-                    {userInfo.gender === "Men" && size === "XL" && (
-                      <BarryModel position={[0, -1, 0]} />
-                    )}
-                    {userInfo.gender === "Women" && size === "M" && (
-                      <EllaModel position={[0, -1, 0]} />
-                    )}
-                    {userInfo.gender === "Women" && size === "L" && (
-                      <REMModel position={[0, -1, 0]} />
-                    )}
-                    {userInfo.gender === "Women" && size === "XL" && (
-                      <ShifaModel position={[0, -1, 0]} />
-                    )}
-                  </Suspense>
-                  <Environment preset="sunset" />
-                  <ContactShadows
-                    position={[0, -1, 0]}
-                    opacity={0.5}
-                    scale={50}
-                    blur={1}
-                    far={10}
-                    resolution={256}
-                    color="#000000"
-                  />
-                </Canvas>
-              </div>
-            </div>
-          )} */}
-
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <div className="flex">
             <b className="border border-gray-400 px-5 py-3 text-sm">
               Description
             </b>
             <p className="border border-gray-400 px-5 py-3 text-sm">
-              Reviews (122)
+              Reviews (20)
             </p>
           </div>
           <div className="flex flex-col gap-4 border border-gray-400 px-6 py-6 text-sm text-gray-500">
@@ -566,7 +521,7 @@ const Product = () => {
               quod! Est.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <RelatedProducts
           category={product?.category}

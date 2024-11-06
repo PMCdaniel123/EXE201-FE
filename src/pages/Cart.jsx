@@ -13,8 +13,6 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(cart);
-
   const handleDelete = async (id) => {
     setLoading(true);
     const res = await axiosInstance.delete(`/carts/${id}`);

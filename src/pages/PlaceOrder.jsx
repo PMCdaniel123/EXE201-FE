@@ -73,7 +73,7 @@ const PlaceOrder = () => {
   return loading ? (
     <Spin />
   ) : (
-    <div className="flex flex-col sm:flex-row justify-between sm:gap-20 pt-5 sm:pt-14 min-h-[80vh] border-t border-gray-400 px-10">
+    <div className="flex flex-col sm:flex-row justify-between sm:gap-40 pt-5 sm:pt-14 min-h-[80vh] border-t border-gray-400 px-10">
       <form
         className="flex flex-col gap-4 w-full sm:w-1/2"
         onSubmit={handleSubmit(handleOrder)}
@@ -136,8 +136,8 @@ const PlaceOrder = () => {
         </div>
       </form>
 
-      <div className="mt-8 w-1/3">
-        <div className="mt-8 min-w-80">
+      <div className="mt-3 w-1/2">
+        <div className="min-w-80">
           <CartTotal items={cartData} />
         </div>
 

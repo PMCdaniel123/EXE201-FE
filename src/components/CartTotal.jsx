@@ -27,18 +27,11 @@ const CartTotal = ({ items }) => {
         </div>
         <hr className="bg-gray-400" />
         <div className="flex justify-between">
-          <p>Shipping Fee</p>
-          <p>
-            {currency}
-            {delivery_fee}.00
-          </p>
-        </div>
-        <hr className="bg-gray-400" />
-        <div className="flex justify-between">
           <b>Total</b>
+          <i className="text-gray-800 font-light">{(getTotalAmount() === 0 ? 0 : getTotalAmount())*25},000 VND</i>
           <b>
             {currency}
-            {getTotalAmount() === 0 ? 0 : getTotalAmount() + delivery_fee}.00
+            {getTotalAmount() === 0 ? 0 : getTotalAmount()}.00
           </b>
         </div>
       </div>
