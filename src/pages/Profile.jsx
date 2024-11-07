@@ -51,6 +51,17 @@ const Profile = () => {
                 Contact: {userInfo.designer?.contact_info}
               </p>
               <p className="text-gray-800">Bio: {userInfo.designer?.bio}</p>
+              {userInfo.user_feature.filter((item) => item.feature_id === 2)
+                .length > 0 ? (
+                <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-3 py-2 rounded-lg">
+                  Premium Designer
+                </p>
+              ) : userInfo.user_feature.filter((item) => item.feature_id === 1)
+                  .length > 0 ? (
+                <p className="bg-black text-white px-3 py-2 rounded-lg">
+                  Basic Designer
+                </p>
+              ) : null}
             </div>
           )}
           <div className="w-full flex flex-col justify-center items-start gap-6 p-8 border border-gray-400">
@@ -59,6 +70,12 @@ const Profile = () => {
             <p className="text-gray-800">Tel: {userInfo.phone}</p>
             <p className="text-gray-800">Email: {userInfo.email}</p>
             <p className="text-gray-800">Gender: {userInfo.gender}</p>
+            {userInfo.user_feature.filter((item) => item.feature_id === 3)
+              .length > 0 ? (
+              <p className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-3 py-2 rounded-lg">
+                Premium
+              </p>
+            ) : null}
           </div>
         </div>
       </div>
@@ -95,51 +112,65 @@ const Profile = () => {
           <Title text1={"FEATURES"} text2={"UPDATE"} />
         </div>
         <div>
-          <div className="mb-20">
+          <div className="mb-20 text-center flex flex-col items-center justify-center">
             <p className="text-2xl font-medium text-gray-800 mt-6">
               Basic Features
             </p>
-            <p className="text-gray-500 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-              dolorem sint quas accusantium eveniet atque repellat placeat
-              assumenda dignissimos voluptas, vero facilis eos in pariatur
-              excepturi unde optio velit. Delectus!
+            <p className="text-gray-500 mt-3 w-4/5 text-center">
+              Our design tool offers essential features to streamline your
+              creative process. With an intuitive interface, you can easily
+              access a variety of templates, customizable fonts, and color
+              palettes. Key tools include vector editing, layer management, and
+              drag-and-drop functionality for quick adjustments. Real-time
+              collaboration allows for seamless teamwork, while export options
+              in multiple formats ensure flexibility for all design needs.
+              Perfect for designers of all skill levels!
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-8">
-              <Premium type={"Basic"} price={"10,66"} time={"3"} />
-              <Premium type={"Basic"} price={"19,75"} time={"6"} />
-              <Premium type={"Basic"} price={"39,49"} time={"12"} />
+              <Premium type={"Basic"} price={"10.80"} time={"3"} />
+              <Premium type={"Basic"} price={"20.00"} time={"6"} />
+              <Premium type={"Basic"} price={"30.00"} time={"9"} />
+              <Premium type={"Basic"} price={"40.00"} time={"12"} />
             </div>
           </div>
-          <div className="mb-20">
+          <div className="mb-20 flex flex-col items-center justify-center">
             <p className="text-2xl font-medium text-gray-800 mt-6">
               Premium Features
             </p>
-            <p className="text-gray-500 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-              dolorem sint quas accusantium eveniet atque repellat placeat
-              assumenda dignissimos voluptas, vero facilis eos in pariatur
-              excepturi unde optio velit. Delectus!
+            <p className="text-gray-500 mt-3 w-4/5 text-center">
+              Our premium design toolkit unlocks advanced features for
+              professional-grade results. Access an extensive library of
+              exclusive templates, high-resolution stock images, and advanced
+              typography options. Enjoy enhanced editing tools like precision
+              alignment, advanced blending modes, and AI-powered background
+              removal. With priority customer support and unlimited cloud
+              storage, your projects are secure and easily accessible. Perfect
+              for designers looking to elevate their work and streamline their
+              workflow!
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-8">
-              <Premium type={"Premium"} price={"19,75"} time={"3"} />
-              <Premium type={"Premium"} price={"35,55"} time={"6"} />
-              <Premium type={"Premium"} price={"71,09"} time={"12"} />
+              <Premium type={"Premium"} price={"20.00"} time={"3"} />
+              <Premium type={"Premium"} price={"36.00"} time={"6"} />
+              <Premium type={"Premium"} price={"54.00"} time={"9"} />
+              <Premium type={"Premium"} price={"72.00"} time={"12"} />
             </div>
           </div>
         </div>
-        <div className="mb-20">
+        <div className="mb-20 flex flex-col items-center justify-center">
           <p className="text-2xl font-medium text-gray-800 mt-6">
             Customer Features
           </p>
-          <p className="text-gray-500 mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-            dolorem sint quas accusantium eveniet atque repellat placeat
-            assumenda dignissimos voluptas, vero facilis eos in pariatur
-            excepturi unde optio velit. Delectus!
+          <p className="text-gray-500 mt-3 w-4/5 text-center">
+            Our premium plan offers customers exclusive benefits to enhance
+            their experience. Enjoy early access to new products, personalized
+            recommendations, and faster delivery options. With priority support
+            and a dedicated customer service team, your needs are our top
+            priority. Plus, members receive special discounts and rewards on
+            every purchase. Upgrade to premium and get more out of every
+            shopping experience!
           </p>
           <div className="mt-6 flex justify-center gap-8">
-            <Premium type={"Customer"} price={"23,22"} time={"12"} />
+            <Premium type={"Customer"} price={"23.52"} time={"12"} />
           </div>
         </div>
       </div>

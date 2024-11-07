@@ -229,7 +229,7 @@ const Product = () => {
                     }`}
                     onClick={() => {
                       setSize(item.size === size ? "" : item.size);
-                      setIsModalOpen(true);
+                      setIsModalOpen(userInfo);
                     }}
                   >
                     {item.size}
@@ -454,74 +454,99 @@ const Product = () => {
           width={800}
         >
           <div>
-            {userFeatures.filter((item) => item.feature_id === 3).length > 0 &&
-              size.length > 0 && (
-                <div className="w-full flex flex-col items-center gap-10">
-                  <div className="flex w-full my-10">
-                    <Canvas camera={{ near: 0.01, far: 50 }}>
-                      <ambientLight />
-                      <OrbitControls />
-                      <Suspense fallback={null}>
-                        {userInfo.gender === "Men" && size === "M" && (
-                          <JohnModel position={[0, -1, 0]} />
-                        )}
-                        {userInfo.gender === "Men" && size === "L" && (
-                          <MaxModel position={[0, -1, 0]} />
-                        )}
-                        {userInfo.gender === "Men" && size === "XL" && (
-                          <BarryModel position={[0, -1, 0]} />
-                        )}
-                        {userInfo.gender === "Women" && size === "M" && (
-                          <EllaModel position={[0, -1, 0]} />
-                        )}
-                        {userInfo.gender === "Women" && size === "L" && (
-                          <REMModel position={[0, -1, 0]} />
-                        )}
-                        {userInfo.gender === "Women" && size === "XL" && (
-                          <ShifaModel position={[0, -1, 0]} />
-                        )}
-                      </Suspense>
-                      <Environment preset="sunset" />
-                      <ContactShadows
-                        position={[0, -1, 0]}
-                        opacity={0.5}
-                        scale={50}
-                        blur={1}
-                        far={10}
-                        resolution={256}
-                        color="#000000"
-                      />
-                    </Canvas>
-                  </div>
+            {userInfo && size.length > 0 && (
+              <div className="w-full flex flex-col items-center gap-10">
+                <div className="flex w-full my-10">
+                  <Canvas camera={{ near: 0.01, far: 50 }}>
+                    <ambientLight />
+                    <OrbitControls />
+                    <Suspense fallback={null}>
+                      {userInfo.gender === "Men" && size === "M" && (
+                        <JohnModel position={[0, -1, 0]} />
+                      )}
+                      {userInfo.gender === "Men" && size === "L" && (
+                        <MaxModel position={[0, -1, 0]} />
+                      )}
+                      {userInfo.gender === "Men" && size === "XL" && (
+                        <BarryModel position={[0, -1, 0]} />
+                      )}
+                      {userInfo.gender === "Women" && size === "M" && (
+                        <EllaModel position={[0, -1, 0]} />
+                      )}
+                      {userInfo.gender === "Women" && size === "L" && (
+                        <REMModel position={[0, -1, 0]} />
+                      )}
+                      {userInfo.gender === "Women" && size === "XL" && (
+                        <ShifaModel position={[0, -1, 0]} />
+                      )}
+                    </Suspense>
+                    <Environment preset="sunset" />
+                    <ContactShadows
+                      position={[0, -1, 0]}
+                      opacity={0.5}
+                      scale={50}
+                      blur={1}
+                      far={10}
+                      resolution={256}
+                      color="#000000"
+                    />
+                  </Canvas>
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </Modal>
 
-        {/* <div className="mt-20">
-          <div className="flex">
-            <b className="border border-gray-400 px-5 py-3 text-sm">
-              Description
-            </b>
-            <p className="border border-gray-400 px-5 py-3 text-sm">
-              Reviews (20)
-            </p>
-          </div>
-          <div className="flex flex-col gap-4 border border-gray-400 px-6 py-6 text-sm text-gray-500">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              inventore esse nisi aliquam, quis, dicta aut consectetur velit
-              sit, ex quos iure eaque quaerat obcaecati id totam consequuntur
-              quod! Est.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              inventore esse nisi aliquam, quis, dicta aut consectetur velit
-              sit, ex quos iure eaque quaerat obcaecati id totam consequuntur
-              quod! Est.
-            </p>
-          </div>
-        </div> */}
+        <div className="flex justify-center items-center my-20">
+          <table className="table-auto border-collapse border border-gray-600 text-white text-center text-sm w-full">
+            <thead>
+              <tr className="text-lg font-bold text-[#9d905a]">
+                <th className="p-4 border border-gray-600">SIZE</th>
+                <th className="p-4 border border-gray-600">S</th>
+                <th className="p-4 border border-gray-600">M</th>
+                <th className="p-4 border border-gray-600">L</th>
+                <th className="p-4 border border-gray-600">XL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-gray-600">
+                <td className="py-3 px-4 border border-gray-600">Shirt Length</td>
+                <td className="py-3 px-4 border border-gray-600">66</td>
+                <td className="py-3 px-4 border border-gray-600">69</td>
+                <td className="py-3 px-4 border border-gray-600">72</td>
+                <td className="py-3 px-4 border border-gray-600">75</td>
+              </tr>
+              <tr className="text-gray-600">
+                <td className="py-3 px-4 border border-gray-600">Shirt Width</td>
+                <td className="py-3 px-4 border border-gray-600">49</td>
+                <td className="py-3 px-4 border border-gray-600">52</td>
+                <td className="py-3 px-4 border border-gray-600">55</td>
+                <td className="py-3 px-4 border border-gray-600">58</td>
+              </tr>
+              <tr className="text-gray-600">
+                <td className="py-3 px-4 border border-gray-600">Sleeve Length</td>
+                <td className="py-3 px-4 border border-gray-600">22</td>
+                <td className="py-3 px-4 border border-gray-600">23</td>
+                <td className="py-3 px-4 border border-gray-600">24</td>
+                <td className="py-3 px-4 border border-gray-600">25</td>
+              </tr>
+              <tr className="text-gray-600">
+                <td className="py-3 px-4 border border-gray-600">Weight</td>
+                <td className="py-3 px-4 border border-gray-600">&lt;55KG</td>
+                <td className="py-3 px-4 border border-gray-600">60-75KG</td>
+                <td className="py-3 px-4 border border-gray-600">70-80KG</td>
+                <td className="py-3 px-4 border border-gray-600">&gt;80KG</td>
+              </tr>
+              <tr className="text-gray-600">
+                <td className="py-3 px-4 border border-gray-600">Height</td>
+                <td className="py-3 px-4 border border-gray-600">&lt;160</td>
+                <td className="py-3 px-4 border border-gray-600">&lt;170</td>
+                <td className="py-3 px-4 border border-gray-600">&lt;180</td>
+                <td className="py-3 px-4 border border-gray-600">&lt;180</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <RelatedProducts
           category={product?.category}

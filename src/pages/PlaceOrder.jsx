@@ -7,6 +7,7 @@ import { Spin } from "antd";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
@@ -45,6 +46,31 @@ const PlaceOrder = () => {
     formState: { errors },
   } = useForm();
 
+  const onlineBanking = async () => {
+    try {
+      await axios
+        .post(
+          "https://exe-201-banking-payos.vercel.app/api/create-checkout-session",
+          {
+            orderId: Math.floor(Math.random() * 100000) + 1,
+            total_amount:
+              cartData.reduce(
+                (acc, item) =>
+                  acc + Number(item.quantity) * Number(item.product.price),
+                0
+              ) * 25000,
+            returnUrl: "orders-loading",
+            cancelUrl: "place-order",
+          }
+        )
+        .then((response) => {
+          window.location.href = response.data.url;
+        });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const handleOrder = async (data) => {
     const orderInformation = {
       customer_id: Cookies.get("userID"),
@@ -53,22 +79,29 @@ const PlaceOrder = () => {
         data.street + ", " + data.province + ", " + "TP Hồ Chí Minh",
       phone: data.phone,
       payment_method: method,
-      total_amount:
-        cartData.reduce(
-          (acc, item) =>
-            acc + Number(item.quantity) * Number(item.product.price),
-          0
-        ) + 10,
-    };    
+      total_amount: cartData.reduce(
+        (acc, item) => acc + Number(item.quantity) * Number(item.product.price),
+        0
+      ),
+    };
 
-    try {
-      const response = await axiosInstance.post("/orders", orderInformation);
-      toast.success(response.message);
-      setOrderId(response.data.id);
-      navigate("/orders-sucessful");
-    } catch (error) {
-      toast.error(error.message);
+    localStorage.setItem("orderInformation", JSON.stringify(orderInformation));
+
+    if (method === "online") {
+      onlineBanking();
+      return;
     }
+
+    navigate("/orders-loading");
+
+    // try {
+    //   const response = await axiosInstance.post("/orders", orderInformation);
+    //   toast.success(response.message);
+    //   setOrderId(response.data.id);
+    //   navigate("/orders-sucessful");
+    // } catch (error) {
+    //   toast.error(error.message);
+    // }
   };
 
   return loading ? (
@@ -195,14 +228,6 @@ const PlaceOrder = () => {
               </p>
             </div>
           </div>
-
-          {method === "online" && (
-            <img
-              src="/frontend_assets/payment_method.jpg"
-              alt="payment"
-              className="w-full mt-8"
-            />
-          )}
         </div>
       </div>
     </div>

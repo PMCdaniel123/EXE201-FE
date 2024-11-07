@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import CartTotal from "../components/CartTotal";
 import Title from "../components/Title";
 import { ShopContext } from "../context/ShopContext";
-import axiosInstance from "../utils/axiosInstance";
 import { Spin } from "antd";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const PremiumRegister = () => {
   const { currency, navigate } = useContext(ShopContext);
   const userId = Cookies.get("userID");
   const [loading, setLoading] = useState(false);
-  const feature = localStorage.getItem("feature");
   const [featureId, setFeatureId] = useState(0);
   const [price, setPrice] = useState("0");
   const [time, setTime] = useState("0");
@@ -29,48 +27,51 @@ const PremiumRegister = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.removeItem("feature");
-  // }, []);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const onlineBanking = async () => {
+    try {
+      await axios
+        .post(
+          "https://exe-201-banking-payos.vercel.app/api/create-checkout-session",
+          {
+            orderId: Math.floor(Math.random() * 100000) + 1,
+            total_amount: Number(price) * 25000,
+            returnUrl: "premium-loading",
+            cancelUrl: "premium-register",
+          }
+        )
+        .then((response) => {
+          window.location.href = response.data.url;
+        });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const featureRegister = async (data) => {
     if (featureId !== 3) {
-      try {
-        await axiosInstance.post("/designers", {
-          user_id: userId,
-          full_name: data.full_name,
-          contact_info: data.contact_info,
-          bio: data.bio,
-        });
-      } catch (error) {
-        console.log(error);
-        toast.error(error.message);
-      }
+      const designerData = {
+        user_id: userId,
+        full_name: data.full_name,
+        contact_info: data.contact_info,
+        bio: data.bio,
+      };
+      localStorage.setItem("designerData", JSON.stringify(designerData));
     }
 
-    const featureData = {
+    const customerData = {
       user_id: userId,
       feature_id: featureId,
     };
 
-    try {
-      setLoading(true);
-      const response = await axiosInstance.post("/user-features", featureData);
-      setLoading(false);
-      localStorage.removeItem("feature");
-      toast.success(response.message);
-      navigate("/premium-register-successful");
-      window.location.href = "/premium-register-successful";
-    } catch (error) {
-      toast.error(error.message);
-      setLoading(false);
-    }
+    localStorage.setItem("customerData", JSON.stringify(customerData));
+
+    onlineBanking();
   };
 
   return (
@@ -108,16 +109,12 @@ const PremiumRegister = () => {
             {...register("bio")}
           />
           <div className="w-full text-end mt-4">
-            {loading ? (
-              <Spin />
-            ) : (
-              <button
-                className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-16 py-3 text-sm"
-                type="submit"
-              >
-                SUBMIT
-              </button>
-            )}
+            <button
+              className="bg-gradient-to-br from-[#4A5942] to-[#9d905a] text-white px-16 py-3 text-sm"
+              type="submit"
+            >
+              SUBMIT
+            </button>
           </div>
         </form>
       )}
@@ -137,6 +134,9 @@ const PremiumRegister = () => {
               <hr className="bg-gray-400" />
               <div className="flex justify-between">
                 <b>Total</b>
+                <i className="text-gray-800 font-light">
+                  {Number(price) * 25},000 VND
+                </i>
                 <b>
                   {currency}
                   {price}
@@ -158,12 +158,6 @@ const PremiumRegister = () => {
               </p>
             </div>
           </div>
-
-          <img
-            src="/frontend_assets/payment_method.jpg"
-            alt="payment"
-            className="w-full mt-8"
-          />
         </div>
 
         {featureId === 3 && (

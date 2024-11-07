@@ -30,6 +30,8 @@ import MyBlogs from "./pages/MyBlogs";
 import DesignerInfo from "./pages/DesignerInfo";
 import PremiumRegister from "./pages/PremiumRegister";
 import PremiumRegisterSuccessful from "./pages/PremiumRegisterSuccessful";
+import OrdersLoading from "./pages/OrdersLoading";
+import PremiumLoading from "./pages/PremiumLoading";
 
 const App = () => {
   return (
@@ -83,6 +85,14 @@ const App = () => {
               }
             />
             <Route
+              path="/premium-loading"
+              element={
+                <PrivateRoute>
+                  <PremiumLoading />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="/premium-register-successful"
               element={
                 <PrivateRoute>
@@ -103,6 +113,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <OrderDetails />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/orders-loading"
+              element={
+                <PrivateRoute>
+                  <OrdersLoading />
                 </PrivateRoute>
               }
             />
