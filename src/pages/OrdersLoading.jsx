@@ -6,17 +6,19 @@ import axiosInstance from "../utils/axiosInstance";
 import { toast } from "react-toastify";
 
 const OrdersLoading = () => {
-  const { cart, navigate } = useContext(ShopContext);
+  const { navigate } = useContext(ShopContext);
   const [loading, setLoading] = useState(false);
 
   const fetchOrderItems = async () => {
     const orderInformation = localStorage.getItem("orderInformation");
+    const cart = localStorage.getItem("cart");
 
     if (!orderInformation) {
       navigate("/place-order");
     }
 
     const parsedOrderInformation = JSON.parse(orderInformation);
+    const parsedCart = JSON.parse(cart);
 
     setLoading(true);
 
@@ -27,7 +29,7 @@ const OrdersLoading = () => {
       );
 
       try {
-        const orderItemsRequest = cart.map((item) =>
+        const orderItemsRequest = parsedCart.map((item) =>
           axiosInstance.post(`/order-details`, {
             order_id: response.data.id + "",
             product_id: item.product_id,

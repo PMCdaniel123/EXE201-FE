@@ -86,6 +86,7 @@ const PlaceOrder = () => {
     };
 
     localStorage.setItem("orderInformation", JSON.stringify(orderInformation));
+    localStorage.setItem("cart", JSON.stringify(cartData));
 
     if (method === "online") {
       onlineBanking();
