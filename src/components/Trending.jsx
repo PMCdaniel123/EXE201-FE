@@ -16,7 +16,7 @@ const Trending = () => {
           </div>
           <div className="col-span-3 max-sm:pl-2">
             <h3 className="md:text-3xl font-extrabold">TRENDSETTING STYLES</h3>
-            <p className="text-xs md:text-sm mt-2 uppercase text-[#656565]">
+            <p className="text-xs md:text-sm mt-2 md:uppercase text-[#656565]">
               Stay on top of the hottest fashion trends and showcase your unique
               style effortlessly. Our carefully curated collection ensures
               you're always dressed to impress.
