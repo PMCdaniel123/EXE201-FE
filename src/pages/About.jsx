@@ -17,7 +17,7 @@ const About = () => {
         />
         <div className="flex flex-col justify-center max-sm:px-6 gap-6 lg:w-3/5 text-gray-600">
           <p>
-            Sunset Soiree’ is a creative playground for trendy fashionistas in
+            Sunset Soirée is a creative playground for trendy fashionistas in
             the digital age. We promote the value of timeliness, uniqueness and
             personalization.
           </p>
